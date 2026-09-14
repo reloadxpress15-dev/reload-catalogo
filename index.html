@@ -1,0 +1,2472 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Reload Xpress — Catálogo Oficial de Recargas en Tiempo Real</title>
+  <meta name="description" content="Catálogo en tiempo real de Reload Xpress. Precios actualizados en Bolívares y Dólares para Free Fire, Blood Strike, Roblox, Mobile Legends y más. ¡Haz tu pedido directo por WhatsApp!" />
+  <meta name="keywords" content="recargas venezuela, free fire diamantes, blood strike, roblox robux, mobile legends, nintendo, playstation, reload xpress" />
+  <link rel="icon" type="image/png" href="logo.png" />
+
+  <!-- Google Fonts: Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Boxicons -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+  <style>
+    /* ─── Variables de Color y Tema ─────────────────────────────────────────── */
+    :root {
+      /* Tema Oscuro (Predeterminado) */
+      --bg: #090c12;
+      --bg-card: #111622;
+      --bg-card-hover: #171f30;
+      --bg-header: rgba(9, 12, 18, 0.88);
+      --bg-input: #151c2b;
+      --bg-modal: #111724;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(255, 122, 0, 0.5);
+      --text-main: #ffffff;
+      --text-sub: #94a3b8;
+      --text-muted: #64748b;
+      
+      /* Naranjas corporativos Reload Xpress */
+      --primary: #ff7a00;
+      --primary-hover: #ff9124;
+      --primary-glow: rgba(255, 122, 0, 0.3);
+      --primary-gradient: linear-gradient(135deg, #ff8c00 0%, #ff5500 100%);
+      --accent-badge: rgba(255, 122, 0, 0.12);
+
+      --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+      --hover-shadow: 0 18px 38px -8px rgba(255, 122, 0, 0.25);
+      --pill-bg: rgba(255, 255, 255, 0.04);
+      --pill-border: rgba(255, 255, 255, 0.08);
+    }
+
+    [data-theme="light"] {
+      /* Tema Claro */
+      --bg: #f5f7fb;
+      --bg-card: #ffffff;
+      --bg-card-hover: #ffffff;
+      --bg-header: rgba(245, 247, 251, 0.92);
+      --bg-input: #ffffff;
+      --bg-modal: #ffffff;
+      --border: rgba(0, 0, 0, 0.08);
+      --border-hover: rgba(255, 122, 0, 0.55);
+      --text-main: #0b0f19;
+      --text-sub: #475569;
+      --text-muted: #94a3b8;
+      
+      --primary: #ff6a00;
+      --primary-hover: #e65c00;
+      --primary-glow: rgba(255, 106, 0, 0.18);
+      --primary-gradient: linear-gradient(135deg, #ff7a00 0%, #e65500 100%);
+      --accent-badge: rgba(255, 106, 0, 0.08);
+
+      --card-shadow: 0 6px 24px -4px rgba(0, 0, 0, 0.06);
+      --hover-shadow: 0 16px 32px -8px rgba(255, 106, 0, 0.22);
+      --pill-bg: #ffffff;
+      --pill-border: rgba(0, 0, 0, 0.08);
+    }
+
+    /* ─── Reset & Base ─────────────────────────────────────────────────────── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      line-height: 1.5;
+    }
+
+    /* Resplandores gamer de fondo */
+    .bg-glow-1 {
+      position: fixed;
+      top: -150px;
+      right: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+    }
+    .bg-glow-2 {
+      position: fixed;
+      bottom: -150px;
+      left: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* ─── Header & Barra Superior ───────────────────────────────────────────── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-header);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    .nav-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 4px 14px var(--primary-glow);
+      border: 2px solid var(--primary);
+      transition: transform 0.2s ease;
+    }
+    .brand-link:hover .brand-logo {
+      transform: scale(1.05) rotate(-2deg);
+    }
+    .brand-info h1 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+      text-transform: uppercase;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .brand-info span {
+      font-size: 0.72rem;
+      color: var(--text-sub);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      display: block;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    /* Indicador Tasa en Vivo */
+    .rate-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-badge);
+      border: 1px solid var(--primary);
+      padding: 6px 14px;
+      border-radius: 99px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      white-space: nowrap;
+    }
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #22c55e;
+      animation: pulse 1.8s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.3); opacity: 0.5; }
+    }
+
+    /* Botón Modo Claro / Oscuro */
+    .theme-toggle-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: var(--pill-bg);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .theme-toggle-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    /* ─── Hero Section ──────────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 30px 20px 18px;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 99px;
+      background: var(--accent-badge);
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    .hero-title {
+      font-size: clamp(1.9rem, 5vw, 3rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 12px;
+      letter-spacing: -1px;
+    }
+    .hero-title span {
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-subtitle {
+      font-size: clamp(0.92rem, 2vw, 1.05rem);
+      color: var(--text-sub);
+      max-width: 680px;
+      margin: 0 auto 20px;
+      line-height: 1.5;
+    }
+
+    /* 📸 Banner Explicativo "Pasa tu foto" */
+    .photo-instruction-box {
+      background: var(--bg-card);
+      border: 1px dashed var(--primary);
+      border-radius: 16px;
+      padding: 14px 18px;
+      max-width: 760px;
+      margin: 0 auto 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      text-align: left;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .photo-instruction-box:hover {
+      border-color: var(--primary-hover);
+      transform: translateY(-2px);
+    }
+    .pib-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--primary-gradient);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      box-shadow: 0 4px 14px var(--primary-glow);
+    }
+    .pib-text strong {
+      display: block;
+      color: var(--text-main);
+      font-size: 0.92rem;
+      margin-bottom: 2px;
+    }
+    .pib-text p {
+      font-size: 0.82rem;
+      color: var(--text-sub);
+      line-height: 1.35;
+    }
+    .pib-cta-btn {
+      background: #25d366;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.82rem;
+      padding: 9px 16px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+      flex-shrink: 0;
+    }
+    .pib-cta-btn:hover {
+      background: #20ba5a;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+    }
+
+    /* ─── Controles Fijos: Buscador y Filtros ────────────────────────────────── */
+    .controls-wrapper {
+      position: sticky;
+      top: 65px;
+      z-index: 90;
+      background: var(--bg-header);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 20px;
+      margin-bottom: 26px;
+      transition: background 0.3s ease;
+    }
+    .controls-container {
+      max-width: 680px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .search-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+    }
+    .search-box {
+      position: relative;
+      flex: 1;
+    }
+    .search-box i {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.2rem;
+      color: var(--text-muted);
+    }
+    .search-box input {
+      width: 100%;
+      padding: 11px 14px 11px 42px;
+      border-radius: 12px;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.92rem;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    .search-box input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-glow);
+    }
+
+    /* Chips de Categorías */
+    .filter-chips {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .filter-chips::-webkit-scrollbar {
+      display: none;
+    }
+    .chip-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: 99px;
+      background: var(--pill-bg);
+      border: 1px solid var(--pill-border);
+      color: var(--text-sub);
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+    .chip-btn:hover {
+      color: var(--text-main);
+      border-color: var(--primary);
+    }
+    .chip-btn.active {
+      background: var(--primary-gradient);
+      color: #ffffff;
+      border-color: transparent;
+      box-shadow: 0 4px 14px var(--primary-glow);
+    }
+    .chip-badge {
+      font-size: 0.72rem;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 2px 6px;
+      border-radius: 99px;
+    }
+
+    /* ─── VISTA 1: SHOWCASE DE CARDS ESTILO REFERENCIA (1:1 con badge 📄) ── */
+    .section-headline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .section-headline h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-headline span {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+    }
+
+    .games-showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    /* Card individual idéntica al diseño de la imagen */
+    .game-card-showcase {
+      aspect-ratio: 1 / 1.05;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .game-card-showcase:hover {
+      transform: translateY(-5px) scale(1.02);
+      border-color: var(--primary);
+      box-shadow: 0 14px 30px -4px var(--primary-glow);
+    }
+
+    /* Badge de documento en la esquina superior izquierda (📄) */
+    .gcs-top-doc-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 5;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      color: #334155;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(4px);
+    }
+    [data-theme="dark"] .gcs-top-doc-badge {
+      background: rgba(17, 24, 39, 0.85);
+      border-color: rgba(255, 255, 255, 0.15);
+      color: #f1f5f9;
+    }
+
+    /* Contenedor de la Portada / Imagen */
+    .gcs-cover-wrapper {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #0f141f;
+    }
+    .gcs-full-cover {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+    .game-card-showcase:hover .gcs-full-cover {
+      transform: scale(1.08);
+    }
+
+    /* Portadas especiales estilo marca limpia */
+    .gcs-brand-cover {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: transform 0.35s ease;
+    }
+    .game-card-showcase:hover .gcs-brand-cover {
+      transform: scale(1.06);
+    }
+    .gcs-apple-bg {
+      background: #ffffff;
+      color: #000000;
+    }
+    .gcs-apple-bg .gcs-brand-icon {
+      font-size: 4.2rem;
+      color: #000000;
+    }
+    .gcs-apple-bg .gcs-brand-subtext {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #000000;
+      letter-spacing: -0.5px;
+    }
+    .gcs-roblox-bg {
+      background: #000000;
+    }
+    .gcs-roblox-img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 16px rgba(255,255,255,0.25));
+    }
+    .gcs-xbox-bg {
+      background: #071307;
+    }
+    .gcs-xbox-bg .gcs-brand-icon {
+      font-size: 4rem;
+    }
+    .gcs-nintendo-bg {
+      background: #190505;
+    }
+    .gcs-nintendo-bg .gcs-brand-icon {
+      font-size: 4rem;
+    }
+    .gcs-ps-bg {
+      background: #050d1a;
+    }
+    .gcs-ps-bg .gcs-brand-icon {
+      font-size: 4rem;
+    }
+    .gcs-google-bg {
+      background: #05121c;
+    }
+    .gcs-google-bg .gcs-brand-icon {
+      font-size: 4rem;
+    }
+
+    /* Barra inferior con gradiente oscuro y título exacto a la referencia */
+    .gcs-bottom-bar {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      padding: 38px 14px 14px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.72) 48%, transparent 100%);
+      text-align: left;
+    }
+    .gcs-title-text {
+      font-size: 0.94rem;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.25;
+      letter-spacing: -0.2px;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* ─── VISTA 2: PAQUETES DETALLADOS POR JUEGO ────────────────────────────── */
+    .game-packages-view {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .view-nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn-back-all {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 12px;
+      background: var(--pill-bg);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-back-all:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateX(-3px);
+    }
+    .btn-how-works {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 12px;
+      background: var(--accent-badge);
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-how-works:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    /* Grid de Tarjetas de Paquetes */
+    .package-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .package-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
+    }
+    .package-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--border-hover);
+      box-shadow: var(--hover-shadow);
+      background: var(--bg-card-hover);
+    }
+
+    .pkg-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .pkg-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: var(--accent-badge);
+      color: var(--primary);
+    }
+    .pkg-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.3;
+      margin-bottom: 12px;
+      min-height: 2.6em;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .pkg-prices {
+      margin-bottom: 14px;
+      padding: 10px;
+      background: var(--pill-bg);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    .price-bs-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 2px;
+    }
+    .price-bs-val {
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+    }
+    .price-usd-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.84rem;
+      color: var(--text-sub);
+      font-weight: 600;
+    }
+
+    /* Botones de acción dentro de la tarjeta */
+    .pkg-actions {
+      display: flex;
+      gap: 8px;
+    }
+    .btn-buy-wa {
+      flex: 1;
+      background: #25d366;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+    }
+    .btn-buy-wa:hover {
+      background: #1fba57;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+    }
+    .btn-copy-info {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--pill-bg);
+      border: 1px solid var(--border);
+      color: var(--text-sub);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+    .btn-copy-info:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: scale(1.06);
+    }
+
+    /* ─── MODAL EXPLICATIVO DE MÉTODO DE RECARGA ────────────────────────────── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.25s ease;
+    }
+    .modal-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+    .modal-dialog {
+      background: var(--bg-modal);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      max-width: 540px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 26px 24px;
+      position: relative;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      transform: scale(0.92) translateY(20px);
+      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .modal-overlay.open .modal-dialog {
+      transform: scale(1) translateY(0);
+    }
+    .modal-close-btn {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--pill-bg);
+      border: 1px solid var(--border);
+      color: var(--text-sub);
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .modal-close-btn:hover {
+      color: var(--primary);
+      border-color: var(--primary);
+      transform: rotate(90deg);
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .modal-avatar {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      background: var(--bg-card);
+      border: 2px solid var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 0 4px 14px var(--primary-glow);
+    }
+    .modal-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .modal-title h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+    }
+    .modal-title span {
+      font-size: 0.82rem;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .modal-steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .m-step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: var(--pill-bg);
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+      border-radius: 14px;
+    }
+    .m-step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--primary-gradient);
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px var(--primary-glow);
+    }
+    .m-step-text strong {
+      display: block;
+      color: var(--text-main);
+      font-size: 0.9rem;
+      margin-bottom: 2px;
+    }
+    .m-step-text p {
+      font-size: 0.8rem;
+      color: var(--text-sub);
+      line-height: 1.35;
+    }
+
+    .modal-security-note {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      color: #22c55e;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 22px;
+    }
+
+    .modal-proceed-btn {
+      width: 100%;
+      padding: 13px;
+      border-radius: 14px;
+      background: var(--primary-gradient);
+      color: #ffffff;
+      font-family: inherit;
+      font-weight: 800;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 16px var(--primary-glow);
+      transition: all 0.2s ease;
+    }
+    .modal-proceed-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px var(--primary-glow);
+    }
+
+    /* ─── Estilos Exclusivos Modal Zinli & Cotizador ────────────────────────── */
+    .zinli-rate-banner {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      background: rgba(108, 92, 231, 0.12);
+      border: 1px solid rgba(108, 92, 231, 0.35);
+      border-radius: 14px;
+      color: var(--text-main);
+      margin-bottom: 14px;
+    }
+    .zinli-calculator-box {
+      background: var(--pill-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+    .zcb-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary);
+      font-size: 0.92rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .zcb-input-wrap label {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text-sub);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .zcb-input-row {
+      display: flex;
+      align-items: center;
+      background: var(--bg-card);
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 0 12px;
+      transition: border-color 0.2s ease;
+    }
+    .zcb-input-row:focus-within {
+      border-color: var(--primary);
+    }
+    .zcb-currency-symbol {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-right: 4px;
+    }
+    .zcb-currency-label {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--text-sub);
+    }
+    .zcb-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-main);
+      padding: 10px 4px;
+      font-family: inherit;
+    }
+    .zcb-quick-chips {
+      display: flex;
+      gap: 6px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+    .zcb-chip {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 5px 12px;
+      border-radius: 99px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .zcb-chip:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .zcb-chip.active {
+      background: var(--primary-gradient);
+      color: #ffffff;
+      border-color: transparent;
+    }
+    .zcb-breakdown {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .zcb-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.84rem;
+      color: var(--text-sub);
+    }
+    .zcb-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 4px 0;
+    }
+    .zcb-total-row {
+      color: var(--text-main);
+      font-weight: 700;
+    }
+    .btn-toggle-zinli-table {
+      width: 100%;
+      background: var(--pill-bg);
+      border: 1px solid var(--border);
+      color: var(--text-sub);
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-bottom: 14px;
+    }
+    .btn-toggle-zinli-table:hover {
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+    .zinli-table-wrap {
+      margin-bottom: 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .zinli-custom-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+    .zinli-custom-table th {
+      background: var(--pill-bg);
+      padding: 8px 12px;
+      text-align: left;
+      color: var(--text-sub);
+      font-weight: 700;
+      border-bottom: 1px solid var(--border);
+    }
+    .zinli-custom-table td {
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-main);
+    }
+    .zinli-custom-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* ─── Botón Flotante de WhatsApp ────────────────────────────────────────── */
+    .floating-wa {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #25d366;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .floating-wa:hover {
+      transform: scale(1.12);
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
+    }
+    .floating-tooltip {
+      position: absolute;
+      right: 68px;
+      background: #121824;
+      color: #ffffff;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateX(10px);
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .floating-wa:hover .floating-tooltip {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* ─── Toast Feedback ────────────────────────────────────────────────────── */
+    .toast {
+      position: fixed;
+      bottom: 90px;
+      left: 50%;
+      transform: translateX(-50%) translateY(30px);
+      background: #121824;
+      color: #ffffff;
+      padding: 12px 24px;
+      border-radius: 99px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      border: 1px solid var(--primary);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ─── Footer ────────────────────────────────────────────────────────────── */
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 36px 20px;
+      text-align: center;
+      background: var(--bg-card);
+      transition: background 0.3s ease;
+    }
+    .footer-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      margin: 0 auto 12px;
+      display: block;
+      border: 2px solid var(--primary);
+    }
+    footer h3 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    footer p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto 16px;
+    }
+    .footer-copy {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* ─── Responsive Móvil ──────────────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .nav-container {
+        padding: 8px 14px;
+      }
+      .brand-logo {
+        width: 38px;
+        height: 38px;
+      }
+      .brand-info h1 {
+        font-size: 1rem;
+      }
+      .rate-pill {
+        padding: 4px 10px;
+        font-size: 0.74rem;
+      }
+      .hero {
+        padding: 20px 14px 14px;
+      }
+      .photo-instruction-box {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+      }
+      .pib-cta-btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .controls-wrapper {
+        top: 60px;
+        padding: 10px 14px;
+      }
+      .games-showcase-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      .package-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      .package-card {
+        padding: 12px;
+      }
+      .pkg-name {
+        font-size: 0.92rem;
+        min-height: 2.8em;
+      }
+      .price-bs-val {
+        font-size: 1.1rem;
+      }
+      .btn-buy-wa {
+        padding: 8px 6px;
+        font-size: 0.78rem;
+      }
+      .btn-copy-info {
+        width: 34px;
+        height: 34px;
+        font-size: 1rem;
+      }
+      .floating-wa {
+        width: 50px;
+        height: 50px;
+        font-size: 1.7rem;
+        bottom: 18px;
+        right: 18px;
+      }
+      .modal-dialog {
+        padding: 20px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Luces decorativas gamer de fondo -->
+  <div class="bg-glow-1"></div>
+  <div class="bg-glow-2"></div>
+
+  <!-- ─── Header & Barra de Navegación ────────────────────────────────────── -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand-link" id="brandHomeLink">
+        <img src="logo.png" alt="Reload Xpress" class="brand-logo" onerror="this.src='../icon.png'" />
+        <div class="brand-info">
+          <h1>Reload Xpress</h1>
+          <span>Catálogo de Recargas</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <!-- Tasa USDT en Vivo -->
+        <div class="rate-pill" id="rateBadge" title="Tasa actualizada en tiempo real según el sistema">
+          <div class="pulse-dot"></div>
+          <span id="rateText">Tasa: Cargando...</span>
+        </div>
+
+        <!-- Botón de Tema (Claro / Oscuro) -->
+        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Cambiar Tema" title="Modo Claro / Oscuro">
+          <i class='bx bx-sun' id="themeIcon"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ─── Hero Principal ──────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-badge">
+      <i class='bx bxs-zap'></i> Precios en Tiempo Real
+    </div>
+    <h2 class="hero-title">
+      Recargas Rápidas al <span>Mejor Precio</span>
+    </h2>
+    <p class="hero-subtitle">
+      Consulta los precios actualizados al instante en Bolívares y Dólares. Selecciona tu juego favorito para ver el método y hacer tu pedido directo por WhatsApp.
+    </p>
+
+    <!-- 📸 Banner: Paso a paso con foto o botón -->
+    <div class="photo-instruction-box">
+      <div class="pib-icon">
+        <i class='bx bx-camera'></i>
+      </div>
+      <div class="pib-text">
+        <strong>¿Cómo comprar? ¡Fácil y rápido!</strong>
+        <p>Selecciona tu juego, revisa el método, toma captura a lo que deseas (o dale al botón "Pedir") y pásanosla por WhatsApp.</p>
+      </div>
+      <a href="#" id="directWaBtn" class="pib-cta-btn" target="_blank" rel="noopener noreferrer">
+        <i class='bx bxl-whatsapp' style="font-size:1.2rem"></i> Enviar Foto / Pedir
+      </a>
+    </div>
+  </section>
+
+  <!-- ─── Controles Fijos: Buscador ───────────────────────────────────────── -->
+  <div class="controls-wrapper">
+    <div class="controls-container">
+      <div class="search-row">
+        <div class="search-box">
+          <i class='bx bx-search'></i>
+          <input type="text" id="searchInput" placeholder="Buscar paquete o juego (ej: 100 Robux, Diamantes, Pase...)" autocomplete="off" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Contenedor Principal ────────────────────────────────────────────── -->
+  <main style="max-width: 1240px; margin: 0 auto; padding: 0 20px 80px; position: relative; z-index: 1;">
+
+    <!-- Spinner de Carga Inicial -->
+    <div id="loadingState" style="text-align: center; padding: 80px 20px; color: var(--text-sub);">
+      <div style="width: 50px; height: 50px; border: 4px solid var(--border); border-top-color: var(--primary); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 20px;"></div>
+      <h3>Conectando con el sistema de recargas...</h3>
+      <p>Consultando juegos, precios y tasa del día en tiempo real.</p>
+    </div>
+
+    <!-- ── VISTA 1: SHOWCASE DE CARDS DE JUEGOS (ESTILO REFERENCIA) ── -->
+    <div id="gamesShowcaseView" style="display: none;">
+      <div class="section-headline">
+        <h3><i class='bx bxs-game' style="color:var(--primary)"></i> Selecciona tu Juego o Servicio</h3>
+        <span id="showcaseCount">—</span>
+      </div>
+      <div class="games-showcase-grid" id="gamesShowcaseGrid">
+        <!-- Renderizado dinámicamente -->
+      </div>
+    </div>
+
+    <!-- ── VISTA 2: PAQUETES DETALLADOS ── -->
+    <div id="packagesView" class="game-packages-view">
+      <div class="view-nav-bar">
+        <button class="btn-back-all" id="btnBackToShowcase">
+          <i class='bx bx-arrow-back'></i> Ver todos los juegos
+        </button>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <button class="btn-how-works" id="btnReopenHowItWorks">
+            <i class='bx bx-info-circle'></i> ¿Cómo recargar?
+          </button>
+        </div>
+      </div>
+
+      <div id="packagesContainer">
+        <!-- Paquetes renderizados aquí -->
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ─── MODAL EXPLICATIVO DE MÉTODO DE RECARGA ──────────────────────────── -->
+  <div class="modal-overlay" id="methodModal">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Cerrar ventana">&times;</button>
+      
+      <div class="modal-header">
+        <div class="modal-avatar" id="modalGameAvatar">🎮</div>
+        <div class="modal-title">
+          <h3 id="modalGameTitle">Recarga de Juego</h3>
+          <span id="modalGameMethod">Vía ID de Jugador</span>
+        </div>
+      </div>
+
+      <!-- Pasos Explicativos -->
+      <div class="modal-steps-list" id="modalStepsList">
+        <!-- Renderizado dinámico de pasos -->
+      </div>
+
+      <div class="modal-security-note" id="modalSecurityNote">
+        <i class='bx bxs-lock-alt' style="font-size:1.15rem"></i>
+        <span>100% Seguro: Nunca te pediremos contraseñas de tus cuentas.</span>
+      </div>
+
+      <button class="modal-proceed-btn" id="modalProceedBtn">
+        <span>¡Entendido! Ver Precios y Paquetes</span>
+        <i class='bx bx-right-arrow-alt' style="font-size:1.25rem"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ─── Botón Flotante de WhatsApp ──────────────────────────────────────── -->
+  <a href="#" id="floatingWaBtn" class="floating-wa" target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp">
+    <span class="floating-tooltip">¡Escríbenos por WhatsApp!</span>
+    <i class='bx bxl-whatsapp'></i>
+  </a>
+
+  <!-- ─── Toast de Notificaciones ──────────────────────────────────────────── -->
+  <div class="toast" id="toast">
+    <i class='bx bx-check-circle' style="color:#22c55e; font-size:1.2rem"></i>
+    <span id="toastMsg">¡Detalles copiados al portapapeles!</span>
+  </div>
+
+  <!-- ─── Footer ──────────────────────────────────────────────────────────── -->
+  <footer>
+    <img src="logo.png" alt="Reload Xpress" class="footer-logo" onerror="this.src='../icon.png'" />
+    <h3>Reload Xpress</h3>
+    <p>Precios sincronizados automáticamente con nuestro sistema central. Pagos en Bolívares (Pago Móvil) y Divisas (Binance USDT / Zinli / Efectivo).</p>
+    <div class="footer-copy">© 2025 Reload Xpress — Todos los derechos reservados. Venezuela.</div>
+  </footer>
+
+  <!-- ─── Lógica JavaScript ───────────────────────────────────────────────── -->
+  <script>
+    // 1. Configuración Principal
+    const WA_NUMBER = '584245320773'; // 04245320773
+    
+    // Auto-detecta si se ejecuta en local (XAMPP) o en producción (GitHub Pages / Hosting)
+    const isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+    const API_URL = isLocal 
+      ? '../api/catalogo.php'
+      : 'https://lupinusystem.lat/api/catalogo.php';
+
+    let allGames = [];
+    let activeGameKey = null;
+    let currentMode = 'showcase'; // 'showcase' o 'packages'
+    let searchQuery = '';
+    let liveRateBs = 0;
+    let zinliRanges = [];
+
+    // 2. Base de Conocimiento de Métodos de Recarga (con requisito de Correo para Roblox)
+    const GAME_METHODS_INFO = {
+      'roblox': {
+        methodName: 'Entrega por Correo / Código Digital',
+        badge: 'Código / Envío al Correo',
+        steps: [
+          { title: 'Elige tu Paquete de Robux', desc: 'Disponibles desde 50 Robux hasta paquetes grandes de miles de Robux.' },
+          { title: 'Envíanos tu Correo Electrónico', desc: '⚠️ Muy importante: Al escribirnos por WhatsApp debes indicarnos tu correo donde deseas que te enviemos el pedido.' },
+          { title: 'Realiza tu Pago', desc: 'Pagas en Bolívares (Pago Móvil) o en divisas (Binance USDT).' },
+          { title: 'Recibe tu Código al Correo', desc: 'Te enviamos el código original canjeable al instante en roblox.com/redeem directamente a tu correo y WhatsApp.' }
+        ]
+      },
+      'freefire': {
+        methodName: 'Recarga Oficial Vía ID',
+        badge: 'Vía ID Directo',
+        steps: [
+          { title: 'Copia tu ID de Free Fire', desc: 'Entra a tu perfil dentro del juego y copia tu ID numérico de jugador.' },
+          { title: 'Elige tu Paquete', desc: 'Selecciona la cantidad de diamantes, Pase Booyah o membresías semanales/mensuales.' },
+          { title: 'Pásanos la captura o dale a Pedir', desc: 'Envíanos por WhatsApp la foto de lo que deseas y tu ID.' },
+          { title: 'Acreditación en 1 a 5 minutos', desc: 'Tus diamantes caen directamente en tu cuenta sin riesgo de baneo.' }
+        ]
+      },
+      'bloodstrike': {
+        methodName: 'Recarga Vía ID de Usuario',
+        badge: 'Vía ID Directo',
+        steps: [
+          { title: 'Copia tu User ID', desc: 'Encuentra tu ID numérico en la esquina de tu perfil en Blood Strike.' },
+          { title: 'Elige Oro o Pase', desc: 'Selecciona el paquete que deseas recargar.' },
+          { title: 'Envíanos tu ID por WhatsApp', desc: 'Toma captura de tu pedido y envíanosla para procesarlo con tu pago.' },
+          { title: 'Entrega Inmediata', desc: 'Tu saldo de Oro se acredita automáticamente en el juego.' }
+        ]
+      },
+      'mobilelegends': {
+        methodName: 'Recarga Vía User ID + Zone ID',
+        badge: 'User ID + Zone',
+        steps: [
+          { title: 'Copia tu User ID y Zona', desc: 'En tu perfil de MLBB copia tu número de ID y el Zone ID entre paréntesis (ej: 12345678 (1234)).' },
+          { title: 'Elige Diamantes o Pase Semanal', desc: 'Selecciona tu paquete favorito con precios en tiempo real.' },
+          { title: 'Envíanos tus datos por WhatsApp', desc: 'Nos indicas ambos números junto a tu comprobante de pago.' },
+          { title: 'Recarga Directa', desc: 'Los diamantes llegan directo a tu cuenta de juego.' }
+        ]
+      },
+      'brawlstars': {
+        methodName: 'Recarga Oficial Supercell',
+        badge: 'Vía Supercell ID',
+        steps: [
+          { title: 'Indícanos tu Player Tag', desc: 'Copia tu Tag (#XXXXX) o correo vinculado a Supercell ID.' },
+          { title: 'Elige Gemas o Pase', desc: 'Selecciona la oferta o paquete que deseas comprar.' },
+          { title: 'Pide por WhatsApp', desc: 'Te atendemos y confirmamos tu pago de inmediato.' },
+          { title: 'Activación en tu cuenta', desc: 'Recarga legal y garantizada por los servidores de Supercell.' }
+        ]
+      },
+      'clashroyale': {
+        methodName: 'Recarga Oficial Supercell',
+        badge: 'Vía Supercell ID',
+        steps: [
+          { title: 'Player Tag o Supercell ID', desc: 'Indícanos tu etiqueta de jugador dentro de Clash Royale.' },
+          { title: 'Elige tu Paquete de Gemas', desc: 'Precios actualizados en Bs y USD.' },
+          { title: 'Envíanos la foto del paquete', desc: 'Pásanos la captura por WhatsApp para agilizar la entrega.' },
+          { title: '¡Entrega segura!', desc: 'Gemas acreditadas en minutos.' }
+        ]
+      },
+      'coc': {
+        methodName: 'Recarga Oficial Clash of Clans',
+        badge: 'Vía Supercell ID',
+        steps: [
+          { title: 'Player Tag de tu Aldea', desc: 'Copia tu etiqueta #TAG que aparece en tu perfil de la aldea.' },
+          { title: 'Selecciona tu Pase o Gemas', desc: 'Elige el paquete que necesitas.' },
+          { title: 'Envíanos la orden por WhatsApp', desc: 'Recibimos tu pago móvil o transferencia.' },
+          { title: 'Acreditación al Instante', desc: 'Todo listo para mejorar tu aldea.' }
+        ]
+      },
+      'avatarworld': {
+        methodName: 'Recarga Oficial Avatar World (AW Coins)',
+        badge: 'Requiere Correo de Avatar ID',
+        steps: [
+          { title: 'Elige tu Paquete de AW Coins', desc: 'Monedas oficiales desde 200 AW Coins hasta 8.500 AW Coins.' },
+          { title: 'Pásanos el Correo de tu Avatar ID', desc: '⚠️ Requisito indispensable: Debes facilitarnos el correo electrónico vinculado a tu Avatar ID para poder entrar a tu cuenta y recargar las monedas directamente en el juego.' },
+          { title: 'Realiza tu Pago', desc: 'Pagas en Bolívares (Pago Móvil) o en divisas (Binance USDT).' },
+          { title: 'Carga Inmediata y Segura', desc: 'Entramos a tu cuenta, cargamos tus AW Coins y te notificamos al instante para que vuelvas a ingresar a jugar.' }
+        ]
+      },
+      'app_store_itunes_us': {
+        methodName: 'Tarjeta Apple App Store / iTunes',
+        badge: 'Código Digital USA',
+        steps: [
+          { title: 'ID de Apple Región USA', desc: 'Tu Apple ID debe estar configurado en país Estados Unidos.' },
+          { title: 'Elige tu Monto', desc: 'Disponible en múltiples denominaciones en dólares.' },
+          { title: 'Envío por WhatsApp', desc: 'Recibes el código original de Apple directamente en tu chat.' },
+          { title: 'Canjea en tu iPhone o iPad', desc: 'Canjéalo en la App Store para compras, suscripciones o iCloud.' }
+        ]
+      },
+      'nintendo_us': {
+        methodName: 'Tarjeta Digital Oficial Nintendo eShop',
+        badge: 'Código Digital USA',
+        steps: [
+          { title: 'Verifica tu Región', desc: 'Tu cuenta de Nintendo Switch debe estar en región Estados Unidos (USA).' },
+          { title: 'Elige el Monto', desc: 'Tarjetas de $5, $10, $20, $35, $50 o $70 USD.' },
+          { title: 'Paga en Bs o USDT', desc: 'Al confirmar el pago te enviamos el código de 16 caracteres por WhatsApp.' },
+          { title: 'Canjea en la eShop', desc: 'Lo introduces en la eShop de tu consola y compras tus juegos favoritos.' }
+        ]
+      },
+      'xbox_us': {
+        methodName: 'Tarjeta Digital Oficial Xbox / Microsoft',
+        badge: 'Código Digital USA',
+        steps: [
+          { title: 'Cuenta Región USA', desc: 'Verifica que tu cuenta de Microsoft/Xbox esté en región Estados Unidos.' },
+          { title: 'Elige el Monto', desc: 'Desde $1, $5, $10, $25 hasta $100 USD.' },
+          { title: 'Recibe tu Código de 25 Dígitos', desc: 'Te entregamos el código oficial al instante.' },
+          { title: 'Canjea en tu Consola o PC', desc: 'Canjéalo en redeem.microsoft.com y compra juegos o suscripciones.' }
+        ]
+      },
+      'playstation': {
+        methodName: 'Tarjeta Digital PlayStation Store',
+        badge: 'Código Digital USA',
+        steps: [
+          { title: 'Cuenta PlayStation USA', desc: 'Asegúrate de que tu cuenta PSN esté en región Estados Unidos.' },
+          { title: 'Selecciona tu Tarjeta', desc: 'Elige el saldo que deseas para comprar juegos o PS Plus.' },
+          { title: 'Envío Inmediato', desc: 'Te pasamos tu código de 12 dígitos al instante por WhatsApp.' },
+          { title: 'Canjea en la PS Store', desc: 'Saldo cargado para disfrutar en PS4 o PS5.' }
+        ]
+      },
+      'steam': {
+        methodName: 'Steam Wallet Gift Card',
+        badge: 'Código Digital Steam',
+        steps: [
+          { title: 'Elige tu Saldo Steam', desc: 'Selecciona la tarjeta digital en dólares que deseas.' },
+          { title: 'Realiza tu Pago', desc: 'Paga en Bolívares o Binance USDT.' },
+          { title: 'Recibe el Código', desc: 'Te entregamos el código original para canjear en Steam.' },
+          { title: '¡Juegos en PC al instante!', desc: 'Tu cartera de Steam queda cargada de inmediato.' }
+        ]
+      },
+      'google_play_us': {
+        methodName: 'Tarjeta Google Play Store USA',
+        badge: 'Código Digital Google',
+        steps: [
+          { title: 'Cuenta Google Play USA', desc: 'Tu cuenta de Google Play debe estar en región Estados Unidos.' },
+          { title: 'Elige el Monto', desc: 'Saldo digital para comprar apps, juegos o recargas internas.' },
+          { title: 'Te enviamos el Código', desc: 'Código oficial de Google Play entregado de inmediato.' },
+          { title: 'Canjea en play.google.com', desc: 'Saldo disponible al instante en tu dispositivo Android.' }
+        ]
+      }
+    };
+
+    // 3. Elementos DOM
+    const rateText = document.getElementById('rateText');
+    const loadingState = document.getElementById('loadingState');
+    const gamesShowcaseView = document.getElementById('gamesShowcaseView');
+    const gamesShowcaseGrid = document.getElementById('gamesShowcaseGrid');
+    const showcaseCount = document.getElementById('showcaseCount');
+    const packagesView = document.getElementById('packagesView');
+    const packagesContainer = document.getElementById('packagesContainer');
+    const searchInput = document.getElementById('searchInput');
+    const directWaBtn = document.getElementById('directWaBtn');
+    const floatingWaBtn = document.getElementById('floatingWaBtn');
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    const toast = document.getElementById('toast');
+    const toastMsg = document.getElementById('toastMsg');
+    const btnBackToShowcase = document.getElementById('btnBackToShowcase');
+    const btnReopenHowItWorks = document.getElementById('btnReopenHowItWorks');
+
+    // Modal
+    const methodModal = document.getElementById('methodModal');
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+    const modalProceedBtn = document.getElementById('modalProceedBtn');
+    const modalGameAvatar = document.getElementById('modalGameAvatar');
+    const modalGameTitle = document.getElementById('modalGameTitle');
+    const modalGameMethod = document.getElementById('modalGameMethod');
+    const modalStepsList = document.getElementById('modalStepsList');
+
+    // Configurar enlaces directos iniciales
+    const initialWaMsg = encodeURIComponent("¡Hola Reload Xpress! 👋 Quiero consultar sobre una recarga.");
+    directWaBtn.href = `https://wa.me/${WA_NUMBER}?text=${initialWaMsg}`;
+    floatingWaBtn.href = `https://wa.me/${WA_NUMBER}?text=${initialWaMsg}`;
+
+    // 4. Gestión de Tema Claro / Oscuro
+    function initTheme() {
+      const savedTheme = localStorage.getItem('reload_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      updateThemeIcon(savedTheme);
+    }
+
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      const nextTheme = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', nextTheme);
+      localStorage.setItem('reload_theme', nextTheme);
+      updateThemeIcon(nextTheme);
+    }
+
+    function updateThemeIcon(theme) {
+      if (theme === 'light') {
+        themeIcon.className = 'bx bx-moon';
+        themeToggleBtn.title = 'Cambiar a Modo Oscuro';
+      } else {
+        themeIcon.className = 'bx bx-sun';
+        themeToggleBtn.title = 'Cambiar a Modo Claro';
+      }
+    }
+
+    themeToggleBtn.addEventListener('click', toggleTheme);
+    initTheme();
+
+    // 5. Utilidades de Formato
+    function formatBs(val) {
+      const num = parseFloat(val) || 0;
+      return 'Bs. ' + num.toLocaleString('es-VE', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+    }
+
+    function formatUsd(val) {
+      const num = parseFloat(val) || 0;
+      return '$' + num.toFixed(2) + ' USD';
+    }
+
+    function showToast(msg) {
+      toastMsg.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2500);
+    }
+
+    // 6. Cargar Datos desde la API
+    async function fetchCatalogData() {
+      try {
+        const response = await fetch(API_URL);
+        if (!response.ok) throw new Error(`HTTP Error ${response.status}`);
+        
+        const data = await response.json();
+        if (!data.ok || !Array.isArray(data.games)) {
+          throw new Error(data.error || 'Respuesta de API inválida');
+        }
+
+        allGames = data.games;
+        liveRateBs = parseFloat(data.rate_bs) || 0;
+        zinliRanges = data.zinli_ranges || [];
+
+        // Actualizar Badge de Tasa
+        if (liveRateBs > 0) {
+          rateText.textContent = `1 USDT = ${liveRateBs.toFixed(2)} Bs`;
+        } else {
+          rateText.textContent = `Precios activos`;
+        }
+
+        loadingState.style.display = 'none';
+        renderShowcase();
+        showShowcaseView();
+
+      } catch (err) {
+        console.error('Error al cargar catálogo:', err);
+        showErrorState(err.message);
+      }
+    }
+
+    // 7. Generador de Portada Visual Estilo Referencia (Apple, Roblox, etc.)
+    function getGameCardCoverHtml(game) {
+      if (game.game_key === 'app_store_itunes_us') {
+        return `
+          <div class="gcs-brand-cover gcs-apple-bg">
+            <i class='bx bxl-apple gcs-brand-icon'></i>
+            <div class="gcs-brand-subtext">Apple</div>
+          </div>
+        `;
+      }
+      if (game.game_key === 'zinli') {
+        return `
+          <div class="gcs-brand-cover" style="background:#6c5ce7;">
+            <img src="img/zinli.png" alt="Zinli Wallet" class="gcs-full-cover" style="object-fit:cover; width:100%; height:100%;" />
+          </div>
+        `;
+      }
+      if (game.game_key === 'roblox') {
+        return `
+          <div class="gcs-brand-cover gcs-roblox-bg">
+            <img src="img/Roblox_Logo_2022.jpg" alt="Roblox" class="gcs-full-cover" style="object-fit:cover; width:100%; height:100%;" />
+          </div>
+        `;
+      }
+      if (game.game_key === 'xbox_us') {
+        return `
+          <div class="gcs-brand-cover" style="background:#ffffff;">
+            <img src="img/xbox.jpg" alt="Xbox" class="gcs-full-cover" style="object-fit:contain; width:88%; height:88%;" />
+          </div>
+        `;
+      }
+      if (game.game_key === 'nintendo_us') {
+        return `
+          <div class="gcs-brand-cover" style="background:#e4000f;">
+            <img src="img/nintendo.png" alt="Nintendo" class="gcs-full-cover" style="object-fit:contain; width:85%; height:85%;" />
+          </div>
+        `;
+      }
+      if (game.game_key === 'playstation') {
+        return `
+          <div class="gcs-brand-cover" style="background:#003791;">
+            <img src="img/play.jpg" alt="PlayStation" class="gcs-full-cover" style="object-fit:cover; width:100%; height:100%;" />
+          </div>
+        `;
+      }
+      if (game.game_key === 'google_play_us' || game.game_key === 'google_play') {
+        return `
+          <div class="gcs-brand-cover gcs-google-bg">
+            <i class='bx bxl-play-store gcs-brand-icon' style="color:#22c55e;"></i>
+            <div class="gcs-brand-subtext" style="color:#ffffff; font-weight:800;">Google Play</div>
+          </div>
+        `;
+      }
+      if (game.img) {
+        return `<img src="${game.img}" alt="${game.label}" class="gcs-full-cover" onerror="this.parentElement.innerHTML='<div class=\\'gcs-brand-cover\\'><span style=\\'font-size:3.5rem\\'>${game.icon || '🎮'}</span></div>';" />`;
+      }
+      return `
+        <div class="gcs-brand-cover">
+          <span style="font-size: 3.5rem;">${game.icon || '🎮'}</span>
+        </div>
+      `;
+    }
+
+    // 8. Renderizar Showcase de Juegos (Cards Visuales Idénticas a la Referencia)
+    function renderShowcase() {
+      showcaseCount.textContent = `${allGames.length} juegos y servicios`;
+      let html = '';
+
+      allGames.forEach(game => {
+        html += `
+          <div class="game-card-showcase" data-game="${game.game_key}" title="Ver método y paquetes de ${escapeHtml(game.label)}">
+            <!-- Badge 📄 en la esquina superior izquierda como en la foto -->
+            <div class="gcs-top-doc-badge">
+              <i class='bx bx-note'></i>
+            </div>
+
+            <!-- Portada visual completa -->
+            <div class="gcs-cover-wrapper">
+              ${getGameCardCoverHtml(game)}
+            </div>
+
+            <!-- Barra inferior con degradado y texto limpio -->
+            <div class="gcs-bottom-bar">
+              <div class="gcs-title-text">${escapeHtml(game.label)}</div>
+            </div>
+          </div>
+        `;
+      });
+
+      gamesShowcaseGrid.innerHTML = html;
+
+      // Click en cualquier Card -> Abre el Modal Explicativo de ese juego
+      document.querySelectorAll('.game-card-showcase').forEach(card => {
+        card.addEventListener('click', () => {
+          const gKey = card.getAttribute('data-game');
+          openMethodModal(gKey);
+        });
+      });
+    }
+
+    // 8.5 Modal Especial para Zinli con Cotizador Interactivo y Comisiones
+    function openZinliModal(game) {
+      activeGameKey = 'zinli';
+      modalGameTitle.textContent = 'Zinli Wallet — Recarga de Saldo';
+      modalGameMethod.textContent = 'Transferencia Directa a tu Cuenta Zinli';
+      modalGameAvatar.innerHTML = `<img src="img/zinli.png" alt="Zinli" style="object-fit:cover; width:100%; height:100%; border-radius:12px;" />`;
+
+      const rateDisplay = liveRateBs > 0 ? liveRateBs.toFixed(2) : '0.00';
+
+      function calcZinliCom(amount) {
+        const amt = parseFloat(amount) || 0;
+        if (amt <= 0) return 0;
+        if (!zinliRanges || zinliRanges.length === 0) {
+          if (amt < 5) return 0.50;
+          if (amt < 10) return 0.75;
+          if (amt < 15) return 1.00;
+          if (amt < 20) return 1.50;
+          if (amt < 30) return 2.00;
+          if (amt <= 50) return 3.50;
+          if (amt <= 70) return 5.00;
+          if (amt <= 100) return 6.50;
+          return 8.00;
+        }
+        for (const r of zinliRanges) {
+          const min = parseFloat(r.min_amount);
+          const max = parseFloat(r.max_amount);
+          if (amt >= min && amt <= max) {
+            return parseFloat(r.commission_usd);
+          }
+        }
+        const last = zinliRanges[zinliRanges.length - 1];
+        return parseFloat(last.commission_usd);
+      }
+
+      const tableRowsHtml = (zinliRanges.length > 0 ? zinliRanges : [
+        { min_amount: '1.00', max_amount: '4.99', commission_usd: '0.50' },
+        { min_amount: '5.00', max_amount: '9.99', commission_usd: '0.75' },
+        { min_amount: '10.00', max_amount: '14.99', commission_usd: '1.00' },
+        { min_amount: '15.00', max_amount: '19.99', commission_usd: '1.50' },
+        { min_amount: '20.00', max_amount: '29.99', commission_usd: '2.00' },
+        { min_amount: '30.00', max_amount: '50.00', commission_usd: '3.50' },
+        { min_amount: '50.00', max_amount: '69.99', commission_usd: '5.00' },
+        { min_amount: '70.00', max_amount: '99.99', commission_usd: '6.50' },
+        { min_amount: '100.00', max_amount: '120.00', commission_usd: '8.00' }
+      ]).map(r => `
+        <tr>
+          <td>$${parseFloat(r.min_amount).toFixed(2)} a $${parseFloat(r.max_amount).toFixed(2)} USD</td>
+          <td><strong style="color:var(--primary)">+$${parseFloat(r.commission_usd).toFixed(2)} USD</strong></td>
+        </tr>
+      `).join('');
+
+      modalStepsList.innerHTML = `
+        <div class="zinli-rate-banner">
+          <div class="pulse-dot"></div>
+          <div>
+            <div style="font-weight:800; font-size:0.92rem;">Tasa Oficial USDT en Vivo: 1 USDT = ${rateDisplay} Bs</div>
+            <div style="font-size:0.78rem; color:var(--text-sub); margin-top:2px;">Las cotizaciones en Bolívares se calculan en base a la tasa USDT de nuestro sistema.</div>
+          </div>
+        </div>
+
+        <div class="m-step-item">
+          <div class="m-step-num">1</div>
+          <div class="m-step-text">
+            <strong>¿Cómo funciona la recarga?</strong>
+            <p>Te enviamos dólares directos a tu cuenta Zinli (usando tu correo o número telefónico registrado). Puedes pedir el monto exacto que desees desde $1 USD.</p>
+          </div>
+        </div>
+
+        <div class="m-step-item">
+          <div class="m-step-num">2</div>
+          <div class="m-step-text">
+            <strong>Comisiones por Rango</strong>
+            <p>Se aplica una pequeña comisión según el monto de recarga para cubrir costos de pasarela y procesamiento.</p>
+          </div>
+        </div>
+
+        <!-- Cotizador Rápido -->
+        <div class="zinli-calculator-box">
+          <div class="zcb-header">
+            <i class='bx bxs-calculator' style="font-size:1.2rem"></i>
+            <span>Cotizador Rápido de Recarga Zinli</span>
+          </div>
+          <div class="zcb-input-wrap">
+            <label for="zinliInputAmt">¿Cuánto saldo deseas recibir en tu cuenta Zinli?</label>
+            <div class="zcb-input-row">
+              <span class="zcb-currency-symbol">$</span>
+              <input type="number" id="zinliInputAmt" class="zcb-input" placeholder="Ej: 10" min="1" step="any" value="10" />
+              <span class="zcb-currency-label">USD</span>
+            </div>
+            <div class="zcb-quick-chips">
+              <button type="button" class="zcb-chip" data-amt="5">$5</button>
+              <button type="button" class="zcb-chip active" data-amt="10">$10</button>
+              <button type="button" class="zcb-chip" data-amt="15">$15</button>
+              <button type="button" class="zcb-chip" data-amt="20">$20</button>
+              <button type="button" class="zcb-chip" data-amt="30">$30</button>
+              <button type="button" class="zcb-chip" data-amt="50">$50</button>
+            </div>
+          </div>
+
+          <div class="zcb-breakdown">
+            <div class="zcb-row">
+              <span>Saldo a recibir en tu Zinli:</span>
+              <strong id="zcbNetVal" style="color:var(--text-main)">$10.00 USD</strong>
+            </div>
+            <div class="zcb-row">
+              <span>Comisión de servicio:</span>
+              <strong id="zcbComVal" style="color:#f59e0b">+$1.00 USD</strong>
+            </div>
+            <div class="zcb-divider"></div>
+            <div class="zcb-row zcb-total-row">
+              <span style="font-size:0.95rem">Total a Pagar en USD:</span>
+              <strong id="zcbTotalUsd" style="color:var(--primary); font-size:1.2rem;">$11.00 USD</strong>
+            </div>
+            <div class="zcb-row zcb-total-bs-row" style="margin-top:2px;">
+              <span style="font-size:0.85rem">Total en Bolívares (Pago Móvil):</span>
+              <strong id="zcbTotalBs" style="color:#22c55e; font-size:1.15rem;">${formatBs(11 * liveRateBs)}</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabla Desplegable de Comisiones -->
+        <div class="zinli-table-container">
+          <button type="button" id="btnToggleZinliTable" class="btn-toggle-zinli-table">
+            <span style="display:flex; align-items:center; gap:6px;"><i class='bx bx-table'></i> Ver Tabla Oficial de Comisiones</span>
+            <i class='bx bx-chevron-down' id="zinliTableChevron" style="font-size:1.3rem; transition:transform 0.2s ease;"></i>
+          </button>
+          <div id="zinliTableWrap" class="zinli-table-wrap" style="display:none;">
+            <table class="zinli-custom-table">
+              <thead>
+                <tr>
+                  <th>Rango de Recarga</th>
+                  <th>Comisión</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${tableRowsHtml}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      `;
+
+      // Aviso de seguridad
+      const modalSecNote = document.getElementById('modalSecurityNote');
+      if (modalSecNote) {
+        modalSecNote.innerHTML = `
+          <i class='bx bxs-shield-check' style="font-size:1.2rem; color:#22c55e;"></i>
+          <span>100% Seguro: Solo necesitamos el correo o teléfono registrado en tu Zinli para transferirte el saldo. Nunca pedimos contraseñas.</span>
+        `;
+      }
+
+      // Elementos del cotizador
+      const inputAmt = document.getElementById('zinliInputAmt');
+      const zcbNetVal = document.getElementById('zcbNetVal');
+      const zcbComVal = document.getElementById('zcbComVal');
+      const zcbTotalUsd = document.getElementById('zcbTotalUsd');
+      const zcbTotalBs = document.getElementById('zcbTotalBs');
+      const chips = document.querySelectorAll('.zcb-chip');
+
+      function updateZinliCalc() {
+        const amt = parseFloat(inputAmt.value) || 0;
+        if (amt <= 0) {
+          zcbNetVal.textContent = '$0.00 USD';
+          zcbComVal.textContent = '+$0.00 USD';
+          zcbTotalUsd.textContent = '$0.00 USD';
+          zcbTotalBs.textContent = 'Bs. 0';
+          modalProceedBtn.innerHTML = `
+            <i class='bx bxl-whatsapp' style="font-size:1.3rem;"></i>
+            <span>Consultar Monto Zinli por WhatsApp</span>
+          `;
+          modalProceedBtn.onclick = () => {
+            closeMethodModal();
+            const waMsg = encodeURIComponent("¡Hola Reload Xpress! 👋 Deseo recargar mi cuenta Zinli. ¿Me podrían cotizar la recarga para el monto de: [Escribe aquí tu monto en $]? Mi correo o teléfono Zinli es:");
+            window.open(`https://wa.me/${WA_NUMBER}?text=${waMsg}`, '_blank');
+          };
+          return;
+        }
+
+        const com = calcZinliCom(amt);
+        const totalUsd = amt + com;
+        const totalBs = liveRateBs > 0 ? (totalUsd * liveRateBs) : 0;
+
+        zcbNetVal.textContent = `$${amt.toFixed(2)} USD`;
+        zcbComVal.textContent = `+$${com.toFixed(2)} USD`;
+        zcbTotalUsd.textContent = `$${totalUsd.toFixed(2)} USD`;
+        zcbTotalBs.textContent = formatBs(totalBs);
+
+        modalProceedBtn.innerHTML = `
+          <i class='bx bxl-whatsapp' style="font-size:1.3rem;"></i>
+          <span>Pedir Recarga de $${amt.toFixed(2)} Zinli por WhatsApp</span>
+        `;
+        modalProceedBtn.onclick = () => {
+          closeMethodModal();
+          const waMsg = encodeURIComponent(
+            `¡Hola Reload Xpress! 👋 Deseo recargar mi cuenta Zinli.\n\n` +
+            `💵 *Monto a recibir:* $${amt.toFixed(2)} USD\n` +
+            `📊 *Comisión:* $${com.toFixed(2)} USD\n` +
+            `💰 *Total a pagar:* $${totalUsd.toFixed(2)} USD (~ ${formatBs(totalBs)})\n` +
+            `📧 *Mi correo o teléfono Zinli:* (Escribe tu correo o teléfono aquí)\n\n` +
+            `¿Me indican los datos para pagar por Pago Móvil o Binance?`
+          );
+          window.open(`https://wa.me/${WA_NUMBER}?text=${waMsg}`, '_blank');
+        };
+      }
+
+      inputAmt.addEventListener('input', () => {
+        chips.forEach(c => c.classList.remove('active'));
+        updateZinliCalc();
+      });
+
+      chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          chips.forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+          inputAmt.value = chip.getAttribute('data-amt');
+          updateZinliCalc();
+        });
+      });
+
+      // Toggle tabla comisiones
+      const btnToggle = document.getElementById('btnToggleZinliTable');
+      const tableWrap = document.getElementById('zinliTableWrap');
+      const chevron = document.getElementById('zinliTableChevron');
+      btnToggle.addEventListener('click', () => {
+        const isHidden = tableWrap.style.display === 'none';
+        tableWrap.style.display = isHidden ? 'block' : 'none';
+        chevron.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+      });
+
+      // Inicializar cálculo en $10
+      updateZinliCalc();
+
+      // Abrir modal
+      methodModal.classList.add('open');
+    }
+
+    // 9. Abrir Modal de Método
+    function openMethodModal(gameKey) {
+      activeGameKey = gameKey;
+      const game = allGames.find(g => g.game_key === gameKey);
+      if (!game) return;
+
+      if (gameKey === 'zinli') {
+        openZinliModal(game);
+        return;
+      }
+
+      const info = GAME_METHODS_INFO[gameKey] || {
+        methodName: 'Recarga Directa',
+        badge: 'Vía ID / Digital',
+        steps: [
+          { title: 'Selecciona tu paquete', desc: 'Revisa las opciones disponibles en el catálogo.' },
+          { title: 'Pásanos la foto por WhatsApp', desc: 'Envíanos la captura de lo que deseas comprar.' },
+          { title: 'Realiza tu Pago', desc: 'Pagos en Bs o divisas.' },
+          { title: 'Recibe tu Recarga', desc: 'Entrega oficial e inmediata.' }
+        ]
+      };
+
+      // Rellenar cabecera modal
+      if (game.img) {
+        modalGameAvatar.innerHTML = `<img src="${game.img}" alt="${game.label}" onerror="this.parentElement.innerHTML='${game.icon || '🎮'}';" />`;
+      } else {
+        modalGameAvatar.innerHTML = game.icon || '🎮';
+      }
+
+      const isSupercellPending = ['brawlstars', 'clashroyale', 'coc'].includes(gameKey);
+      const hasNoPackages = !game.packages || game.packages.length === 0;
+
+      if (isSupercellPending || hasNoPackages) {
+        modalGameTitle.textContent = game.label;
+        modalGameMethod.textContent = isSupercellPending 
+          ? '¡Sí lo vendemos, pero estamos en proceso! 🛠️⏳'
+          : '¡Disponible bajo pedido directo por WhatsApp! 📲';
+
+        modalStepsList.innerHTML = `
+          <div class="m-step-item" style="border-left: 3px solid var(--primary);">
+            <div class="m-step-num" style="background:var(--primary-gradient);">🎮</div>
+            <div class="m-step-text">
+              <strong>¡Sí vendemos ${escapeHtml(game.label)}!</strong>
+              <p>${isSupercellPending ? 'Estamos configurando la lista automática en esta web, pero sí tenemos recargas disponibles todos los días para tu cuenta.' : 'Códigos y recargas 100% garantizadas. Consulta las denominaciones disponibles en tiempo real con nuestra tasa del día.'}</p>
+            </div>
+          </div>
+          <div class="m-step-item" style="border-left: 3px solid #25d366;">
+            <div class="m-step-num" style="background:#25d366;"><i class='bx bxl-whatsapp' style="font-size:1.1rem"></i></div>
+            <div class="m-step-text">
+              <strong>Pídelo directo por WhatsApp</strong>
+              <p>Escríbenos y te indicamos los precios, métodos de pago (Pago Móvil / Binance) y te hacemos la entrega inmediata.</p>
+            </div>
+          </div>
+        `;
+
+        modalProceedBtn.innerHTML = `
+          <i class='bx bxl-whatsapp' style="font-size:1.3rem;"></i>
+          <span>Consultar ${escapeHtml(game.label)} por WhatsApp</span>
+        `;
+        modalProceedBtn.onclick = () => {
+          closeMethodModal();
+          const waMsg = encodeURIComponent(`¡Hola Reload Xpress! 👋 Vi ${game.label} en el catálogo. Deseo consultar precios y disponibilidad para comprar.`);
+          window.open(`https://wa.me/${WA_NUMBER}?text=${waMsg}`, '_blank');
+        };
+      } else {
+        modalGameTitle.textContent = game.label;
+        modalGameMethod.textContent = info.methodName;
+
+        // Rellenar pasos
+        let stepsHtml = '';
+        info.steps.forEach((step, idx) => {
+          stepsHtml += `
+            <div class="m-step-item">
+              <div class="m-step-num">${idx + 1}</div>
+              <div class="m-step-text">
+                <strong>${escapeHtml(step.title)}</strong>
+                <p>${escapeHtml(step.desc)}</p>
+              </div>
+            </div>
+          `;
+        });
+        modalStepsList.innerHTML = stepsHtml;
+
+        modalProceedBtn.innerHTML = `
+          <span>¡Entendido! Ver Precios y Paquetes</span>
+          <i class='bx bx-right-arrow-alt' style="font-size:1.25rem"></i>
+        `;
+        modalProceedBtn.onclick = () => {
+          closeMethodModal();
+          if (activeGameKey) {
+            showPackagesForGame(activeGameKey);
+          }
+        };
+      }
+
+      // Ajustar aviso de seguridad según el tipo de servicio
+      const modalSecNote = document.getElementById('modalSecurityNote');
+      if (modalSecNote) {
+        if (gameKey === 'avatarworld') {
+          modalSecNote.innerHTML = `
+            <i class='bx bxs-shield-plus' style="font-size:1.15rem; color:#22c55e;"></i>
+            <span>🔒 Acceso 100% Confidencial: Solo entramos a tu Avatar ID para cargar tus AW Coins y salimos de inmediato.</span>
+          `;
+        } else {
+          modalSecNote.innerHTML = `
+            <i class='bx bxs-lock-alt' style="font-size:1.15rem"></i>
+            <span>100% Seguro: Nunca te pediremos contraseñas de tus cuentas.</span>
+          `;
+        }
+      }
+
+      // Abrir modal
+      methodModal.classList.add('open');
+    }
+
+    function closeMethodModal() {
+      methodModal.classList.remove('open');
+    }
+
+    modalCloseBtn.addEventListener('click', closeMethodModal);
+    methodModal.addEventListener('click', (e) => {
+      if (e.target === methodModal) closeMethodModal();
+    });
+
+    // 10. Mostrar Paquetes de un Juego Específico
+    function showPackagesForGame(gameKey) {
+      activeGameKey = gameKey;
+      currentMode = 'packages';
+
+      gamesShowcaseView.style.display = 'none';
+      packagesView.style.display = 'block';
+
+      renderPackagesList();
+
+      // Scroll suave a los paquetes
+      packagesView.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Volver al Showcase de juegos
+    function showShowcaseView() {
+      currentMode = 'showcase';
+      activeGameKey = null;
+      gamesShowcaseView.style.display = 'block';
+      packagesView.style.display = 'none';
+    }
+
+    btnBackToShowcase.addEventListener('click', showShowcaseView);
+    document.getElementById('brandHomeLink').addEventListener('click', (e) => {
+      e.preventDefault();
+      showShowcaseView();
+    });
+
+    // Reabrir modal de cómo recargar
+    btnReopenHowItWorks.addEventListener('click', () => {
+      if (activeGameKey) {
+        openMethodModal(activeGameKey);
+      } else {
+        openMethodModal(allGames[0]?.game_key || 'roblox');
+      }
+    });
+
+    // 11. Renderizar la Lista de Paquetes (Vista 2)
+    function renderPackagesList() {
+      const q = searchQuery.toLowerCase().trim();
+      let html = '';
+      let totalMatches = 0;
+
+      const gamesToRender = activeGameKey
+        ? allGames.filter(g => g.game_key === activeGameKey)
+        : allGames;
+
+      gamesToRender.forEach(game => {
+        const filteredPackages = game.packages.filter(pkg => {
+          if (!q) return true;
+          return pkg.name.toLowerCase().includes(q) ||
+                 game.label.toLowerCase().includes(q) ||
+                 (pkg.method && pkg.method.toLowerCase().includes(q));
+        });
+
+        if (filteredPackages.length === 0) return;
+        totalMatches += filteredPackages.length;
+
+        const avatarHtml = game.img
+          ? `<img src="${game.img}" alt="${game.label}" onerror="this.parentElement.innerHTML='${game.icon || '🎮'}';" />`
+          : (game.icon || '🎮');
+
+        html += `
+          <div style="margin-bottom: 40px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid var(--border);">
+              <div style="display:flex; align-items:center; gap:12px;">
+                <div style="width:44px; height:44px; border-radius:12px; background:var(--bg-card); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:1.5rem; overflow:hidden;">
+                  ${avatarHtml}
+                </div>
+                <div>
+                  <h3 style="font-size:1.25rem; font-weight:800; letter-spacing:-0.3px;">${escapeHtml(game.label)}</h3>
+                  <span style="font-size:0.8rem; color:var(--text-sub);">
+                    ${game.game_key === 'roblox' ? '📧 Entrega a tu correo electrónico' : 'Precios sincronizados en vivo'}
+                  </span>
+                </div>
+              </div>
+              <span style="font-size:0.78rem; font-weight:700; color:var(--primary); background:var(--accent-badge); border:1px solid var(--primary); padding:4px 12px; border-radius:99px;">
+                ${filteredPackages.length} paquetes
+              </span>
+            </div>
+
+            <div class="package-grid">
+              ${filteredPackages.map(pkg => renderPackageCard(game, pkg)).join('')}
+            </div>
+          </div>
+        `;
+      });
+
+      if (totalMatches === 0) {
+        packagesContainer.innerHTML = `
+          <div style="text-align: center; padding: 60px 20px; color: var(--text-sub);">
+            <i class='bx bx-search-alt' style="font-size:3.5rem; color:var(--text-muted); margin-bottom:12px; display:block;"></i>
+            <h3 style="color:var(--text-main); margin-bottom:6px;">No se encontraron paquetes</h3>
+            <p>Intenta con otra palabra clave como "Robux", "Diamantes" o regresa al catálogo general.</p>
+          </div>
+        `;
+      } else {
+        packagesContainer.innerHTML = html;
+        attachCardEvents();
+      }
+    }
+
+    // 12. Renderizar Tarjeta Individual de Paquete (Incluye correo para Roblox)
+    function renderPackageCard(game, pkg) {
+      const priceBsFormatted = formatBs(pkg.price_bs);
+      const priceUsdFormatted = formatUsd(pkg.price_usd);
+      
+      // Limpiar etiquetas de proveedores internos
+      let methodLabel = pkg.method || 'Vía ID';
+      methodLabel = methodLabel.replace(/\b(fazercards|bonoxs)\b/gi, '').trim();
+      if (game.game_key === 'roblox') {
+        methodLabel = 'CÓDIGO';
+      } else if (methodLabel === 'Vía' || methodLabel === 'Via' || !methodLabel) {
+        methodLabel = 'Vía ID';
+      }
+
+      // Mensaje estructurado para WhatsApp
+      let emailFieldNotice = '';
+      if (game.game_key === 'roblox') {
+        emailFieldNotice = `\n📧 *Mi correo para entrega:* (Escribe tu correo aquí)`;
+      } else if (game.game_key === 'avatarworld') {
+        emailFieldNotice = `\n📧 *Correo de mi Avatar ID para ingresar:* (Escribe tu correo aquí)`;
+      }
+
+      const waText = encodeURIComponent(
+        `¡Hola Reload Xpress! 👋 Deseo comprar:\n` +
+        `🎮 *Juego:* ${game.label}\n` +
+        `📦 *Paquete:* ${pkg.name}\n` +
+        `💵 *Precio:* ${priceBsFormatted} / ${priceUsdFormatted}` +
+        emailFieldNotice + `\n\n` +
+        `¿Me indican los datos para pagar?`
+      );
+      const waLink = `https://wa.me/${WA_NUMBER}?text=${waText}`;
+
+      // Datos para copiar
+      const copyPayload = `${game.label} - ${pkg.name} | Precio: ${priceBsFormatted} (${priceUsdFormatted})`;
+
+      return `
+        <div class="package-card" data-copy="${escapeHtml(copyPayload)}">
+          <div class="pkg-top">
+            <span class="pkg-badge">${escapeHtml(methodLabel)}</span>
+            <span style="font-size:0.85rem">${game.icon || '🎮'}</span>
+          </div>
+
+          <div class="pkg-name">${escapeHtml(pkg.name)}</div>
+
+          <div class="pkg-prices">
+            <div class="price-bs-row">
+              <span style="font-size:0.75rem; color:var(--text-sub); font-weight:700">PRECIO BS</span>
+              <span class="price-bs-val">${priceBsFormatted}</span>
+            </div>
+            <div class="price-usd-row">
+              <span>Equivalente:</span>
+              <span>${priceUsdFormatted}</span>
+            </div>
+          </div>
+
+          <div class="pkg-actions">
+            <a href="${waLink}" target="_blank" rel="noopener noreferrer" class="btn-buy-wa" title="Pedir este paquete por WhatsApp">
+              <i class='bx bxl-whatsapp' style="font-size:1.15rem"></i> Pedir
+            </a>
+            <button class="btn-copy-info" data-action="copy" title="Copiar detalles para compartir">
+              <i class='bx bx-copy'></i>
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    // 13. Eventos de Tarjetas (Copiar texto)
+    function attachCardEvents() {
+      document.querySelectorAll('.btn-copy-info').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const card = btn.closest('.package-card');
+          const text = card.getAttribute('data-copy');
+          if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(text).then(() => {
+              showToast('¡Detalles del paquete copiados!');
+            }).catch(() => fallbackCopy(text));
+          } else {
+            fallbackCopy(text);
+          }
+        });
+      });
+    }
+
+    function fallbackCopy(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      try {
+        document.execCommand('copy');
+        showToast('¡Detalles del paquete copiados!');
+      } catch (e) {
+        showToast('No se pudo copiar automáticamente');
+      }
+      document.body.removeChild(ta);
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    // 15. Escucha del Buscador
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      if (searchQuery.length > 0) {
+        currentMode = 'packages';
+        gamesShowcaseView.style.display = 'none';
+        packagesView.style.display = 'block';
+        renderPackagesList();
+      } else if (!activeGameKey) {
+        showShowcaseView();
+      } else {
+        renderPackagesList();
+      }
+    });
+
+    // 16. Manejo de Errores de Conexión
+    function showErrorState(msg) {
+      loadingState.innerHTML = `
+        <i class='bx bx-wifi-off' style="font-size:3.5rem; color:#ef4444; margin-bottom:14px; display:block;"></i>
+        <h3 style="color:var(--text-main); margin-bottom:8px;">No se pudo sincronizar el catálogo</h3>
+        <p style="margin-bottom:20px; max-width:480px; margin-left:auto; margin-right:auto;">
+          ${location.protocol === 'file:' 
+            ? 'Parece que abriste el archivo con doble clic (file://). Debes abrirlo mediante tu servidor local <code>http://localhost/ReloadControl2.0/catalogo/</code> o subirlo a GitHub Pages.' 
+            : 'Verifica tu conexión a internet o que el servidor de recargas esté activo.'}
+        </p>
+        <button onclick="fetchCatalogData()" class="pib-cta-btn" style="background:var(--primary); margin:0 auto; cursor:pointer; border:none;">
+          <i class='bx bx-refresh' style="font-size:1.2rem"></i> Reintentar conexión
+        </button>
+      `;
+    }
+
+    // Iniciar carga de datos al abrir
+    fetchCatalogData();
+  </script>
+</body>
+</html>
