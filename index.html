@@ -2,7 +2,7 @@
 <html lang="es" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <title>Reload Xpress — Catálogo Oficial de Recargas en Tiempo Real</title>
   <meta name="description" content="Catálogo en tiempo real de Reload Xpress. Precios actualizados en Bolívares y Dólares para Free Fire, Blood Strike, Roblox, Mobile Legends y más. ¡Haz tu pedido directo por WhatsApp!" />
   <meta name="keywords" content="recargas venezuela, free fire diamantes, blood strike, roblox robux, mobile legends, nintendo, playstation, reload xpress" />
@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
   <!-- Boxicons -->
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <link href="../css/boxicons/boxicons.min.css" rel="stylesheet" />
 
   <style>
     /* ─── Variables de Color y Tema ─────────────────────────────────────────── */
@@ -80,6 +80,9 @@
     }
     html {
       scroll-behavior: smooth;
+      touch-action: pan-x pan-y;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
     }
     body {
       font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -89,6 +92,16 @@
       overflow-x: hidden;
       transition: background-color 0.3s ease, color 0.3s ease;
       line-height: 1.5;
+      touch-action: pan-x pan-y;
+      -webkit-text-size-adjust: 100%;
+    }
+    button, input, select, textarea, a, .game-showcase-card, .method-step-card {
+      touch-action: manipulation;
+    }
+    @media (max-width: 768px) {
+      input, select, textarea {
+        font-size: 16px !important;
+      }
     }
 
     /* Resplandores gamer de fondo */
@@ -802,6 +815,32 @@
       border-color: var(--primary);
       color: var(--primary);
       transform: scale(1.06);
+    }
+
+    /* Estados de Paquete Agotado en Catálogo Web */
+    .package-card.pkg-out-of-stock {
+      opacity: 0.72;
+      border-color: rgba(239, 68, 68, 0.28);
+    }
+    .badge-agotado {
+      background: rgba(239, 68, 68, 0.15) !important;
+      color: #ef4444 !important;
+      border: 1px solid rgba(239, 68, 68, 0.35) !important;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .btn-buy-wa.btn-agotado {
+      background: #475569 !important;
+      box-shadow: none !important;
+      cursor: not-allowed !important;
+      opacity: 0.8;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .btn-buy-wa.btn-agotado:hover {
+      transform: none !important;
+      box-shadow: none !important;
+      background: #475569 !important;
     }
 
     /* ─── MODAL EXPLICATIVO DE MÉTODO DE RECARGA ────────────────────────────── */
@@ -1765,9 +1804,8 @@
     function getGameCardCoverHtml(game) {
       if (game.game_key === 'app_store_itunes_us') {
         return `
-          <div class="gcs-brand-cover gcs-apple-bg">
-            <i class='bx bxl-apple gcs-brand-icon'></i>
-            <div class="gcs-brand-subtext">Apple</div>
+          <div class="gcs-brand-cover" style="background:#000000;">
+            <img src="img/apple.jpg" alt="Apple" class="gcs-full-cover" style="object-fit:contain; width:85%; height:85%;" />
           </div>
         `;
       }
@@ -1808,9 +1846,8 @@
       }
       if (game.game_key === 'google_play_us' || game.game_key === 'google_play') {
         return `
-          <div class="gcs-brand-cover gcs-google-bg">
-            <i class='bx bxl-play-store gcs-brand-icon' style="color:#22c55e;"></i>
-            <div class="gcs-brand-subtext" style="color:#ffffff; font-weight:800;">Google Play</div>
+          <div class="gcs-brand-cover" style="background:#ffffff;">
+            <img src="img/googleplay.jpg" alt="Google Play" class="gcs-full-cover" style="object-fit:contain; width:88%; height:88%;" />
           </div>
         `;
       }
@@ -2327,6 +2364,7 @@
     function renderPackageCard(game, pkg) {
       const priceBsFormatted = formatBs(pkg.price_bs);
       const priceUsdFormatted = formatUsd(pkg.price_usd);
+      const isOutOfStock = Boolean(pkg.is_out_of_stock);
       
       // Limpiar etiquetas de proveedores internos
       let methodLabel = pkg.method || 'Vía ID';
@@ -2337,7 +2375,7 @@
         methodLabel = 'Vía ID';
       }
 
-      // Mensaje estructurado para WhatsApp
+      // Mensaje estructurado para WhatsApp (solo en Bs)
       let emailFieldNotice = '';
       if (game.game_key === 'roblox') {
         emailFieldNotice = `\n📧 *Mi correo para entrega:* (Escribe tu correo aquí)`;
@@ -2349,19 +2387,22 @@
         `¡Hola Reload Xpress! 👋 Deseo comprar:\n` +
         `🎮 *Juego:* ${game.label}\n` +
         `📦 *Paquete:* ${pkg.name}\n` +
-        `💵 *Precio:* ${priceBsFormatted} / ${priceUsdFormatted}` +
+        `💵 *Precio:* ${priceBsFormatted}` +
         emailFieldNotice + `\n\n` +
         `¿Me indican los datos para pagar?`
       );
       const waLink = `https://wa.me/${WA_NUMBER}?text=${waText}`;
 
-      // Datos para copiar
-      const copyPayload = `${game.label} - ${pkg.name} | Precio: ${priceBsFormatted} (${priceUsdFormatted})`;
+      // Datos para copiar (solo precio en Bs sin USD)
+      const copyPayload = `${game.label} - ${pkg.name} | Precio: ${priceBsFormatted}${isOutOfStock ? ' (Agotado)' : ''}`;
 
       return `
-        <div class="package-card" data-copy="${escapeHtml(copyPayload)}">
+        <div class="package-card ${isOutOfStock ? 'pkg-out-of-stock' : ''}" data-copy="${escapeHtml(copyPayload)}">
           <div class="pkg-top">
-            <span class="pkg-badge">${escapeHtml(methodLabel)}</span>
+            <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
+              <span class="pkg-badge">${escapeHtml(methodLabel)}</span>
+              ${isOutOfStock ? `<span class="pkg-badge badge-agotado"><i class='bx bx-block'></i> Agotado</span>` : ''}
+            </div>
             <span style="font-size:0.85rem">${game.icon || '🎮'}</span>
           </div>
 
@@ -2379,9 +2420,15 @@
           </div>
 
           <div class="pkg-actions">
-            <a href="${waLink}" target="_blank" rel="noopener noreferrer" class="btn-buy-wa" title="Pedir este paquete por WhatsApp">
-              <i class='bx bxl-whatsapp' style="font-size:1.15rem"></i> Pedir
-            </a>
+            ${isOutOfStock ? `
+              <button type="button" class="btn-buy-wa btn-agotado" disabled title="Producto temporalmente agotado en este momento">
+                <i class='bx bx-block'></i> Agotado
+              </button>
+            ` : `
+              <a href="${waLink}" target="_blank" rel="noopener noreferrer" class="btn-buy-wa" title="Pedir este paquete por WhatsApp">
+                <i class='bx bxl-whatsapp' style="font-size:1.15rem"></i> Pedir
+              </a>
+            `}
             <button class="btn-copy-info" data-action="copy" title="Copiar detalles para compartir">
               <i class='bx bx-copy'></i>
             </button>
