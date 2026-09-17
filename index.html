@@ -13,8 +13,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
-  <!-- Boxicons -->
-  <link href="../css/boxicons/boxicons.min.css" rel="stylesheet" />
+  <!-- Boxicons (CDN oficial para GitHub Pages con respaldo automático) -->
+  <link id="boxicons-css" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.href='https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css';}else if(this.dataset.retry==1){this.dataset.retry=2;this.href='css/boxicons/boxicons.min.css';}" />
 
   <style>
     /* ─── Variables de Color y Tema ─────────────────────────────────────────── */
@@ -1377,7 +1377,7 @@
   <header>
     <div class="nav-container">
       <a href="#" class="brand-link" id="brandHomeLink">
-        <img src="logo.png" alt="Reload Xpress" class="brand-logo" onerror="this.src='../icon.png'" />
+        <img src="logo.png" alt="Reload Xpress" class="brand-logo" onerror="this.style.display='none'" />
         <div class="brand-info">
           <h1>Reload Xpress</h1>
           <span>Catálogo de Recargas</span>
@@ -1523,7 +1523,7 @@
 
   <!-- ─── Footer ──────────────────────────────────────────────────────────── -->
   <footer>
-    <img src="logo.png" alt="Reload Xpress" class="footer-logo" onerror="this.src='../icon.png'" />
+    <img src="logo.png" alt="Reload Xpress" class="footer-logo" onerror="this.style.display='none'" />
     <h3>Reload Xpress</h3>
     <p>Precios sincronizados automáticamente con nuestro sistema central. Pagos en Bolívares (Pago Móvil) y Divisas (Binance USDT / Zinli / Efectivo).</p>
     <div class="footer-copy">© 2025 Reload Xpress — Todos los derechos reservados. Venezuela.</div>
