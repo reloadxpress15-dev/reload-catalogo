@@ -1779,7 +1779,19 @@
           throw new Error(data.error || 'Respuesta de API inválida');
         }
 
-        allGames = data.games;
+        allGames = data.games.map(game => {
+          if (game.game_key === 'roblox' && Array.isArray(game.packages)) {
+            game.packages = game.packages.map(pkg => {
+              const clean = (pkg.name || '').replace(/,/g, '');
+              const m = clean.match(/(\d+)\s*robux/i);
+              if (m && [50, 100, 150, 200].includes(parseInt(m[1], 10))) {
+                return { ...pkg, is_out_of_stock: false };
+              }
+              return pkg;
+            });
+          }
+          return game;
+        });
         liveRateBs = parseFloat(data.rate_bs) || 0;
         zinliRanges = data.zinli_ranges || [];
 
@@ -2364,7 +2376,16 @@
     function renderPackageCard(game, pkg) {
       const priceBsFormatted = formatBs(pkg.price_bs);
       const priceUsdFormatted = formatUsd(pkg.price_usd);
-      const isOutOfStock = Boolean(pkg.is_out_of_stock);
+      let isOutOfStock = Boolean(pkg.is_out_of_stock);
+
+      // Regla especial: Para Roblox de 50, 100, 150 y 200 Robux NO aplica lo de agotado
+      if (game.game_key === 'roblox') {
+        const clean = (pkg.name || '').replace(/,/g, '');
+        const m = clean.match(/(\d+)\s*robux/i);
+        if (m && [50, 100, 150, 200].includes(parseInt(m[1], 10))) {
+          isOutOfStock = false;
+        }
+      }
       
       // Limpiar etiquetas de proveedores internos
       let methodLabel = pkg.method || 'Vía ID';
