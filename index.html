@@ -1553,7 +1553,7 @@
         methodName: 'Entrega por Correo / Código Digital',
         badge: 'Código / Envío al Correo',
         steps: [
-          { title: 'Elige tu Paquete de Robux', desc: 'Disponibles desde 50 Robux hasta paquetes grandes de miles de Robux.' },
+          { title: 'Elige tu Paquete de Robux', desc: 'Disponibles desde 100 Robux hasta paquetes grandes de miles de Robux.' },
           { title: 'Envíanos tu Correo Electrónico', desc: '⚠️ Muy importante: Al escribirnos por WhatsApp debes indicarnos tu correo donde deseas que te enviemos el pedido.' },
           { title: 'Realiza tu Pago', desc: 'Pagas en Bolívares (Pago Móvil) o en divisas (Binance USDT).' },
           { title: 'Recibe tu Código al Correo', desc: 'Te enviamos el código original canjeable al instante en roblox.com/redeem directamente a tu correo y WhatsApp.' }
@@ -1781,14 +1781,20 @@
 
         allGames = data.games.map(game => {
           if (game.game_key === 'roblox' && Array.isArray(game.packages)) {
-            game.packages = game.packages.map(pkg => {
-              const clean = (pkg.name || '').replace(/,/g, '');
-              const m = clean.match(/(\d+)\s*robux/i);
-              if (m && [50, 100, 150, 200].includes(parseInt(m[1], 10))) {
-                return { ...pkg, is_out_of_stock: false };
-              }
-              return pkg;
-            });
+            game.packages = game.packages
+              .filter(pkg => {
+                const clean = (pkg.name || '').replace(/,/g, '');
+                const m = clean.match(/^50\s*robux/i);
+                return !m;
+              })
+              .map(pkg => {
+                const clean = (pkg.name || '').replace(/,/g, '');
+                const m = clean.match(/(\d+)\s*robux/i);
+                if (m && [100, 150, 200].includes(parseInt(m[1], 10))) {
+                  return { ...pkg, is_out_of_stock: false };
+                }
+                return pkg;
+              });
           }
           return game;
         });
@@ -2378,11 +2384,11 @@
       const priceUsdFormatted = formatUsd(pkg.price_usd);
       let isOutOfStock = Boolean(pkg.is_out_of_stock);
 
-      // Regla especial: Para Roblox de 50, 100, 150 y 200 Robux NO aplica lo de agotado
+      // Regla especial: Para Roblox de 100, 150 y 200 Robux NO aplica lo de agotado
       if (game.game_key === 'roblox') {
         const clean = (pkg.name || '').replace(/,/g, '');
         const m = clean.match(/(\d+)\s*robux/i);
-        if (m && [50, 100, 150, 200].includes(parseInt(m[1], 10))) {
+        if (m && [100, 150, 200].includes(parseInt(m[1], 10))) {
           isOutOfStock = false;
         }
       }
