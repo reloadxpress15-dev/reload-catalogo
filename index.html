@@ -165,7 +165,7 @@
       transition: transform 0.2s ease;
     }
     .brand-link:hover .brand-logo {
-      transform: scale(1.05) rotate(-2deg);
+      opacity: 0.9;
     }
     .brand-info h1 {
       font-size: 1.15rem;
@@ -490,9 +490,12 @@
       justify-content: flex-end;
     }
     .game-card-showcase:hover {
-      transform: translateY(-5px) scale(1.02);
+      transform: translateY(-4px);
       border-color: var(--primary);
-      box-shadow: 0 14px 30px -4px var(--primary-glow);
+      box-shadow: 0 12px 28px -4px var(--primary-glow);
+    }
+    .game-card-showcase:active {
+      transform: translateY(-1px);
     }
 
     /* Badge de documento en la esquina superior izquierda (📄) */
@@ -535,10 +538,10 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.35s ease;
+      transition: opacity 0.25s ease;
     }
     .game-card-showcase:hover .gcs-full-cover {
-      transform: scale(1.08);
+      transform: none;
     }
 
     /* Portadas especiales estilo marca limpia */
@@ -550,10 +553,10 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
-      transition: transform 0.35s ease;
+      transition: opacity 0.25s ease;
     }
     .game-card-showcase:hover .gcs-brand-cover {
-      transform: scale(1.06);
+      transform: none;
     }
     .gcs-apple-bg {
       background: #ffffff;
@@ -751,23 +754,24 @@
     }
     .price-bs-row {
       display: flex;
-      align-items: baseline;
+      align-items: center;
       justify-content: space-between;
-      margin-bottom: 2px;
+      gap: 8px;
+    }
+    .price-bs-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-sub);
+      letter-spacing: 0.3px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
     }
     .price-bs-val {
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       font-weight: 900;
       color: var(--primary);
       letter-spacing: -0.5px;
-    }
-    .price-usd-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 0.84rem;
-      color: var(--text-sub);
-      font-weight: 600;
     }
 
     /* Botones de acción dentro de la tarjeta */
@@ -814,7 +818,7 @@
     .btn-copy-info:hover {
       border-color: var(--primary);
       color: var(--primary);
-      transform: scale(1.06);
+      transform: none;
     }
 
     /* Estados de Paquete Agotado en Catálogo Web */
@@ -874,11 +878,11 @@
       padding: 26px 24px;
       position: relative;
       box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-      transform: scale(0.92) translateY(20px);
-      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transform: translateY(12px);
+      transition: transform 0.22s ease-out, opacity 0.22s ease-out;
     }
     .modal-overlay.open .modal-dialog {
-      transform: scale(1) translateY(0);
+      transform: translateY(0);
     }
     .modal-close-btn {
       position: absolute;
@@ -927,6 +931,45 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
+    }
+    .modal-avatar.is-white-bg {
+      background: #ffffff !important;
+    }
+    .modal-avatar.is-white-bg img {
+      object-fit: contain;
+      padding: 4px;
+    }
+
+    /* Avatares de Cabecera de Sección de Juegos */
+    .game-section-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+    }
+    .game-section-avatar img,
+    .game-section-avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .game-section-avatar.is-white-bg {
+      background: #ffffff !important;
+    }
+    .game-section-avatar.is-white-bg img,
+    .game-section-avatar.is-white-bg .game-section-avatar-img {
+      object-fit: contain;
+      padding: 4px;
     }
     .modal-title h3 {
       font-size: 1.25rem;
@@ -1205,8 +1248,11 @@
       transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     .floating-wa:hover {
-      transform: scale(1.12);
+      transform: translateY(-3px);
       box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
+    }
+    .floating-wa:active {
+      transform: translateY(0);
     }
     .floating-tooltip {
       position: absolute;
@@ -1295,8 +1341,235 @@
       color: var(--text-muted);
     }
 
+    /* ─── Datos de Pago Móvil ───────────────────────────────────────────────── */
+    .pm-nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(16, 185, 129, 0.08));
+      border: 1px solid rgba(34, 197, 94, 0.4);
+      color: #22c55e;
+      padding: 6px 14px;
+      border-radius: 99px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .pm-nav-btn:hover {
+      background: #22c55e;
+      color: #ffffff;
+      border-color: #22c55e;
+      box-shadow: 0 4px 14px rgba(34, 197, 94, 0.35);
+    }
+    [data-theme="light"] .pm-nav-btn {
+      background: rgba(34, 197, 94, 0.12);
+      color: #15803d;
+      border-color: rgba(34, 197, 94, 0.45);
+    }
+    [data-theme="light"] .pm-nav-btn:hover {
+      background: #16a34a;
+      color: #ffffff;
+    }
+
+    .btn-pm-view {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 12px;
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.4);
+      color: #22c55e;
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-pm-view:hover {
+      background: #22c55e;
+      color: #ffffff;
+    }
+    [data-theme="light"] .btn-pm-view {
+      color: #15803d;
+    }
+
+    /* Tarjeta Principal de Pago Móvil */
+    .pm-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      border-radius: 20px;
+      padding: 20px 24px;
+      margin-top: 18px;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      text-align: left;
+    }
+    .pm-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #22c55e 0%, #10b981 50%, var(--primary) 100%);
+    }
+    .pm-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .pm-card-title-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .pm-card-badge-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      color: #22c55e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .pm-card-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.2;
+      letter-spacing: -0.3px;
+    }
+    .pm-card-subtitle {
+      font-size: 0.78rem;
+      color: var(--text-sub);
+      font-weight: 500;
+      display: block;
+      margin-top: 2px;
+    }
+    .btn-copy-all-pm {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 18px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+      color: #ffffff;
+      border: none;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(34, 197, 94, 0.3);
+      transition: all 0.2s ease;
+    }
+    .btn-copy-all-pm:hover {
+      background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+      box-shadow: 0 6px 18px rgba(34, 197, 94, 0.45);
+      transform: translateY(-1px);
+    }
+    .btn-copy-all-pm:active {
+      transform: translateY(0);
+    }
+
+    .pm-items-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+    }
+    .pm-item {
+      background: var(--pill-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: border-color 0.2s ease;
+    }
+    .pm-item:hover {
+      border-color: rgba(34, 197, 94, 0.4);
+    }
+    .pm-item-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .pm-item-val-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .pm-item-val {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: 0.2px;
+      font-family: inherit;
+      word-break: break-all;
+    }
+    .btn-copy-field {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-sub);
+      font-family: inherit;
+      font-size: 0.76rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+    .btn-copy-field:hover {
+      border-color: #22c55e;
+      color: #22c55e;
+      background: rgba(34, 197, 94, 0.08);
+    }
+    .btn-copy-field.copied {
+      background: #22c55e !important;
+      color: #ffffff !important;
+      border-color: #22c55e !important;
+    }
+
     /* ─── Responsive Móvil ──────────────────────────────────────────────────── */
     @media (max-width: 640px) {
+      .pm-card {
+        padding: 16px 14px;
+      }
+      .pm-card-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+      }
+      .btn-copy-all-pm {
+        width: 100%;
+        justify-content: center;
+      }
+      .pm-items-grid {
+        grid-template-columns: 1fr;
+      }
       .nav-container {
         padding: 8px 14px;
       }
@@ -1385,6 +1658,12 @@
       </a>
 
       <div class="nav-actions">
+        <!-- Botón Pago Móvil -->
+        <button class="pm-nav-btn" id="btnOpenPmModal" title="Ver Datos de Pago Móvil">
+          <i class='bx bxs-credit-card'></i>
+          <span>Pago Móvil</span>
+        </button>
+
         <!-- Tasa USDT en Vivo -->
         <div class="rate-pill" id="rateBadge" title="Tasa actualizada en tiempo real según el sistema">
           <div class="pulse-dot"></div>
@@ -1423,6 +1702,69 @@
       <a href="#" id="directWaBtn" class="pib-cta-btn" target="_blank" rel="noopener noreferrer">
         <i class='bx bxl-whatsapp' style="font-size:1.2rem"></i> Enviar Foto / Pedir
       </a>
+    </div>
+
+    <!-- 💳 Tarjeta Destacada de Datos de Pago Móvil -->
+    <div class="pm-card" id="pmMainCard">
+      <div class="pm-card-header">
+        <div class="pm-card-title-group">
+          <div class="pm-card-badge-icon">
+            <i class='bx bxs-credit-card'></i>
+          </div>
+          <div>
+            <h3 class="pm-card-title">Datos Oficiales para Pago Móvil</h3>
+            <span class="pm-card-subtitle">Banco de Venezuela • Pagos directos en Bolívares (Bs.)</span>
+          </div>
+        </div>
+        <button type="button" class="btn-copy-all-pm" id="btnCopyAllPm" title="Copiar todos los datos de Pago Móvil">
+          <i class='bx bx-copy'></i>
+          <span>Copiar Todos</span>
+        </button>
+      </div>
+
+      <div class="pm-items-grid">
+        <!-- Banco -->
+        <div class="pm-item">
+          <div class="pm-item-label">
+            <i class='bx bxs-bank'></i> Banco
+          </div>
+          <div class="pm-item-val-wrap">
+            <span class="pm-item-val">0102 - Banco de Venezuela</span>
+            <button type="button" class="btn-copy-field" data-copy="0102" data-name="Banco (0102)" title="Copiar código de banco">
+              <i class='bx bx-copy'></i>
+              <span>Copiar</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Teléfono -->
+        <div class="pm-item">
+          <div class="pm-item-label">
+            <i class='bx bxs-phone'></i> Teléfono
+          </div>
+          <div class="pm-item-val-wrap">
+            <span class="pm-item-val">0424-8143608</span>
+            <button type="button" class="btn-copy-field" data-copy="04248143608" data-name="Teléfono" title="Copiar teléfono">
+              <i class='bx bx-copy'></i>
+              <span>Copiar</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Cédula -->
+        <div class="pm-item">
+          <div class="pm-item-label">
+            <i class='bx bxs-id-card'></i> Cédula
+          </div>
+          <div class="pm-item-val-wrap">
+            <span class="pm-item-val">30.696.020</span>
+            <button type="button" class="btn-copy-field" data-copy="30696020" data-name="Cédula" title="Copiar cédula">
+              <i class='bx bx-copy'></i>
+              <span>Copiar</span>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1466,6 +1808,9 @@
           <i class='bx bx-arrow-back'></i> Ver todos los juegos
         </button>
         <div style="display: flex; align-items: center; gap: 10px;">
+          <button class="btn-pm-view" id="btnOpenPmModalFromView">
+            <i class='bx bxs-credit-card'></i> Datos Pago Móvil
+          </button>
           <button class="btn-how-works" id="btnReopenHowItWorks">
             <i class='bx bx-info-circle'></i> ¿Cómo recargar?
           </button>
@@ -1509,6 +1854,72 @@
     </div>
   </div>
 
+  <!-- ─── MODAL DEDICADO DE PAGO MÓVIL ────────────────────────────────────── -->
+  <div class="modal-overlay" id="pagoMovilModal">
+    <div class="modal-dialog pm-modal-dialog">
+      <button class="modal-close-btn" id="pmModalCloseBtn" aria-label="Cerrar ventana">&times;</button>
+      
+      <div class="modal-header">
+        <div class="pm-card-badge-icon" style="width:48px; height:48px; font-size:1.5rem; border-radius:14px;">
+          <i class='bx bxs-credit-card'></i>
+        </div>
+        <div class="modal-title">
+          <h3 style="font-size:1.25rem; font-weight:800;">Datos Oficiales de Pago Móvil</h3>
+          <span style="color:#22c55e; font-weight:700;">Banco de Venezuela (0102)</span>
+        </div>
+      </div>
+
+      <div class="pm-items-grid" style="grid-template-columns: 1fr; margin-bottom: 20px;">
+        <!-- Banco -->
+        <div class="pm-item">
+          <div class="pm-item-label">
+            <i class='bx bxs-bank'></i> Banco
+          </div>
+          <div class="pm-item-val-wrap">
+            <span class="pm-item-val">0102 - Banco de Venezuela</span>
+            <button type="button" class="btn-copy-field" data-copy="0102" data-name="Banco (0102)" title="Copiar código de banco">
+              <i class='bx bx-copy'></i>
+              <span>Copiar</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Teléfono -->
+        <div class="pm-item">
+          <div class="pm-item-label">
+            <i class='bx bxs-phone'></i> Teléfono
+          </div>
+          <div class="pm-item-val-wrap">
+            <span class="pm-item-val">0424-8143608</span>
+            <button type="button" class="btn-copy-field" data-copy="04248143608" data-name="Teléfono" title="Copiar teléfono">
+              <i class='bx bx-copy'></i>
+              <span>Copiar</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Cédula -->
+        <div class="pm-item">
+          <div class="pm-item-label">
+            <i class='bx bxs-id-card'></i> Cédula
+          </div>
+          <div class="pm-item-val-wrap">
+            <span class="pm-item-val">30.696.020</span>
+            <button type="button" class="btn-copy-field" data-copy="30696020" data-name="Cédula" title="Copiar cédula">
+              <i class='bx bx-copy'></i>
+              <span>Copiar</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="btn-copy-all-pm" id="btnCopyAllPmModal" style="width:100%; justify-content:center; padding:12px; font-size:0.92rem;">
+        <i class='bx bx-copy'></i>
+        <span>Copiar Todos los Datos</span>
+      </button>
+    </div>
+  </div>
+
   <!-- ─── Botón Flotante de WhatsApp ──────────────────────────────────────── -->
   <a href="#" id="floatingWaBtn" class="floating-wa" target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp">
     <span class="floating-tooltip">¡Escríbenos por WhatsApp!</span>
@@ -1536,9 +1947,12 @@
     
     // Auto-detecta si se ejecuta en local (XAMPP) o en producción (GitHub Pages / Hosting)
     const isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
-    const API_URL = isLocal 
-      ? '../api/catalogo.php'
-      : 'https://lupinusystem.lat/api/catalogo.php';
+    const urlParams = new URLSearchParams(window.location.search);
+    const customApi = urlParams.get('api');
+
+    let API_URL = customApi 
+      ? customApi 
+      : (isLocal ? '../api/catalogo.php' : 'https://lupinusystem.lat/api/catalogo.php');
 
     let allGames = [];
     let activeGameKey = null;
@@ -1660,7 +2074,17 @@
         ]
       },
       'playstation': {
-        methodName: 'Tarjeta Digital PlayStation Store',
+        methodName: 'Tarjeta Digital PlayStation Store (PSN)',
+        badge: 'Código Digital USA',
+        steps: [
+          { title: 'Cuenta PlayStation USA', desc: 'Asegúrate de que tu cuenta PSN esté en región Estados Unidos.' },
+          { title: 'Selecciona tu Tarjeta', desc: 'Elige el saldo que deseas para comprar juegos o PS Plus.' },
+          { title: 'Envío Inmediato', desc: 'Te pasamos tu código de 12 dígitos al instante por WhatsApp.' },
+          { title: 'Canjea en la PS Store', desc: 'Saldo cargado para disfrutar en PS4 o PS5.' }
+        ]
+      },
+      'playstation_us': {
+        methodName: 'Tarjeta Digital PlayStation Store (PSN)',
         badge: 'Código Digital USA',
         steps: [
           { title: 'Cuenta PlayStation USA', desc: 'Asegúrate de que tu cuenta PSN esté en región Estados Unidos.' },
@@ -1771,8 +2195,33 @@
     // 6. Cargar Datos desde la API
     async function fetchCatalogData() {
       try {
-        const response = await fetch(API_URL);
-        if (!response.ok) throw new Error(`HTTP Error ${response.status}`);
+        let response;
+        try {
+          response = await fetch(API_URL);
+          if (!response.ok && !isLocal && !customApi && API_URL.indexOf('ReloadControl2.0') === -1) {
+            const fallbackUrl = 'https://lupinusystem.lat/ReloadControl2.0/api/catalogo.php';
+            const fallbackRes = await fetch(fallbackUrl);
+            if (fallbackRes.ok) {
+              response = fallbackRes;
+              API_URL = fallbackUrl;
+            }
+          }
+        } catch (netErr) {
+          if (!isLocal && !customApi && API_URL.indexOf('ReloadControl2.0') === -1) {
+            const fallbackUrl = 'https://lupinusystem.lat/ReloadControl2.0/api/catalogo.php';
+            const fallbackRes = await fetch(fallbackUrl);
+            if (fallbackRes.ok) {
+              response = fallbackRes;
+              API_URL = fallbackUrl;
+            } else {
+              throw netErr;
+            }
+          } else {
+            throw netErr;
+          }
+        }
+
+        if (!response || !response.ok) throw new Error(`HTTP Error ${response?.status || 500}`);
         
         const data = await response.json();
         if (!data.ok || !Array.isArray(data.games)) {
@@ -1781,20 +2230,11 @@
 
         allGames = data.games.map(game => {
           if (game.game_key === 'roblox' && Array.isArray(game.packages)) {
-            game.packages = game.packages
-              .filter(pkg => {
-                const clean = (pkg.name || '').replace(/,/g, '');
-                const m = clean.match(/^50\s*robux/i);
-                return !m;
-              })
-              .map(pkg => {
-                const clean = (pkg.name || '').replace(/,/g, '');
-                const m = clean.match(/(\d+)\s*robux/i);
-                if (m && [100, 150, 200].includes(parseInt(m[1], 10))) {
-                  return { ...pkg, is_out_of_stock: false };
-                }
-                return pkg;
-              });
+            game.packages = game.packages.filter(pkg => {
+              const clean = (pkg.name || '').replace(/,/g, '');
+              const m = clean.match(/^50\s*robux/i);
+              return !m;
+            });
           }
           return game;
         });
@@ -1855,7 +2295,7 @@
           </div>
         `;
       }
-      if (game.game_key === 'playstation') {
+      if (game.game_key === 'playstation' || game.game_key === 'playstation_us') {
         return `
           <div class="gcs-brand-cover" style="background:#003791;">
             <img src="img/play.jpg" alt="PlayStation" class="gcs-full-cover" style="object-fit:cover; width:100%; height:100%;" />
@@ -2175,27 +2615,26 @@
       };
 
       // Rellenar cabecera modal
+      const isWhiteBg = ['xbox_us', 'google_play_us', 'google_play'].includes(gameKey);
+      modalGameAvatar.className = 'modal-avatar' + (isWhiteBg ? ' is-white-bg' : '');
       if (game.img) {
-        modalGameAvatar.innerHTML = `<img src="${game.img}" alt="${game.label}" onerror="this.parentElement.innerHTML='${game.icon || '🎮'}';" />`;
+        modalGameAvatar.innerHTML = `<img src="${game.img}" alt="${escapeHtml(game.label)}" onerror="this.parentElement.innerHTML='${game.icon || '🎮'}';" />`;
       } else {
         modalGameAvatar.innerHTML = game.icon || '🎮';
       }
 
-      const isSupercellPending = ['brawlstars', 'clashroyale', 'coc'].includes(gameKey);
       const hasNoPackages = !game.packages || game.packages.length === 0;
 
-      if (isSupercellPending || hasNoPackages) {
+      if (hasNoPackages) {
         modalGameTitle.textContent = game.label;
-        modalGameMethod.textContent = isSupercellPending 
-          ? '¡Sí lo vendemos, pero estamos en proceso! 🛠️⏳'
-          : '¡Disponible bajo pedido directo por WhatsApp! 📲';
+        modalGameMethod.textContent = '¡Disponible bajo pedido directo por WhatsApp! 📲';
 
         modalStepsList.innerHTML = `
           <div class="m-step-item" style="border-left: 3px solid var(--primary);">
             <div class="m-step-num" style="background:var(--primary-gradient);">🎮</div>
             <div class="m-step-text">
               <strong>¡Sí vendemos ${escapeHtml(game.label)}!</strong>
-              <p>${isSupercellPending ? 'Estamos configurando la lista automática en esta web, pero sí tenemos recargas disponibles todos los días para tu cuenta.' : 'Códigos y recargas 100% garantizadas. Consulta las denominaciones disponibles en tiempo real con nuestra tasa del día.'}</p>
+              <p>Códigos y recargas 100% garantizadas. Consulta las denominaciones disponibles en tiempo real con nuestra tasa del día.</p>
             </div>
           </div>
           <div class="m-step-item" style="border-left: 3px solid #25d366;">
@@ -2334,15 +2773,16 @@
         if (filteredPackages.length === 0) return;
         totalMatches += filteredPackages.length;
 
+        const isWhiteBg = ['xbox_us', 'google_play_us', 'google_play'].includes(game.game_key);
         const avatarHtml = game.img
-          ? `<img src="${game.img}" alt="${game.label}" onerror="this.parentElement.innerHTML='${game.icon || '🎮'}';" />`
+          ? `<img src="${game.img}" alt="${escapeHtml(game.label)}" class="game-section-avatar-img" onerror="this.parentElement.innerHTML='${game.icon || '🎮'}';" />`
           : (game.icon || '🎮');
 
         html += `
           <div style="margin-bottom: 40px;">
             <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid var(--border);">
               <div style="display:flex; align-items:center; gap:12px;">
-                <div style="width:44px; height:44px; border-radius:12px; background:var(--bg-card); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:1.5rem; overflow:hidden;">
+                <div class="game-section-avatar ${isWhiteBg ? 'is-white-bg' : ''}">
                   ${avatarHtml}
                 </div>
                 <div>
@@ -2381,17 +2821,7 @@
     // 12. Renderizar Tarjeta Individual de Paquete (Incluye correo para Roblox)
     function renderPackageCard(game, pkg) {
       const priceBsFormatted = formatBs(pkg.price_bs);
-      const priceUsdFormatted = formatUsd(pkg.price_usd);
       let isOutOfStock = Boolean(pkg.is_out_of_stock);
-
-      // Regla especial: Para Roblox de 100, 150 y 200 Robux NO aplica lo de agotado
-      if (game.game_key === 'roblox') {
-        const clean = (pkg.name || '').replace(/,/g, '');
-        const m = clean.match(/(\d+)\s*robux/i);
-        if (m && [100, 150, 200].includes(parseInt(m[1], 10))) {
-          isOutOfStock = false;
-        }
-      }
       
       // Limpiar etiquetas de proveedores internos
       let methodLabel = pkg.method || 'Vía ID';
@@ -2408,6 +2838,8 @@
         emailFieldNotice = `\n📧 *Mi correo para entrega:* (Escribe tu correo aquí)`;
       } else if (game.game_key === 'avatarworld') {
         emailFieldNotice = `\n📧 *Correo de mi Avatar ID para ingresar:* (Escribe tu correo aquí)`;
+      } else if (['brawlstars', 'clashroyale', 'coc'].includes(game.game_key)) {
+        emailFieldNotice = `\n🏷️ *Mi Player Tag / Supercell ID:* (Escribe tu Tag aquí)`;
       }
 
       const waText = encodeURIComponent(
@@ -2437,12 +2869,8 @@
 
           <div class="pkg-prices">
             <div class="price-bs-row">
-              <span style="font-size:0.75rem; color:var(--text-sub); font-weight:700">PRECIO BS</span>
+              <span class="price-bs-label"><i class='bx bx-check-shield'></i> PRECIO PAGO MÓVIL</span>
               <span class="price-bs-val">${priceBsFormatted}</span>
-            </div>
-            <div class="price-usd-row">
-              <span>Equivalente:</span>
-              <span>${priceUsdFormatted}</span>
             </div>
           </div>
 
@@ -2482,7 +2910,17 @@
       });
     }
 
-    function fallbackCopy(text) {
+    function copyTextToClipboard(text, msg) {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast(msg || '¡Copiado al portapapeles!');
+        }).catch(() => fallbackCopy(text, msg));
+      } else {
+        fallbackCopy(text, msg);
+      }
+    }
+
+    function fallbackCopy(text, msg) {
       const ta = document.createElement('textarea');
       ta.value = text;
       ta.style.position = 'fixed';
@@ -2492,11 +2930,80 @@
       ta.select();
       try {
         document.execCommand('copy');
-        showToast('¡Detalles del paquete copiados!');
+        showToast(msg || '¡Detalles copiados al portapapeles!');
       } catch (e) {
         showToast('No se pudo copiar automáticamente');
       }
       document.body.removeChild(ta);
+    }
+
+    // 14. Gestión de Pago Móvil (Copiar campos y modal)
+    const PM_FULL_DATA = 
+`Pago Móvil Oficial:
+Banco: 0102 - Banco de Venezuela
+Teléfono: 0424-8143608 (04248143608)
+Cédula: 30.696.020 (30696020)`;
+
+    // Copiar campo individual
+    document.querySelectorAll('.btn-copy-field').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const val = btn.getAttribute('data-copy') || '';
+        const name = btn.getAttribute('data-name') || 'Dato';
+        copyTextToClipboard(val, `¡${name} copiado: ${val}!`);
+        
+        const originalHtml = btn.innerHTML;
+        btn.classList.add('copied');
+        btn.innerHTML = "<i class='bx bx-check'></i> <span>¡Copiado!</span>";
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          btn.innerHTML = originalHtml;
+        }, 1800);
+      });
+    });
+
+    // Copiar todos los datos de Pago Móvil
+    function triggerCopyAllPm(btn) {
+      copyTextToClipboard(PM_FULL_DATA, '¡Todos los datos de Pago Móvil copiados!');
+      if (btn) {
+        const orig = btn.innerHTML;
+        btn.innerHTML = "<i class='bx bx-check'></i> <span>¡Copiados!</span>";
+        setTimeout(() => {
+          btn.innerHTML = orig;
+        }, 1800);
+      }
+    }
+
+    const btnCopyAllPm = document.getElementById('btnCopyAllPm');
+    if (btnCopyAllPm) {
+      btnCopyAllPm.addEventListener('click', () => triggerCopyAllPm(btnCopyAllPm));
+    }
+    const btnCopyAllPmModal = document.getElementById('btnCopyAllPmModal');
+    if (btnCopyAllPmModal) {
+      btnCopyAllPmModal.addEventListener('click', () => triggerCopyAllPm(btnCopyAllPmModal));
+    }
+
+    // Modal de Pago Móvil
+    const pagoMovilModal = document.getElementById('pagoMovilModal');
+    const pmModalCloseBtn = document.getElementById('pmModalCloseBtn');
+    const btnOpenPmModal = document.getElementById('btnOpenPmModal');
+    const btnOpenPmModalFromView = document.getElementById('btnOpenPmModalFromView');
+
+    function openPmModal() {
+      if (pagoMovilModal) pagoMovilModal.classList.add('open');
+    }
+    function closePmModal() {
+      if (pagoMovilModal) pagoMovilModal.classList.remove('open');
+    }
+
+    if (btnOpenPmModal) btnOpenPmModal.addEventListener('click', openPmModal);
+    if (btnOpenPmModalFromView) btnOpenPmModalFromView.addEventListener('click', openPmModal);
+    if (pmModalCloseBtn) pmModalCloseBtn.addEventListener('click', closePmModal);
+    if (pagoMovilModal) {
+      pagoMovilModal.addEventListener('click', (e) => {
+        if (e.target === pagoMovilModal) closePmModal();
+      });
     }
 
     function escapeHtml(str) {
