@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data:; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://unpkg.com; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net https://unpkg.com data:; img-src 'self' https: data:; connect-src 'self' https://lupinusystem.lat http://localhost:* http://127.0.0.1:*;" />
   <title>Reload Xpress — Catálogo Oficial de Recargas en Tiempo Real</title>
   <meta name="description" content="Catálogo en tiempo real de Reload Xpress. Precios actualizados en Bolívares y Dólares para Free Fire, Blood Strike, Roblox, Mobile Legends y más. ¡Haz tu pedido directo por WhatsApp!" />
   <meta name="keywords" content="recargas venezuela, free fire diamantes, blood strike, roblox robux, mobile legends, nintendo, playstation, reload xpress" />
@@ -1553,7 +1554,7 @@
       border-color: #22c55e !important;
     }
 
-    /* ─── Responsive Móvil ──────────────────────────────────────────────────── */
+    /* ─── Responsive Móvil Premium (Full Teléfono) ─────────────────────────── */
     @media (max-width: 640px) {
       .pm-card {
         padding: 16px 14px;
@@ -1571,11 +1572,12 @@
         grid-template-columns: 1fr;
       }
       .nav-container {
-        padding: 8px 14px;
+        padding: 8px 12px;
       }
       .brand-logo {
         width: 38px;
         height: 38px;
+        border-radius: 10px;
       }
       .brand-info h1 {
         font-size: 1rem;
@@ -1585,57 +1587,174 @@
         font-size: 0.74rem;
       }
       .hero {
-        padding: 20px 14px 14px;
+        padding: 18px 12px 12px;
+      }
+      .hero-title {
+        font-size: 1.45rem;
+        line-height: 1.25;
+      }
+      .hero-subtitle {
+        font-size: 0.85rem;
       }
       .photo-instruction-box {
         flex-direction: column;
         text-align: center;
-        gap: 12px;
+        gap: 10px;
+        padding: 12px;
       }
       .pib-cta-btn {
         width: 100%;
         justify-content: center;
       }
       .controls-wrapper {
-        top: 60px;
-        padding: 10px 14px;
+        top: 54px;
+        padding: 8px 12px;
       }
       .games-showcase-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+        gap: 10px;
       }
       .package-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
       }
       .package-card {
-        padding: 12px;
+        padding: 12px 10px;
+        border-radius: 14px;
       }
       .pkg-name {
-        font-size: 0.92rem;
-        min-height: 2.8em;
+        font-size: 0.88rem;
+        min-height: 2.6em;
       }
       .price-bs-val {
-        font-size: 1.1rem;
+        font-size: 1.08rem;
       }
       .btn-buy-wa {
         padding: 8px 6px;
         font-size: 0.78rem;
+        border-radius: 8px;
       }
       .btn-copy-info {
         width: 34px;
         height: 34px;
         font-size: 1rem;
+        border-radius: 8px;
       }
       .floating-wa {
-        width: 50px;
-        height: 50px;
-        font-size: 1.7rem;
-        bottom: 18px;
-        right: 18px;
+        width: 48px;
+        height: 48px;
+        font-size: 1.6rem;
+        bottom: 16px;
+        right: 16px;
       }
       .modal-dialog {
-        padding: 20px 16px;
+        padding: 20px 14px;
+        border-radius: 20px;
+        max-width: 95%;
+      }
+    }
+
+    @media (max-width: 440px) {
+      .nav-container {
+        padding: 6px 10px;
+        gap: 6px;
+      }
+      .brand-link {
+        gap: 8px;
+        min-width: 0;
+      }
+      .brand-logo {
+        width: 34px;
+        height: 34px;
+      }
+      .brand-info h1 {
+        font-size: 0.92rem;
+      }
+      .brand-info span {
+        font-size: 0.65rem;
+      }
+      .nav-actions {
+        gap: 5px;
+      }
+      .pm-nav-btn {
+        padding: 5px 8px;
+        font-size: 0.72rem;
+      }
+      .rate-pill {
+        padding: 4px 7px;
+        font-size: 0.7rem;
+        gap: 4px;
+      }
+      .theme-toggle-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 1.05rem;
+      }
+      .controls-wrapper {
+        top: 48px;
+        padding: 6px 10px;
+      }
+      .search-input {
+        height: 40px;
+        font-size: 0.88rem;
+        padding-left: 36px;
+      }
+      .filter-chips {
+        gap: 5px;
+        padding-bottom: 4px;
+      }
+      .chip-btn {
+        padding: 5px 10px;
+        font-size: 0.75rem;
+      }
+      .games-showcase-grid {
+        gap: 8px;
+      }
+      .game-card-showcase {
+        border-radius: 14px;
+      }
+      .package-grid {
+        gap: 8px;
+      }
+      .package-card {
+        padding: 10px 8px;
+        border-radius: 12px;
+      }
+      .pkg-name {
+        font-size: 0.84rem;
+        min-height: 2.4em;
+        margin-bottom: 6px;
+      }
+      .pkg-prices {
+        padding: 6px 8px;
+        margin-bottom: 8px;
+      }
+      .price-bs-val {
+        font-size: 0.98rem;
+      }
+      .price-bs-label {
+        font-size: 0.65rem;
+      }
+      .btn-buy-wa {
+        padding: 7px 4px;
+        font-size: 0.74rem;
+      }
+      .btn-copy-info {
+        width: 30px;
+        height: 30px;
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .brand-info span {
+        display: none;
+      }
+      .pm-nav-btn span {
+        display: none;
+      }
+      .pm-nav-btn {
+        padding: 6px 8px;
       }
     }
   </style>
@@ -1950,9 +2069,26 @@
     const urlParams = new URLSearchParams(window.location.search);
     const customApi = urlParams.get('api');
 
-    let API_URL = customApi 
-      ? customApi 
-      : (isLocal ? '../api/catalogo.php' : 'https://lupinusystem.lat/api/catalogo.php');
+    let API_URL = isLocal ? '../api/catalogo.php' : 'https://lupinusystem.lat/api/catalogo.php';
+
+    // Protección de seguridad: permitir customApi ÚNICAMENTE en entorno local de desarrollo y restringido a localhost
+    if (isLocal && customApi) {
+      try {
+        const parsedApi = new URL(customApi, window.location.href);
+        if (['localhost', '127.0.0.1'].includes(parsedApi.hostname) && (parsedApi.protocol === 'http:' || parsedApi.protocol === 'https:')) {
+          API_URL = customApi;
+        }
+      } catch (e) {}
+    }
+
+    function safeImgSrc(src) {
+      if (!src || typeof src !== 'string') return '';
+      const trimmed = src.trim();
+      if (/^(img\/[a-zA-Z0-9_\-\.\/]+|https?:\/\/[a-zA-Z0-9_\-\.\/]+)$/.test(trimmed)) {
+        return escapeHtml(trimmed);
+      }
+      return '';
+    }
 
     let allGames = [];
     let activeGameKey = null;
@@ -1967,10 +2103,12 @@
         methodName: 'Entrega por Correo / Código Digital',
         badge: 'Código / Envío al Correo',
         steps: [
-          { title: 'Elige tu Paquete de Robux', desc: 'Disponibles desde 100 Robux hasta paquetes grandes de miles de Robux.' },
-          { title: 'Envíanos tu Correo Electrónico', desc: '⚠️ Muy importante: Al escribirnos por WhatsApp debes indicarnos tu correo donde deseas que te enviemos el pedido.' },
-          { title: 'Realiza tu Pago', desc: 'Pagas en Bolívares (Pago Móvil) o en divisas (Binance USDT).' },
-          { title: 'Recibe tu Código al Correo', desc: 'Te enviamos el código original canjeable al instante en roblox.com/redeem directamente a tu correo y WhatsApp.' }
+          { title: 'Revisa tu Moneda en Roblox (Debe ser en Dólares $ USD)', desc: '⚠️ Requisito indispensable: Asegúrate de que la moneda de tu cuenta de Roblox esté configurada en Dólares ($ USD). Si tu cuenta tiene otra moneda diferente (pesos, euros, etc.), infórmanoslo antes de realizar el pago.' },
+          { title: 'Elige tu Paquete de Robux', desc: 'Pines digitales oficiales disponibles desde 50 y 100 Robux hasta paquetes grandes de miles de Robux.' },
+          { title: 'Envíanos tu Correo Electrónico', desc: '⚠️ Muy importante: Al escribirnos por WhatsApp indícanos tu correo electrónico donde deseas que te enviemos la gift card y el código.' },
+          { title: 'Realiza tu Pago', desc: 'Pagas cómodamente en Bolívares (Pago Móvil) o en divisas (Binance USDT).' },
+          { title: 'Grabación Continua Obligatoria para Garantía', desc: '🛡️ Política de Garantía estricta: La única forma de dar garantía ante un código con error es grabando la pantalla completa en video continuo (sin cortes ni pausas) desde el momento exacto en que te indicamos que el código fue enviado hasta su intento de canje en roblox.com/redeem.' },
+          { title: 'Canje Oficial en roblox.com/redeem', desc: 'Ingresas a la web oficial de canje de Roblox (roblox.com/redeem), pegas tu código y tus Robux se acreditan de inmediato a tu saldo.' }
         ]
       },
       'freefire': {
@@ -2309,12 +2447,18 @@
           </div>
         `;
       }
-      if (game.img) {
-        return `<img src="${game.img}" alt="${game.label}" class="gcs-full-cover" onerror="this.parentElement.innerHTML='<div class=\\'gcs-brand-cover\\'><span style=\\'font-size:3.5rem\\'>${game.icon || '🎮'}</span></div>';" />`;
+      const safeImg = safeImgSrc(game.img);
+      if (safeImg) {
+        return `
+          <img src="${safeImg}" alt="${escapeHtml(game.label)}" class="gcs-full-cover" onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='flex';" />
+          <div class="gcs-brand-cover" style="display:none;">
+            <span style="font-size:3.5rem;">${escapeHtml(game.icon || '🎮')}</span>
+          </div>
+        `;
       }
       return `
         <div class="gcs-brand-cover">
-          <span style="font-size: 3.5rem;">${game.icon || '🎮'}</span>
+          <span style="font-size: 3.5rem;">${escapeHtml(game.icon || '🎮')}</span>
         </div>
       `;
     }
@@ -2529,7 +2673,7 @@
           modalProceedBtn.onclick = () => {
             closeMethodModal();
             const waMsg = encodeURIComponent("¡Hola Reload Xpress! 👋 Deseo recargar mi cuenta Zinli. ¿Me podrían cotizar la recarga para el monto de: [Escribe aquí tu monto en $]? Mi correo o teléfono Zinli es:");
-            window.open(`https://wa.me/${WA_NUMBER}?text=${waMsg}`, '_blank');
+            window.open(`https://wa.me/${WA_NUMBER}?text=${waMsg}`, '_blank', 'noopener,noreferrer');
           };
           return;
         }
@@ -2557,7 +2701,7 @@
             `📧 *Mi correo o teléfono Zinli:* (Escribe tu correo o teléfono aquí)\n\n` +
             `¿Me indican los datos para pagar por Pago Móvil o Binance?`
           );
-          window.open(`https://wa.me/${WA_NUMBER}?text=${waMsg}`, '_blank');
+          window.open(`https://wa.me/${WA_NUMBER}?text=${waMsg}`, '_blank', 'noopener,noreferrer');
         };
       }
 
@@ -2617,10 +2761,11 @@
       // Rellenar cabecera modal
       const isWhiteBg = ['xbox_us', 'google_play_us', 'google_play'].includes(gameKey);
       modalGameAvatar.className = 'modal-avatar' + (isWhiteBg ? ' is-white-bg' : '');
-      if (game.img) {
-        modalGameAvatar.innerHTML = `<img src="${game.img}" alt="${escapeHtml(game.label)}" onerror="this.parentElement.innerHTML='${game.icon || '🎮'}';" />`;
+      const safeImg = safeImgSrc(game.img);
+      if (safeImg) {
+        modalGameAvatar.innerHTML = `<img src="${safeImg}" alt="${escapeHtml(game.label)}" onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='inline-block';" /><span style="display:none;">${escapeHtml(game.icon || '🎮')}</span>`;
       } else {
-        modalGameAvatar.innerHTML = game.icon || '🎮';
+        modalGameAvatar.textContent = game.icon || '🎮';
       }
 
       const hasNoPackages = !game.packages || game.packages.length === 0;
@@ -2653,7 +2798,7 @@
         modalProceedBtn.onclick = () => {
           closeMethodModal();
           const waMsg = encodeURIComponent(`¡Hola Reload Xpress! 👋 Vi ${game.label} en el catálogo. Deseo consultar precios y disponibilidad para comprar.`);
-          window.open(`https://wa.me/${WA_NUMBER}?text=${waMsg}`, '_blank');
+          window.open(`https://wa.me/${WA_NUMBER}?text=${waMsg}`, '_blank', 'noopener,noreferrer');
         };
       } else {
         modalGameTitle.textContent = game.label;
@@ -2661,6 +2806,25 @@
 
         // Rellenar pasos
         let stepsHtml = '';
+        if (gameKey === 'roblox') {
+          stepsHtml += `
+            <div style="background: rgba(239, 68, 68, 0.08); border: 1.5px solid rgba(239, 68, 68, 0.35); border-radius: 12px; padding: 14px 16px; margin-bottom: 16px; display: flex; gap: 12px; align-items: flex-start; text-align: left;">
+              <i class='bx bxs-error-circle' style="font-size: 1.6rem; color: #ef4444; flex-shrink: 0; margin-top: 2px;"></i>
+              <div style="font-size: 0.82rem; line-height: 1.45; color: var(--text-main);">
+                <strong style="color: #ef4444; font-size: 0.92rem; display: block; margin-bottom: 6px; font-weight: 800;">
+                  ⚠️ CONDICIONES OBLIGATORIAS ANTES DE COMPRAR
+                </strong>
+                <p style="margin: 0 0 8px 0;">
+                  💵 <strong>Moneda en Dólares ($ USD):</strong> Revisa que la moneda de tu cuenta de Roblox esté en dólares. Si tu cuenta muestra otra moneda, <strong>infórmanoslo antes de realizar el pago</strong>.
+                </p>
+                <p style="margin: 0;">
+                  📹 <strong>Garantía Estricta:</strong> La <strong>única forma</strong> de validar garantía por un código defectuoso es <strong>grabando la pantalla en video continuo (sin cortes ni ediciones)</strong> desde el momento exacto en que te notificamos el envío del código hasta su intento de canje en <a href="https://www.roblox.com/redeem" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 700; text-decoration: underline;">roblox.com/redeem</a>.
+                </p>
+              </div>
+            </div>
+          `;
+        }
+
         info.steps.forEach((step, idx) => {
           stepsHtml += `
             <div class="m-step-item">
@@ -2693,6 +2857,11 @@
           modalSecNote.innerHTML = `
             <i class='bx bxs-shield-plus' style="font-size:1.15rem; color:#22c55e;"></i>
             <span>🔒 Acceso 100% Confidencial: Solo entramos a tu Avatar ID para cargar tus AW Coins y salimos de inmediato.</span>
+          `;
+        } else if (gameKey === 'roblox') {
+          modalSecNote.innerHTML = `
+            <i class='bx bxs-video-recording' style="font-size:1.2rem; color:#ef4444;"></i>
+            <span><strong>Garantía Roblox:</strong> Requiere video continuo desde el aviso de envío. Cuenta configurada en USD $.</span>
           `;
         } else {
           modalSecNote.innerHTML = `
@@ -2774,9 +2943,10 @@
         totalMatches += filteredPackages.length;
 
         const isWhiteBg = ['xbox_us', 'google_play_us', 'google_play'].includes(game.game_key);
-        const avatarHtml = game.img
-          ? `<img src="${game.img}" alt="${escapeHtml(game.label)}" class="game-section-avatar-img" onerror="this.parentElement.innerHTML='${game.icon || '🎮'}';" />`
-          : (game.icon || '🎮');
+        const safeImg = safeImgSrc(game.img);
+        const avatarHtml = safeImg
+          ? `<img src="${safeImg}" alt="${escapeHtml(game.label)}" class="game-section-avatar-img" onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='inline-block';" /><span style="display:none;">${escapeHtml(game.icon || '🎮')}</span>`
+          : `<span>${escapeHtml(game.icon || '🎮')}</span>`;
 
         html += `
           <div style="margin-bottom: 40px;">
@@ -2862,7 +3032,7 @@
               <span class="pkg-badge">${escapeHtml(methodLabel)}</span>
               ${isOutOfStock ? `<span class="pkg-badge badge-agotado"><i class='bx bx-block'></i> Agotado</span>` : ''}
             </div>
-            <span style="font-size:0.85rem">${game.icon || '🎮'}</span>
+            <span style="font-size:0.85rem">${escapeHtml(game.icon || '🎮')}</span>
           </div>
 
           <div class="pkg-name">${escapeHtml(pkg.name)}</div>
@@ -3007,12 +3177,13 @@ Cédula: 30.696.020 (30696020)`;
     }
 
     function escapeHtml(str) {
-      if (!str) return '';
+      if (str === null || str === undefined) return '';
       return String(str)
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;');
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
     }
 
     // 15. Escucha del Buscador
