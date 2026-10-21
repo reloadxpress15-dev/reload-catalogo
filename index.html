@@ -2366,16 +2366,7 @@
           throw new Error(data.error || 'Respuesta de API inválida');
         }
 
-        allGames = data.games.map(game => {
-          if (game.game_key === 'roblox' && Array.isArray(game.packages)) {
-            game.packages = game.packages.filter(pkg => {
-              const clean = (pkg.name || '').replace(/,/g, '');
-              const m = clean.match(/^50\s*robux/i);
-              return !m;
-            });
-          }
-          return game;
-        });
+        allGames = data.games;
         liveRateBs = parseFloat(data.rate_bs) || 0;
         zinliRanges = data.zinli_ranges || [];
 
