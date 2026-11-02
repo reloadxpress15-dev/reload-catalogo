@@ -105,40 +105,17 @@
       }
     }
 
-    /* Resplandores gamer de fondo */
-    .bg-glow-1 {
-      position: fixed;
-      top: -150px;
-      right: -100px;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.6;
-    }
-    .bg-glow-2 {
-      position: fixed;
-      bottom: -150px;
-      left: -100px;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.4;
-    }
-
-    /* ─── Header & Barra Superior ───────────────────────────────────────────── */
+    /* ─── Header & Barra Superior (Sólido, Limpio, Cero Blur) ────────────────── */
     header {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: var(--bg-header);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      background: #0d121c;
       border-bottom: 1px solid var(--border);
       transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    [data-theme="light"] header {
+      background: #ffffff;
     }
     .nav-container {
       max-width: 1240px;
@@ -349,14 +326,12 @@
       box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
     }
 
-    /* ─── Controles Fijos: Buscador y Filtros ────────────────────────────────── */
+    /* ─── Controles Fijos: Buscador y Filtros (Sólido sin Blur) ─────────────── */
     .controls-wrapper {
       position: sticky;
       top: 65px;
       z-index: 90;
-      background: var(--bg-header);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background: var(--bg);
       border-bottom: 1px solid var(--border);
       padding: 12px 20px;
       margin-bottom: 26px;
@@ -508,7 +483,7 @@
       width: 28px;
       height: 28px;
       border-radius: 8px;
-      background: rgba(255, 255, 255, 0.9);
+      background: #ffffff;
       border: 1px solid rgba(0, 0, 0, 0.08);
       color: #334155;
       display: flex;
@@ -516,7 +491,6 @@
       justify-content: center;
       font-size: 1.05rem;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-      backdrop-filter: blur(4px);
     }
     [data-theme="dark"] .gcs-top-doc-badge {
       background: rgba(17, 24, 39, 0.85);
@@ -689,148 +663,146 @@
       color: #fff;
     }
 
-    /* Grid de Tarjetas de Paquetes */
+    /* ─── Lista Sutil de Paquetes en Catálogo (Filas Delgadas / Slim) ───────── */
     .package-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 16px;
-      margin-bottom: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 28px;
     }
     .package-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 16px;
+      border-radius: 10px;
+      padding: 7px 14px;
       display: flex;
-      flex-direction: column;
+      align-items: center;
       justify-content: space-between;
+      gap: 12px;
       position: relative;
-      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: var(--card-shadow);
-      overflow: hidden;
+      transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+      min-height: auto;
     }
     .package-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-1px);
       border-color: var(--border-hover);
-      box-shadow: var(--hover-shadow);
+      box-shadow: 0 3px 12px rgba(255, 122, 0, 0.12);
       background: var(--bg-card-hover);
     }
 
-    .pkg-top {
+    .pkg-list-left {
       display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+      min-width: 0;
+    }
+    .pkg-list-name-wrap {
+      display: flex;
+      align-items: center;
       gap: 8px;
-      margin-bottom: 10px;
+      flex-wrap: wrap;
     }
-    .pkg-badge {
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      padding: 3px 8px;
-      border-radius: 6px;
-      background: var(--accent-badge);
-      color: var(--primary);
-    }
-    .pkg-name {
-      font-size: 1.05rem;
+    .pkg-list-name {
+      font-size: 0.94rem;
       font-weight: 700;
       color: var(--text-main);
-      line-height: 1.3;
-      margin-bottom: 12px;
-      min-height: 2.6em;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+      letter-spacing: -0.2px;
     }
-
-    .pkg-prices {
-      margin-bottom: 14px;
-      padding: 10px;
-      background: var(--pill-bg);
-      border-radius: 10px;
-      border: 1px solid var(--border);
-    }
-    .price-bs-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-    }
-    .price-bs-label {
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: var(--text-sub);
-      letter-spacing: 0.3px;
+    .pkg-list-badges {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 5px;
+      flex-wrap: wrap;
     }
-    .price-bs-val {
-      font-size: 1.35rem;
-      font-weight: 900;
+    .pkg-badge {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      padding: 1px 6px;
+      border-radius: 5px;
+      background: var(--accent-badge);
       color: var(--primary);
-      letter-spacing: -0.5px;
+      border: 1px solid rgba(255, 122, 0, 0.2);
+      line-height: 1.4;
+    }
+    .badge-oferta {
+      background: rgba(255, 122, 0, 0.14) !important;
+      color: #ff7a00 !important;
+      border-color: rgba(255, 122, 0, 0.4) !important;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
     }
 
-    /* Botones de acción dentro de la tarjeta */
-    .pkg-actions {
+    .pkg-list-right {
       display: flex;
-      gap: 8px;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    .pkg-list-price-wrap {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .pkg-list-old-price {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+      font-weight: 600;
+      line-height: 1;
+      margin-bottom: 1px;
+    }
+    .pkg-list-price {
+      font-size: 1.05rem;
+      font-weight: 900;
+      color: var(--primary);
+      letter-spacing: -0.3px;
+      line-height: 1.1;
+    }
+    .pkg-list-price.is-offer-price {
+      color: #ff7a00;
+    }
+
+    .pkg-list-actions {
+      display: flex;
+      align-items: center;
     }
     .btn-buy-wa {
-      flex: 1;
       background: #25d366;
       color: #ffffff;
       text-decoration: none;
-      padding: 10px 12px;
-      border-radius: 10px;
+      padding: 5px 12px;
+      border-radius: 7px;
       font-weight: 700;
-      font-size: 0.85rem;
+      font-size: 0.78rem;
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 6px;
+      gap: 4px;
       transition: all 0.2s ease;
-      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+      box-shadow: 0 2px 6px rgba(37, 211, 102, 0.2);
+      white-space: nowrap;
     }
     .btn-buy-wa:hover {
       background: #1fba57;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
-    }
-    .btn-copy-info {
-      width: 38px;
-      height: 38px;
-      border-radius: 10px;
-      background: var(--pill-bg);
-      border: 1px solid var(--border);
-      color: var(--text-sub);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.15rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      flex-shrink: 0;
-    }
-    .btn-copy-info:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-      transform: none;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(37, 211, 102, 0.35);
     }
 
-    /* Estados de Paquete Agotado en Catálogo Web */
+    /* Estados de Paquete Agotado */
     .package-card.pkg-out-of-stock {
-      opacity: 0.72;
-      border-color: rgba(239, 68, 68, 0.28);
+      opacity: 0.65;
+      border-color: rgba(239, 68, 68, 0.25);
     }
     .badge-agotado {
-      background: rgba(239, 68, 68, 0.15) !important;
+      background: rgba(239, 68, 68, 0.12) !important;
       color: #ef4444 !important;
-      border: 1px solid rgba(239, 68, 68, 0.35) !important;
+      border: 1px solid rgba(239, 68, 68, 0.3) !important;
       display: inline-flex;
       align-items: center;
       gap: 3px;
@@ -841,6 +813,7 @@
       cursor: not-allowed !important;
       opacity: 0.8;
       border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 5px 10px;
     }
     .btn-buy-wa.btn-agotado:hover {
       transform: none !important;
@@ -848,21 +821,20 @@
       background: #475569 !important;
     }
 
-    /* ─── MODAL EXPLICATIVO DE MÉTODO DE RECARGA ────────────────────────────── */
+
+    /* ─── MODALES: OSCURECIMIENTO LIMPIO SIN BLUR (MÁXIMO RENDIMIENTO) ──────── */
     .modal-overlay {
       position: fixed;
       inset: 0;
       z-index: 1000;
-      background: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      background: rgba(4, 7, 13, 0.88);
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 16px;
       opacity: 0;
       visibility: hidden;
-      transition: all 0.25s ease;
+      transition: opacity 0.22s ease, visibility 0.22s ease;
     }
     .modal-overlay.open {
       opacity: 1;
@@ -1059,6 +1031,522 @@
     .modal-proceed-btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 24px var(--primary-glow);
+    }
+    .modal-proceed-btn:disabled,
+    .modal-proceed-btn.btn-disabled {
+      background: #334155 !important;
+      color: #94a3b8 !important;
+      cursor: not-allowed !important;
+      box-shadow: none !important;
+      transform: none !important;
+      opacity: 0.75;
+    }
+
+    /* Checkbox de consentimiento obligatorio para Robux */
+    .roblox-consent-box {
+      background: rgba(239, 68, 68, 0.08);
+      border: 1.5px solid rgba(239, 68, 68, 0.4);
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin: 16px 0 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      cursor: pointer;
+      transition: all 0.22s ease;
+    }
+    .roblox-consent-box:hover {
+      border-color: #ef4444;
+      background: rgba(239, 68, 68, 0.12);
+    }
+    .roblox-consent-box.is-checked {
+      background: rgba(34, 197, 94, 0.08);
+      border-color: rgba(34, 197, 94, 0.45);
+    }
+    .roblox-consent-box input[type="checkbox"] {
+      width: 22px;
+      height: 22px;
+      accent-color: #22c55e;
+      cursor: pointer;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .roblox-consent-label {
+      font-size: 0.86rem;
+      color: var(--text-main);
+      line-height: 1.45;
+      cursor: pointer;
+      user-select: none;
+    }
+    .roblox-consent-label strong {
+      display: block;
+      color: #ef4444;
+      font-size: 0.9rem;
+      margin-bottom: 3px;
+    }
+    .roblox-consent-box.is-checked .roblox-consent-label strong {
+      color: #22c55e;
+    }
+
+    /* Estilos para Roblox Vía User en Modal (Roblox Plus, No Reembolso, Control Parental, Foto @User) */
+    .roblox-user-alert-box {
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin-bottom: 12px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      text-align: left;
+    }
+    .roblox-alert-plus {
+      background: linear-gradient(135deg, rgba(2, 132, 199, 0.14), rgba(2, 132, 199, 0.04));
+      border: 1.5px solid rgba(2, 132, 199, 0.45);
+    }
+    .roblox-alert-plus strong {
+      color: #0284c7;
+      font-size: 0.9rem;
+      font-weight: 800;
+      display: block;
+      margin-bottom: 3px;
+    }
+    .roblox-alert-norefund {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.16), rgba(239, 68, 68, 0.05));
+      border: 1.5px solid rgba(239, 68, 68, 0.55);
+    }
+    .roblox-alert-norefund strong {
+      color: #ef4444;
+      font-size: 0.92rem;
+      font-weight: 900;
+      display: block;
+      margin-bottom: 3px;
+      letter-spacing: -0.2px;
+    }
+    .roblox-alert-parental {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(245, 158, 11, 0.04));
+      border: 1.5px solid rgba(245, 158, 11, 0.5);
+    }
+    .roblox-alert-parental strong {
+      color: #f59e0b;
+      font-size: 0.9rem;
+      font-weight: 800;
+      display: block;
+      margin-bottom: 3px;
+    }
+    .roblox-sample-card {
+      background: var(--pill-bg);
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin-bottom: 12px;
+      text-align: left;
+    }
+    .roblox-sample-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: #0284c7;
+    }
+    .roblox-sample-img-container {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1.5px solid var(--border);
+      background: #0f172a;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-height: 240px;
+      transition: border-color 0.2s ease;
+    }
+    .roblox-sample-img-container:hover {
+      border-color: #0284c7;
+    }
+    .roblox-sample-img-container img {
+      width: 100%;
+      height: auto;
+      max-height: 240px;
+      object-fit: contain;
+      display: block;
+      transition: transform 0.25s ease;
+    }
+    .roblox-sample-img-container:hover img {
+      transform: scale(1.02);
+    }
+    .roblox-sample-overlay {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(15, 23, 42, 0.85);
+      color: #38bdf8;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 99px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+    .roblox-sample-footer {
+      font-size: 0.8rem;
+      color: var(--text-sub);
+      margin-top: 8px;
+      line-height: 1.4;
+    }
+
+    /* Pestañas de Modalidades para Roblox en Catálogo */
+    .roblox-cat-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .roblox-filter-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 15px;
+      border-radius: 99px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      border: 1.5px solid var(--border);
+      background: var(--pill-bg, rgba(255, 255, 255, 0.05));
+      color: var(--text-sub, #94a3b8);
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+    }
+    .roblox-filter-tab:hover {
+      border-color: rgba(255, 122, 0, 0.6);
+      color: #ffffff;
+      background: var(--bg-card-hover, rgba(255, 255, 255, 0.08));
+    }
+    .roblox-filter-tab.active {
+      background: var(--primary-gradient, linear-gradient(135deg, #ff8c00 0%, #ff5500 100%)) !important;
+      color: #ffffff !important;
+      border-color: #ff7a00 !important;
+      box-shadow: 0 4px 14px rgba(255, 122, 0, 0.35) !important;
+    }
+    .roblox-filter-tab[data-filter="user"].active {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+      color: #ffffff !important;
+      border-color: #0284c7 !important;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35) !important;
+    }
+    .roblox-filter-tab[data-filter="code"].active {
+      background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%) !important;
+      color: #ffffff !important;
+      border-color: #ea580c !important;
+      box-shadow: 0 4px 14px rgba(234, 88, 12, 0.35) !important;
+    }
+
+    [data-theme="light"] .roblox-filter-tab {
+      background: #ffffff;
+      border-color: rgba(0, 0, 0, 0.1);
+      color: #475569;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    }
+    [data-theme="light"] .roblox-filter-tab:hover {
+      background: #f8fafc;
+      border-color: #ff7a00;
+      color: #ff7a00;
+    }
+
+    /* Badges adaptables de Roblox */
+    .badge-roblox-user {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      background: rgba(14, 165, 233, 0.16) !important;
+      color: #38bdf8 !important;
+      border: 1px solid rgba(56, 189, 248, 0.35) !important;
+    }
+    [data-theme="light"] .badge-roblox-user {
+      background: #e0f2fe !important;
+      color: #0284c7 !important;
+      border-color: #bae6fd !important;
+    }
+
+    .badge-roblox-code {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      background: rgba(249, 115, 22, 0.16) !important;
+      color: #fb923c !important;
+      border: 1px solid rgba(251, 146, 60, 0.35) !important;
+    }
+    .badge-roblox-internal {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      background: rgba(16, 185, 129, 0.16) !important;
+      color: #34d399 !important;
+      border: 1px solid rgba(52, 211, 153, 0.35) !important;
+    }
+    [data-theme="light"] .badge-roblox-internal {
+      background: #ecfdf5 !important;
+      color: #059669 !important;
+      border-color: #a7f3d0 !important;
+    }
+
+    /* Badges "Desde X Robux" en las cards de la vitrina */
+    .gcs-robux-pill-tag {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 5;
+      padding: 4px 10px;
+      border-radius: 99px;
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: #ffffff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+      letter-spacing: -0.2px;
+      pointer-events: none;
+    }
+    .gcs-robux-pill-tag strong {
+      font-weight: 900;
+      color: #38bdf8;
+    }
+    .gcs-robux-pill-tag.tag-roblox_giftcard strong {
+      color: #fb923c;
+    }
+    .gcs-robux-pill-tag.tag-roblox_internal strong {
+      color: #34d399;
+    }
+    [data-theme="light"] .gcs-robux-pill-tag {
+      background: rgba(255, 255, 255, 0.94);
+      border-color: rgba(0, 0, 0, 0.14);
+      color: #0f172a;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+    }
+    [data-theme="light"] .gcs-robux-pill-tag strong {
+      color: #0284c7;
+    }
+    [data-theme="light"] .gcs-robux-pill-tag.tag-roblox_giftcard strong {
+      color: #ea580c;
+    }
+    [data-theme="light"] .gcs-robux-pill-tag.tag-roblox_internal strong {
+      color: #059669;
+    }
+
+    .gcs-title-sub-robux {
+      font-size: 0.74rem;
+      font-weight: 700;
+      margin-top: 3px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      letter-spacing: -0.2px;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+    }
+    .gcs-title-sub-robux.sub-roblox_user {
+      color: #38bdf8;
+    }
+    .gcs-title-sub-robux.sub-roblox_giftcard {
+      color: #fb923c;
+    }
+    .gcs-title-sub-robux.sub-roblox_internal {
+      color: #34d399;
+    }
+
+    /* ─── Modal Popup Canal de WhatsApp ──────────────────────────────────────── */
+    .wa-popup-badge-icon {
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+      background: #25d366;
+      color: #ffffff;
+      font-size: 2.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 14px;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+      animation: pulseGreen 2.4s infinite ease-in-out;
+    }
+    @keyframes pulseGreen {
+      0%, 100% { transform: scale(1); box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35); }
+      50% { transform: scale(1.05); box-shadow: 0 12px 28px rgba(37, 211, 102, 0.5); }
+    }
+    .wa-popup-pill {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      color: #25d366;
+      background: rgba(37, 211, 102, 0.12);
+      border: 1px solid rgba(37, 211, 102, 0.28);
+      padding: 4px 12px;
+      border-radius: 99px;
+      margin-bottom: 10px;
+    }
+    .wa-popup-title {
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--text-main);
+      letter-spacing: -0.3px;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+    .wa-popup-desc {
+      font-size: 0.88rem;
+      color: var(--text-sub);
+      line-height: 1.45;
+      margin-bottom: 16px;
+    }
+    .wa-popup-perks {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-bottom: 18px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .wa-perk-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: var(--text-main);
+      font-weight: 600;
+    }
+    .wa-perk-item i {
+      color: #25d366;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+    }
+    .btn-join-channel {
+      width: 100%;
+      padding: 13px;
+      border-radius: 14px;
+      background: #25d366;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+      margin-bottom: 10px;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-join-channel:hover {
+      background: #20ba5a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+    }
+    .btn-dismiss-channel {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 6px;
+      transition: color 0.2s ease;
+    }
+    .btn-dismiss-channel:hover {
+      color: var(--text-main);
+      text-decoration: underline;
+    }
+
+    /* ─── Estilos de Ofertas y Precios Tachados ───────────────────────────────── */
+    .gcs-offer-tag {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 5;
+      background: #ff334b;
+      color: #ffffff;
+      font-size: 0.68rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      box-shadow: 0 2px 8px rgba(255, 51, 75, 0.4);
+      animation: tagPulse 2s infinite ease-in-out;
+    }
+    @keyframes tagPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.9; transform: scale(1.05); }
+    }
+    .badge-oferta {
+      background: rgba(255, 51, 75, 0.15) !important;
+      color: #ff334b !important;
+      border: 1px solid rgba(255, 51, 75, 0.35) !important;
+      font-weight: 800 !important;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .price-values-wrap {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .price-bs-old {
+      text-decoration: line-through;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      font-weight: 600;
+      opacity: 0.78;
+    }
+    .is-offer-price {
+      color: #ff7a00 !important;
+      font-weight: 900 !important;
+      text-shadow: 0 0 10px rgba(255, 122, 0, 0.2);
+    }
+    .pkg-prices.has-offer {
+      border-color: rgba(255, 122, 0, 0.3);
+      background: rgba(255, 122, 0, 0.04);
+    }
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-6px); }
+      40%, 80% { transform: translateX(6px); }
     }
 
     /* ─── Estilos Exclusivos Modal Zinli & Cotizador ────────────────────────── */
@@ -1615,30 +2103,23 @@
         gap: 10px;
       }
       .package-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+        gap: 5px;
       }
       .package-card {
-        padding: 12px 10px;
-        border-radius: 14px;
+        padding: 6px 12px;
+        border-radius: 9px;
+        gap: 10px;
       }
-      .pkg-name {
-        font-size: 0.88rem;
-        min-height: 2.6em;
+      .pkg-list-name {
+        font-size: 0.92rem;
       }
-      .price-bs-val {
-        font-size: 1.08rem;
+      .pkg-list-price {
+        font-size: 1.02rem;
       }
       .btn-buy-wa {
-        padding: 8px 6px;
-        font-size: 0.78rem;
-        border-radius: 8px;
-      }
-      .btn-copy-info {
-        width: 34px;
-        height: 34px;
-        font-size: 1rem;
-        border-radius: 8px;
+        padding: 5px 12px;
+        font-size: 0.76rem;
+        border-radius: 7px;
       }
       .floating-wa {
         width: 48px;
@@ -1714,35 +2195,40 @@
         border-radius: 14px;
       }
       .package-grid {
-        gap: 8px;
+        gap: 5px;
       }
       .package-card {
-        padding: 10px 8px;
-        border-radius: 12px;
+        padding: 6px 10px;
+        gap: 6px;
+        flex-wrap: wrap;
+        border-radius: 9px;
       }
-      .pkg-name {
-        font-size: 0.84rem;
-        min-height: 2.4em;
-        margin-bottom: 6px;
+      .pkg-list-left {
+        width: 100%;
       }
-      .pkg-prices {
-        padding: 6px 8px;
-        margin-bottom: 8px;
+      .pkg-list-name-wrap {
+        width: 100%;
+        justify-content: space-between;
       }
-      .price-bs-val {
+      .pkg-list-name {
+        font-size: 0.88rem;
+      }
+      .pkg-list-right {
+        width: 100%;
+        justify-content: space-between;
+        padding-top: 5px;
+        border-top: 1px solid var(--border);
+      }
+      .pkg-list-price-wrap {
+        align-items: flex-start;
+      }
+      .pkg-list-price {
         font-size: 0.98rem;
       }
-      .price-bs-label {
-        font-size: 0.65rem;
-      }
       .btn-buy-wa {
-        padding: 7px 4px;
+        padding: 4px 10px;
         font-size: 0.74rem;
-      }
-      .btn-copy-info {
-        width: 30px;
-        height: 30px;
-        font-size: 0.9rem;
+        border-radius: 6px;
       }
     }
 
@@ -1760,10 +2246,6 @@
   </style>
 </head>
 <body>
-
-  <!-- Luces decorativas gamer de fondo -->
-  <div class="bg-glow-1"></div>
-  <div class="bg-glow-2"></div>
 
   <!-- ─── Header & Barra de Navegación ────────────────────────────────────── -->
   <header>
@@ -2039,6 +2521,53 @@
     </div>
   </div>
 
+  <!-- ─── POPUP CANAL OFICIAL DE WHATSAPP AL ENTRAR ──────────────────────────── -->
+  <div class="modal-overlay" id="waChannelModal">
+    <div class="modal-dialog wa-channel-dialog" style="max-width: 460px; text-align: center; padding: 28px 22px;">
+      <button class="modal-close-btn" id="waChannelCloseBtn" aria-label="Cerrar ventana">&times;</button>
+      
+      <div class="wa-popup-badge-icon">
+        <i class='bx bxl-whatsapp'></i>
+      </div>
+
+      <div class="wa-popup-pill">COMUNIDAD OFICIAL RELOAD XPRESS</div>
+      <h3 class="wa-popup-title">¡Únete a Nuestro Canal de WhatsApp!</h3>
+      <p class="wa-popup-desc">
+        Recibe <strong>ofertas relámpago</strong>, bajadas de precio, <strong>actualizaciones de tasa en vivo</strong> y avisos de stock exclusivo antes que nadie.
+      </p>
+
+      <div class="wa-popup-perks">
+        <div class="wa-perk-item"><i class='bx bxs-check-circle'></i> Descuentos y ofertas exclusivas para miembros</div>
+        <div class="wa-perk-item"><i class='bx bxs-check-circle'></i> Alertas inmediatas de stock de Robux y Pines</div>
+        <div class="wa-perk-item"><i class='bx bxs-check-circle'></i> 100% libre de spam (Solo novedades oficiales)</div>
+      </div>
+
+      <a href="https://whatsapp.com/channel/0029Va8X2fL23n3Zg" id="btnJoinWaChannel" target="_blank" rel="noopener noreferrer" class="btn-join-channel">
+        <i class='bx bxl-whatsapp' style="font-size: 1.35rem;"></i>
+        <span>Unirme al Canal de WhatsApp</span>
+      </a>
+
+      <div>
+        <button type="button" class="btn-dismiss-channel" id="btnDismissWaChannel">
+          Continuar al Catálogo de Juegos
+        </button>
+      </div>
+    </div>
+  <!-- ─── MODAL LIGHTBOX PARA VISUALIZAR FOTO DE MUESTRA ────────────────────── -->
+  <div class="modal-overlay" id="imageLightboxModal" style="z-index: 10000;">
+    <div class="modal-dialog" style="max-width: 640px; padding: 20px; text-align: center;">
+      <button class="modal-close-btn" id="imageLightboxCloseBtn" aria-label="Cerrar vista">&times;</button>
+      <div style="font-weight: 800; font-size: 1rem; color: var(--text-main); margin-bottom: 12px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+        <i class='bx bx-user-pin' style="color: #0284c7; font-size: 1.3rem;"></i>
+        <span>Ejemplo: Dónde ubicar tu @User en Roblox</span>
+      </div>
+      <img id="imageLightboxImg" src="img/MuestraUser.jpg" alt="Muestra de @User en Roblox" style="max-width: 100%; max-height: 65vh; border-radius: 12px; object-fit: contain; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid var(--border);" onerror="this.src='catalogo/img/MuestraUser.jpg';" />
+      <p style="font-size: 0.82rem; color: var(--text-sub); margin-top: 10px; line-height: 1.4;">
+        🔍 Fíjate en el texto que empieza con <strong>@</strong> debajo o al lado de tu nombre en tu perfil. Ese es el usuario exacto que debes pasarnos.
+      </p>
+    </div>
+  </div>
+
   <!-- ─── Botón Flotante de WhatsApp ──────────────────────────────────────── -->
   <a href="#" id="floatingWaBtn" class="floating-wa" target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp">
     <span class="floating-tooltip">¡Escríbenos por WhatsApp!</span>
@@ -2099,16 +2628,43 @@
 
     // 2. Base de Conocimiento de Métodos de Recarga (con requisito de Correo para Roblox)
     const GAME_METHODS_INFO = {
-      'roblox': {
-        methodName: 'Entrega por Correo / Código Digital',
-        badge: 'Código / Envío al Correo',
+      'roblox_user': {
+        methodName: 'Recarga Directa Vía Roblox Plus (Sin Contraseña)',
+        badge: 'Vía @User (Roblox Plus)',
         steps: [
-          { title: 'Revisa tu Moneda en Roblox (Debe ser en Dólares $ USD)', desc: '⚠️ Requisito indispensable: Asegúrate de que la moneda de tu cuenta de Roblox esté configurada en Dólares ($ USD). Si tu cuenta tiene otra moneda diferente (pesos, euros, etc.), infórmanoslo antes de realizar el pago.' },
-          { title: 'Elige tu Paquete de Robux', desc: 'Pines digitales oficiales disponibles desde 50 y 100 Robux hasta paquetes grandes de miles de Robux.' },
-          { title: 'Envíanos tu Correo Electrónico', desc: '⚠️ Muy importante: Al escribirnos por WhatsApp indícanos tu correo electrónico donde deseas que te enviemos la gift card y el código.' },
-          { title: 'Realiza tu Pago', desc: 'Pagas cómodamente en Bolívares (Pago Móvil) o en divisas (Binance USDT).' },
-          { title: 'Grabación Continua Obligatoria para Garantía', desc: '🛡️ Política de Garantía estricta: La única forma de dar garantía ante un código con error es grabando la pantalla completa en video continuo (sin cortes ni pausas) desde el momento exacto en que te indicamos que el código fue enviado hasta su intento de canje en roblox.com/redeem.' },
-          { title: 'Canje Oficial en roblox.com/redeem', desc: 'Ingresas a la web oficial de canje de Roblox (roblox.com/redeem), pegas tu código y tus Robux se acreditan de inmediato a tu saldo.' }
+          { title: '⭐ Tu @User de Roblox (Sin Contraseña)', desc: 'Solo necesitamos tu Nombre de Usuario real con @ (el que ves en tu avatar o perfil). Jamás te pediremos contraseñas.' },
+          { title: '⚡ Entrega vía Roblox Plus y Aceptación Obligatoria', desc: 'Los Robux se envían vía Roblox Plus. Al llegar la solicitud a tu cuenta, debes ACEPTAR los Robux para que se sumen a tu saldo.' },
+          { title: '👨‍👩‍👧 Permiso Parental Obligatorio (< 16 años)', desc: 'Si eres menor de 16 años, requerirás autorización de un adulto (padre o representante) ya sea por correo parental o presencial (verificación facial o PIN).' },
+          { title: '🚨 Sin Reembolso si no puedes Aceptar los Robux', desc: 'Si no puedes o no sabes aceptar los Robux, o tu cuenta tiene restricciones, NO HAY REEMBOLSO bajo ningún concepto. La recarga no tiene devolución.' }
+        ]
+      },
+      'roblox_giftcard': {
+        methodName: 'Pines Digitales Oficiales (roblox.com/redeem)',
+        badge: 'Código PIN Oficial',
+        steps: [
+          { title: '💵 Requisito: Cuenta en Dólares ($ USD)', desc: 'Para canjear pines en roblox.com/redeem tu cuenta de Roblox DEBE estar configurada en USD ($). Si tu cuenta tiene otra moneda, te recomendamos usar Roblox Vía User.' },
+          { title: '📹 Garantía Estricta con Grabación Continua', desc: 'Para validar la garantía, debes grabar tu pantalla de forma continua y sin cortes desde el momento en que te enviamos el código PIN hasta su canje en la web oficial.' },
+          { title: '⚡ Entrega Inmediata del PIN', desc: 'Recibes tu código oficial de 10 a 16 dígitos al instante por WhatsApp o correo tras confirmar el pago.' },
+          { title: '🎮 Canje Oficial en roblox.com/redeem', desc: 'Ingresas a la página oficial de canje de Roblox, pegas tu PIN y disfrutas de tus Robux al momento.' }
+        ]
+      },
+      'roblox_internal': {
+        methodName: 'Recarga Oficial en Tienda con Tarjeta Virtual',
+        badge: 'Recarga Interna',
+        steps: [
+          { title: '🔑 Usuario y Contraseña de tu Cuenta', desc: 'Se necesita el usuario y contraseña para entrar a la cuenta y comprar los Robux oficiales en la tienda de Roblox (más código 2FA si lo tienes activo).' },
+          { title: '💳 Compra Oficial Directa en la Tienda', desc: 'Compramos tus Robux o membresía Premium directamente en la tienda oficial de Roblox con tarjeta bancaria internacional.' },
+          { title: '🛡️ 100% Legal, Seguro y Privado', desc: 'Facturación oficial directa con Roblox Corporation. Cero riesgo para tu cuenta y cerramos sesión de inmediato al terminar la recarga.' },
+          { title: '⭐ Paquetes Oficiales y Premium', desc: 'Accede a paquetes oficiales desde 40 hasta 10,000 Robux y suscripciones Premium al mejor precio en Bs.' }
+        ]
+      },
+      'roblox': {
+        methodName: 'Recargas y Pines Oficiales de Roblox',
+        badge: 'Roblox Oficial',
+        steps: [
+          { title: '⭐ Vía User (Directa)', desc: 'Sin contraseña para cualquier país o moneda, solo con tu @User.' },
+          { title: '⚡ Pines Digitales (USD)', desc: 'Código oficial para canje en roblox.com/redeem en cuentas en dólares.' },
+          { title: '💳 Recarga Interna', desc: 'Compra directa con tarjeta virtual en la tienda oficial.' }
         ]
       },
       'freefire': {
@@ -2280,6 +2836,56 @@
     const modalGameMethod = document.getElementById('modalGameMethod');
     const modalStepsList = document.getElementById('modalStepsList');
 
+    // Popup Canal de WhatsApp
+    const WA_CHANNEL_URL = 'https://whatsapp.com/channel/0029Va8X2fL23n3Zg';
+    const waChannelModal = document.getElementById('waChannelModal');
+    const waChannelCloseBtn = document.getElementById('waChannelCloseBtn');
+    const btnDismissWaChannel = document.getElementById('btnDismissWaChannel');
+    const btnJoinWaChannel = document.getElementById('btnJoinWaChannel');
+
+    let robloxConsentGiven = false;
+    let robloxMethodFilter = 'all'; // 'all', 'user', 'code'
+
+    window.setRobloxCatalogFilter = function(filter) {
+      robloxMethodFilter = filter;
+      renderPackagesList();
+    };
+    function initWaChannelPopup() {
+      try {
+        const hasSeen = sessionStorage.getItem('rc_wa_channel_seen');
+        if (!hasSeen) {
+          setTimeout(() => {
+            if (waChannelModal) {
+              waChannelModal.classList.add('open');
+            }
+          }, 800);
+        }
+      } catch (e) {}
+    }
+
+    function closeWaChannelPopup() {
+      if (waChannelModal) {
+        waChannelModal.classList.remove('open');
+        try {
+          sessionStorage.setItem('rc_wa_channel_seen', '1');
+        } catch (e) {}
+      }
+    }
+
+    if (waChannelCloseBtn) waChannelCloseBtn.addEventListener('click', closeWaChannelPopup);
+    if (btnDismissWaChannel) btnDismissWaChannel.addEventListener('click', closeWaChannelPopup);
+    if (btnJoinWaChannel) {
+      btnJoinWaChannel.href = WA_CHANNEL_URL;
+      btnJoinWaChannel.addEventListener('click', () => {
+        closeWaChannelPopup();
+      });
+    }
+    if (waChannelModal) {
+      waChannelModal.addEventListener('click', (e) => {
+        if (e.target === waChannelModal) closeWaChannelPopup();
+      });
+    }
+
     // Configurar enlaces directos iniciales
     const initialWaMsg = encodeURIComponent("¡Hola Reload Xpress! 👋 Quiero consultar sobre una recarga.");
     directWaBtn.href = `https://wa.me/${WA_NUMBER}?text=${initialWaMsg}`;
@@ -2380,6 +2986,7 @@
         loadingState.style.display = 'none';
         renderShowcase();
         showShowcaseView();
+        initWaChannelPopup();
 
       } catch (err) {
         console.error('Error al cargar catálogo:', err);
@@ -2403,10 +3010,16 @@
           </div>
         `;
       }
-      if (game.game_key === 'roblox') {
+      if (game.game_key === 'roblox' || game.game_key.startsWith('roblox_')) {
+        let overlayGlow = 'rgba(0,0,0,0.15)';
+        if (game.game_key === 'roblox_user') overlayGlow = 'radial-gradient(circle at 50% 35%, rgba(2, 132, 199, 0.28) 0%, rgba(0,0,0,0.65) 100%)';
+        if (game.game_key === 'roblox_giftcard') overlayGlow = 'radial-gradient(circle at 50% 35%, rgba(234, 88, 12, 0.28) 0%, rgba(0,0,0,0.65) 100%)';
+        if (game.game_key === 'roblox_internal') overlayGlow = 'radial-gradient(circle at 50% 35%, rgba(16, 185, 129, 0.28) 0%, rgba(0,0,0,0.65) 100%)';
+
         return `
-          <div class="gcs-brand-cover gcs-roblox-bg">
-            <img src="img/Roblox_Logo_2022.jpg" alt="Roblox" class="gcs-full-cover" style="object-fit:cover; width:100%; height:100%;" />
+          <div class="gcs-brand-cover gcs-roblox-bg" style="position:relative; width:100%; height:100%;">
+            <img src="img/Roblox_Logo_2022.jpg" alt="${escapeHtml(game.label)}" class="gcs-full-cover" style="object-fit:cover; width:100%; height:100%;" />
+            <div style="position:absolute; inset:0; background:${overlayGlow}; pointer-events:none;"></div>
           </div>
         `;
       }
@@ -2460,12 +3073,23 @@
       let html = '';
 
       allGames.forEach(game => {
+        const hasOffers = Boolean(game.has_offers);
         html += `
           <div class="game-card-showcase" data-game="${game.game_key}" title="Ver método y paquetes de ${escapeHtml(game.label)}">
-            <!-- Badge 📄 en la esquina superior izquierda como en la foto -->
+            <!-- Badge 📄 en la esquina superior izquierda -->
             <div class="gcs-top-doc-badge">
               <i class='bx bx-note'></i>
             </div>
+
+            <!-- Badge de Ofertas si tiene promociones activas -->
+            ${hasOffers ? `<div class="gcs-offer-tag"><i class='bx bxs-hot'></i> OFERTA</div>` : ''}
+
+            <!-- Badge Desde X Robux en la misma card con el logo -->
+            ${game.min_robux ? `
+              <div class="gcs-robux-pill-tag tag-${game.game_key}">
+                <i class='bx bx-cube-alt'></i> Desde <strong>${game.min_robux} Robux</strong>
+              </div>
+            ` : ''}
 
             <!-- Portada visual completa -->
             <div class="gcs-cover-wrapper">
@@ -2475,6 +3099,11 @@
             <!-- Barra inferior con degradado y texto limpio -->
             <div class="gcs-bottom-bar">
               <div class="gcs-title-text">${escapeHtml(game.label)}</div>
+              ${game.min_robux ? `
+                <div class="gcs-title-sub-robux sub-${game.game_key}">
+                  <i class='bx bx-cube-alt'></i> Desde <strong>${game.min_robux} Robux</strong>
+                </div>
+              ` : ''}
             </div>
           </div>
         `;
@@ -2759,7 +3388,7 @@
         modalGameAvatar.textContent = game.icon || '🎮';
       }
 
-      const hasNoPackages = !game.packages || game.packages.length === 0;
+      const hasNoPackages = (!game.packages || game.packages.length === 0) && gameKey !== 'roblox_user' && gameKey !== 'roblox_internal';
 
       if (hasNoPackages) {
         modalGameTitle.textContent = game.label;
@@ -2797,21 +3426,146 @@
 
         // Rellenar pasos
         let stepsHtml = '';
-        if (gameKey === 'roblox') {
+        if (gameKey === 'roblox_user') {
           stepsHtml += `
-            <div style="background: rgba(239, 68, 68, 0.08); border: 1.5px solid rgba(239, 68, 68, 0.35); border-radius: 12px; padding: 14px 16px; margin-bottom: 16px; display: flex; gap: 12px; align-items: flex-start; text-align: left;">
-              <i class='bx bxs-error-circle' style="font-size: 1.6rem; color: #ef4444; flex-shrink: 0; margin-top: 2px;"></i>
-              <div style="font-size: 0.82rem; line-height: 1.45; color: var(--text-main);">
-                <strong style="color: #ef4444; font-size: 0.92rem; display: block; margin-bottom: 6px; font-weight: 800;">
-                  ⚠️ CONDICIONES OBLIGATORIAS ANTES DE COMPRAR
-                </strong>
-                <p style="margin: 0 0 8px 0;">
-                  💵 <strong>Moneda en Dólares ($ USD):</strong> Revisa que la moneda de tu cuenta de Roblox esté en dólares. Si tu cuenta muestra otra moneda, <strong>infórmanoslo antes de realizar el pago</strong>.
+            <!-- 1. Explicación de Roblox Plus y Aceptación de Robux -->
+            <div class="roblox-user-alert-box roblox-alert-plus">
+              <i class='bx bxs-bolt-circle' style="font-size: 1.6rem; color: #0284c7; flex-shrink: 0; margin-top: 2px;"></i>
+              <div style="font-size: 0.84rem; line-height: 1.48; color: var(--text-main);">
+                <strong>⚡ ¿CÓMO FUNCIONA ROBLOX PLUS (VÍA USER)?</strong>
+                <p style="margin: 0 0 6px 0;">
+                  Recarga directa y 100% legal a tu avatar sin contraseñas ni correos confidenciales. Funciona para cuentas de <strong>cualquier país y en cualquier divisa</strong>.
                 </p>
-                <p style="margin: 0;">
-                  📹 <strong>Garantía Estricta:</strong> La <strong>única forma</strong> de validar garantía por un código defectuoso es <strong>grabando la pantalla en video continuo (sin cortes ni ediciones)</strong> desde el momento exacto en que te notificamos el envío del código hasta su intento de canje en <a href="https://www.roblox.com/redeem" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 700; text-decoration: underline;">roblox.com/redeem</a>.
+                <p style="margin: 0 0 4px 0;">
+                  🔔 <strong>Debes aceptar los Robux:</strong> Al despachar tu pedido mediante el sistema de Roblox Plus, te llegará la solicitud a tu cuenta de Roblox y <u>debes ACEPTAR la entrega</u> para que los Robux se sumen a tu saldo.
+                </p>
+                <p style="margin: 0; font-weight: 700; color: #0284c7;">
+                  ✨ Denominaciones disponibles en vivo desde ${game.min_robux || 10} Robux.
                 </p>
               </div>
+            </div>
+
+            <!-- 2. Advertencia CRÍTICA de No Reembolso -->
+            <div class="roblox-user-alert-box roblox-alert-norefund">
+              <i class='bx bxs-error-circle' style="font-size: 1.7rem; color: #ef4444; flex-shrink: 0; margin-top: 2px;"></i>
+              <div style="font-size: 0.84rem; line-height: 1.48; color: var(--text-main);">
+                <strong>🚨 MUY IMPORTANTE: SI NO PUEDES ACEPTAR LOS ROBUX NO HAY REEMBOLSO</strong>
+                <p style="margin: 0 0 4px 0;">
+                  Una vez que enviamos los Robux a tu usuario, el pedido queda despachado de forma irreversible.
+                </p>
+                <p style="margin: 0; font-weight: 700; color: #ef4444;">
+                  Si por restricciones de tu cuenta, falta de permiso de tus padres o cualquier inconveniente en tu perfil NO puedes aceptar los Robux, <u>NO SE REALIZARÁN REEMBOLSOS NI DEVOLUCIONES DE DINERO</u> bajo ningún motivo. Asegúrate de estar listo para aceptarlos antes de comprar.
+                </p>
+              </div>
+            </div>
+
+            <!-- 3. Cómo encontrar tu @User + Foto de Muestra -->
+            <div class="roblox-sample-card">
+              <div class="roblox-sample-header">
+                <i class='bx bxs-user-detail' style="font-size: 1.25rem;"></i>
+                <span>👤 CÓMO ENCONTRAR TU NOMBRE DE USUARIO EXACTO</span>
+              </div>
+              <p style="font-size: 0.83rem; margin: 0 0 10px 0; line-height: 1.45; color: var(--text-main);">
+                Para hacer la recarga necesitamos tu <strong>Nombre de Usuario</strong> real de Roblox (el que puedes encontrar cuando ves tu avatar o desde tu perfil).
+                Normalmente tiene un <strong>@</strong> y seguido el usuario (por ejemplo: <strong>@MiUsuario</strong>). <u>No nos envíes tu apodo o Display Name</u>.
+              </p>
+
+              <div class="roblox-sample-img-container" onclick="openSampleLightbox('img/MuestraUser.jpg')">
+                <img src="img/MuestraUser.jpg" alt="Ejemplo de dónde ver tu @User en Roblox" onerror="this.src='catalogo/img/MuestraUser.jpg';" />
+                <div class="roblox-sample-overlay">
+                  <i class='bx bx-zoom-in'></i> Ver foto de ejemplo en grande
+                </div>
+              </div>
+
+              <div class="roblox-sample-footer">
+                👆 <strong>Foto de ejemplo:</strong> Abre tu perfil o avatar de Roblox y ubica el texto con <strong>@</strong> tal como se muestra en la foto. Ese es el que debes escribirnos.
+              </div>
+            </div>
+
+            <!-- 4. Control Parental para Menores de 16 Años -->
+            <div class="roblox-user-alert-box roblox-alert-parental">
+              <i class='bx bxs-group' style="font-size: 1.6rem; color: #f59e0b; flex-shrink: 0; margin-top: 2px;"></i>
+              <div style="font-size: 0.84rem; line-height: 1.48; color: var(--text-main);">
+                <strong>👨‍👩‍👧 MENORES DE 16 AÑOS: PERMISO DE UN ADULTO OBLIGATORIO</strong>
+                <p style="margin: 0 0 6px 0;">
+                  Al llegar los Robux a tu cuenta, <strong>si eres menor de 16 años deberás pedir permiso a un adulto / representante legal</strong> para poder autorizar la entrega:
+                </p>
+                <div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 4px;">
+                  <div style="display: flex; align-items: flex-start; gap: 6px;">
+                    <span>📧</span>
+                    <span><strong>Vía Correo Parental:</strong> Aprobación enviada al correo electrónico del padre o tutor vinculado a la cuenta.</span>
+                  </div>
+                  <div style="display: flex; align-items: flex-start; gap: 6px;">
+                    <span>🤳</span>
+                    <span><strong>En Persona (Verificación Facial o PIN):</strong> Donde el padre o representante debe poner su cara (verificación facial oficial de Roblox) o crear un PIN parental para darle permiso a su hijo de recibir los Robux.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 5. Casilla de Confirmación Obligatoria -->
+            <div class="roblox-consent-box" id="robloxConsentBox">
+              <input type="checkbox" id="robloxConsentCheck" />
+              <label for="robloxConsentCheck" class="roblox-consent-label">
+                <strong>He leído y acepto las condiciones de Roblox Vía User:</strong>
+                <span>Confirmo que aceptaré los Robux vía Roblox Plus, que si soy menor de 16 años tengo permiso de un adulto (vía correo o verificación facial/PIN) y que <u>SI NO PUEDO ACEPTAR LOS ROBUX NO HAY REEMBOLSO</u>. Entregaré mi @User exacto.</span>
+              </label>
+            </div>
+          `;
+        } else if (gameKey === 'roblox_giftcard') {
+          stepsHtml += `
+            <div style="background: rgba(234, 88, 12, 0.12); border: 1.5px solid rgba(234, 88, 12, 0.45); border-radius: 12px; padding: 14px 16px; margin-bottom: 12px; display: flex; gap: 12px; align-items: flex-start; text-align: left;">
+              <i class='bx bxs-barcode' style="font-size: 1.6rem; color: #ea580c; flex-shrink: 0; margin-top: 2px;"></i>
+              <div style="font-size: 0.83rem; line-height: 1.45; color: var(--text-main);">
+                <strong style="color: #ea580c; font-size: 0.9rem; display: block; margin-bottom: 3px; font-weight: 800;">
+                  ⚡ AVISO: PINES DIGITALES OFICIALES (USD)
+                </strong>
+                <p style="margin: 0 0 4px 0;">
+                  💵 <strong>Cuenta en USD ($):</strong> Para canjear pines en <a href="https://www.roblox.com/redeem" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 700; text-decoration: underline;">roblox.com/redeem</a> tu cuenta DEBE estar en dólares ($ USD). Si tu cuenta tiene otra moneda, por favor recarga con <strong>Roblox Vía User</strong>.
+                </p>
+                <p style="margin: 0 0 4px 0;">
+                  📹 <strong>Garantía Estricta:</strong> Grabación continua de pantalla sin cortes desde el momento en que te enviamos el PIN hasta el canje oficial.
+                </p>
+                <p style="margin: 0; font-weight: 700; color: #ea580c;">
+                  🎫 Denominaciones disponibles en stock desde ${game.min_robux || 275} Robux.
+                </p>
+              </div>
+            </div>
+
+            <div class="roblox-consent-box" id="robloxConsentBox">
+              <input type="checkbox" id="robloxConsentCheck" />
+              <label for="robloxConsentCheck" class="roblox-consent-label">
+                <strong>He leído y acepto las condiciones de Giftcard:</strong>
+                <span>Confirmo que mi cuenta de Roblox está en dólares ($ USD) y grabaré pantalla para hacer válida mi garantía.</span>
+              </label>
+            </div>
+          `;
+        } else if (gameKey === 'roblox_internal') {
+          stepsHtml += `
+            <div style="background: rgba(16, 185, 129, 0.12); border: 1.5px solid rgba(16, 185, 129, 0.45); border-radius: 12px; padding: 14px 16px; margin-bottom: 12px; display: flex; gap: 12px; align-items: flex-start; text-align: left;">
+              <i class='bx bxs-key' style="font-size: 1.7rem; color: #10b981; flex-shrink: 0; margin-top: 2px;"></i>
+              <div style="font-size: 0.83rem; line-height: 1.45; color: var(--text-main);">
+                <strong style="color: #10b981; font-size: 0.95rem; display: block; margin-bottom: 4px; font-weight: 800;">
+                  🔑 REQUISITO OBLIGATORIO: USUARIO Y CONTRASEÑA
+                </strong>
+                <p style="margin: 0 0 5px 0;">
+                  Para realizar la compra oficial en la tienda de Roblox con tarjeta bancaria internacional prepagada, <strong>se necesita el Usuario y la Contraseña de tu cuenta</strong> para entrar a procesar el pedido (y código 2FA si lo tienes activado).
+                </p>
+                <p style="margin: 0 0 5px 0;">
+                  🛡️ <strong>100% Seguro y Privado:</strong> Compra directa y legal con Roblox Corporation. No guardamos tus datos y cerramos sesión inmediatamente al finalizar la recarga.
+                </p>
+                <p style="margin: 0; font-weight: 700; color: #10b981;">
+                  💎 Paquetes oficiales y Premium desde ${game.min_robux || 40} Robux.
+                </p>
+              </div>
+            </div>
+
+            <div class="roblox-consent-box" id="robloxConsentBox">
+              <input type="checkbox" id="robloxConsentCheck" />
+              <label for="robloxConsentCheck" class="roblox-consent-label">
+                <strong>He leído y acepto: Se necesita Usuario y Contraseña para entrar a mi cuenta:</strong>
+                <span>Entiendo que suministraré mi usuario y contraseña (y código 2FA si aplica) para que ingresen a mi cuenta de Roblox a realizar la compra oficial.</span>
+              </label>
             </div>
           `;
         }
@@ -2829,16 +3583,76 @@
         });
         modalStepsList.innerHTML = stepsHtml;
 
-        modalProceedBtn.innerHTML = `
-          <span>¡Entendido! Ver Precios y Paquetes</span>
-          <i class='bx bx-right-arrow-alt' style="font-size:1.25rem"></i>
-        `;
-        modalProceedBtn.onclick = () => {
-          closeMethodModal();
-          if (activeGameKey) {
-            showPackagesForGame(activeGameKey);
+        const requiresConsent = (gameKey === 'roblox_user' || gameKey === 'roblox_giftcard' || gameKey === 'roblox_internal');
+        if (requiresConsent) {
+          modalProceedBtn.disabled = true;
+          modalProceedBtn.classList.add('btn-disabled');
+          modalProceedBtn.innerHTML = `
+            <i class='bx bx-lock-alt' style="font-size:1.25rem;"></i>
+            <span>Marca la casilla de confirmación arriba para continuar</span>
+          `;
+
+          const chk = document.getElementById('robloxConsentCheck');
+          const box = document.getElementById('robloxConsentBox');
+          if (chk) {
+            chk.addEventListener('change', () => {
+              if (chk.checked) {
+                modalProceedBtn.disabled = false;
+                modalProceedBtn.classList.remove('btn-disabled');
+                const actionText = (game.packages && game.packages.length > 0)
+                  ? `Ver Precios de ${escapeHtml(game.label)}`
+                  : `Pedir ${escapeHtml(game.label)} por WhatsApp`;
+                modalProceedBtn.innerHTML = `
+                  <span>¡Condiciones Aceptadas! ${actionText}</span>
+                  <i class='bx bx-right-arrow-alt' style="font-size:1.25rem"></i>
+                `;
+                if (box) box.classList.add('is-checked');
+              } else {
+                modalProceedBtn.disabled = true;
+                modalProceedBtn.classList.add('btn-disabled');
+                modalProceedBtn.innerHTML = `
+                  <i class='bx bx-lock-alt' style="font-size:1.25rem;"></i>
+                  <span>Marca la casilla de confirmación arriba para continuar</span>
+                `;
+                if (box) box.classList.remove('is-checked');
+              }
+            });
           }
-        };
+
+          modalProceedBtn.onclick = (e) => {
+            const chkCheck = document.getElementById('robloxConsentCheck');
+            if (!chkCheck || !chkCheck.checked) {
+              if (e) e.preventDefault();
+              showToast('⚠️ Debes confirmar la casilla de indicaciones para continuar');
+              if (box) {
+                box.style.animation = 'shake 0.4s ease';
+                setTimeout(() => { if (box) box.style.animation = ''; }, 400);
+              }
+              return;
+            }
+            closeMethodModal();
+            if (game.packages && game.packages.length > 0) {
+              showPackagesForGame(gameKey);
+            } else {
+              const waMsg = encodeURIComponent(`¡Hola Reload Xpress! 👋 Deseo solicitar recarga de ${game.label}.`);
+              window.open(`https://wa.me/${WA_NUMBER}?text=${waMsg}`, '_blank', 'noopener,noreferrer');
+            }
+          };
+        } else {
+          modalProceedBtn.disabled = false;
+          modalProceedBtn.classList.remove('btn-disabled');
+          const minText = game.min_robux ? ` (Desde ${game.min_robux} Robux)` : '';
+          modalProceedBtn.innerHTML = `
+            <span>¡Entendido! Ver Precios y Paquetes${minText}</span>
+            <i class='bx bx-right-arrow-alt' style="font-size:1.25rem"></i>
+          `;
+          modalProceedBtn.onclick = () => {
+            closeMethodModal();
+            if (activeGameKey) {
+              showPackagesForGame(activeGameKey);
+            }
+          };
+        }
       }
 
       // Ajustar aviso de seguridad según el tipo de servicio
@@ -2849,10 +3663,20 @@
             <i class='bx bxs-shield-plus' style="font-size:1.15rem; color:#22c55e;"></i>
             <span>🔒 Acceso 100% Confidencial: Solo entramos a tu Avatar ID para cargar tus AW Coins y salimos de inmediato.</span>
           `;
-        } else if (gameKey === 'roblox') {
+        } else if (gameKey === 'roblox_user') {
           modalSecNote.innerHTML = `
-            <i class='bx bxs-video-recording' style="font-size:1.2rem; color:#ef4444;"></i>
-            <span><strong>Garantía Roblox:</strong> Requiere video continuo desde el aviso de envío. Cuenta configurada en USD $.</span>
+            <i class='bx bxs-shield-quarter' style="font-size:1.2rem; color:#0284c7;"></i>
+            <span><strong>Seguridad Vía User:</strong> Recarga directa a tu avatar sin contraseñas ni correos. Funciona para cuentas de cualquier país o divisa.</span>
+          `;
+        } else if (gameKey === 'roblox_giftcard') {
+          modalSecNote.innerHTML = `
+            <i class='bx bxs-shield-check' style="font-size:1.2rem; color:#ea580c;"></i>
+            <span><strong>Garantía Giftcard:</strong> Pines 100% oficiales de Roblox Corporation para canje en roblox.com/redeem con cuenta en USD ($).</span>
+          `;
+        } else if (gameKey === 'roblox_internal') {
+          modalSecNote.innerHTML = `
+            <i class='bx bxs-lock-alt' style="font-size:1.2rem; color:#10b981;"></i>
+            <span><strong>Seguridad Interna:</strong> Se requiere usuario y contraseña para ingresar a la cuenta y comprar con tarjeta internacional. Cierre de sesión inmediato al culminar.</span>
           `;
         } else {
           modalSecNote.innerHTML = `
@@ -2908,7 +3732,7 @@
       if (activeGameKey) {
         openMethodModal(activeGameKey);
       } else {
-        openMethodModal(allGames[0]?.game_key || 'roblox');
+        openMethodModal(allGames[0]?.game_key || 'roblox_user');
       }
     });
 
@@ -2939,6 +3763,17 @@
           ? `<img src="${safeImg}" alt="${escapeHtml(game.label)}" class="game-section-avatar-img" onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='inline-block';" /><span style="display:none;">${escapeHtml(game.icon || '🎮')}</span>`
           : `<span>${escapeHtml(game.icon || '🎮')}</span>`;
 
+        let gameSubtitle = 'Precios sincronizados en vivo';
+        if (game.game_key === 'roblox_user') {
+          gameSubtitle = '⭐ Recarga Directa a tu Avatar sin Contraseña — Desde ' + (game.min_robux || 10) + ' Robux';
+        } else if (game.game_key === 'roblox_giftcard') {
+          gameSubtitle = '⚡ Códigos PIN Oficiales para Cuentas en USD ($) — Desde ' + (game.min_robux || 275) + ' Robux';
+        } else if (game.game_key === 'roblox_internal') {
+          gameSubtitle = '💳 Recargas Oficiales con Tarjeta Virtual en tu Cuenta — Desde ' + (game.min_robux || 40) + ' Robux';
+        } else if (game.game_key === 'roblox') {
+          gameSubtitle = '⭐ Recargas Vía User, Pines Digitales y Recarga Interna';
+        }
+
         html += `
           <div style="margin-bottom: 40px;">
             <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid var(--border);">
@@ -2948,9 +3783,7 @@
                 </div>
                 <div>
                   <h3 style="font-size:1.25rem; font-weight:800; letter-spacing:-0.3px;">${escapeHtml(game.label)}</h3>
-                  <span style="font-size:0.8rem; color:var(--text-sub);">
-                    ${game.game_key === 'roblox' ? '📧 Entrega a tu correo electrónico' : 'Precios sincronizados en vivo'}
-                  </span>
+                  <span style="font-size:0.8rem; color:var(--text-sub);">${gameSubtitle}</span>
                 </div>
               </div>
               <span style="font-size:0.78rem; font-weight:700; color:var(--primary); background:var(--accent-badge); border:1px solid var(--primary); padding:4px 12px; border-radius:99px;">
@@ -2979,75 +3812,106 @@
       }
     }
 
-    // 12. Renderizar Tarjeta Individual de Paquete (Incluye correo para Roblox)
+    // 12. Renderizar Tarjeta Individual de Paquete (Incluye ofertas y correo para Roblox)
     function renderPackageCard(game, pkg) {
       const priceBsFormatted = formatBs(pkg.price_bs);
+      const isOffer = Boolean(pkg.is_offer);
+      const regularPriceFormatted = formatBs(pkg.regular_price_bs || pkg.price_bs);
       let isOutOfStock = Boolean(pkg.is_out_of_stock);
       
       // Limpiar etiquetas de proveedores internos
       let methodLabel = pkg.method || 'Vía ID';
       methodLabel = methodLabel.replace(/\b(fazercards|bonoxs)\b/gi, '').trim();
-      if (game.game_key === 'roblox') {
-        methodLabel = 'CÓDIGO';
+
+      const isRobloxUser = (game.game_key === 'roblox_user' || (pkg.method && pkg.method.toLowerCase().includes('user')));
+      const isRobloxInternal = (game.game_key === 'roblox_internal' || (pkg.method && pkg.method.toLowerCase().includes('interno')));
+      const isRobloxGiftcard = (game.game_key === 'roblox_giftcard' || (game.game_key === 'roblox' && !isRobloxUser && !isRobloxInternal));
+
+      if (isRobloxUser) {
+        methodLabel = 'VÍA USER';
+      } else if (isRobloxInternal) {
+        methodLabel = 'RECARGA INTERNA';
+      } else if (isRobloxGiftcard) {
+        methodLabel = 'CÓDIGO (PIN)';
       } else if (methodLabel === 'Vía' || methodLabel === 'Via' || !methodLabel) {
         methodLabel = 'Vía ID';
       }
 
       // Mensaje estructurado para WhatsApp (solo en Bs)
       let emailFieldNotice = '';
-      if (game.game_key === 'roblox') {
-        emailFieldNotice = `\n📧 *Mi correo para entrega:* (Escribe tu correo aquí)`;
+      if (isRobloxUser) {
+        emailFieldNotice = `\n👤 *Mi @User de Roblox exacto:* @(Escribe tu usuario aquí)\n⚠️ *Aviso de Aceptación:* He leído y acepto que debo autorizar los Robux y que no hay reembolso si no puedo aceptarlos.\n✨ *Modalidad:* Recarga Vía User (Roblox Plus)`;
+      } else if (isRobloxInternal) {
+        emailFieldNotice = `\n👤 *Usuario / Correo de Roblox:* (Escribe tu usuario aquí)\n🔑 *Contraseña de Roblox:* (Escribe tu contraseña aquí)\n🛡️ *Código 2FA (si tienes activo):* (Estaré atento para dártelo al momento)\n💳 *Modalidad:* Recarga Interna Oficial`;
+      } else if (isRobloxGiftcard) {
+        emailFieldNotice = `\n📧 *Mi correo para entrega del PIN:* (Escribe tu correo aquí)\n📌 *Modalidad:* Código Digital PIN (Cuenta USD)`;
       } else if (game.game_key === 'avatarworld') {
         emailFieldNotice = `\n📧 *Correo de mi Avatar ID para ingresar:* (Escribe tu correo aquí)`;
       } else if (['brawlstars', 'clashroyale', 'coc'].includes(game.game_key)) {
         emailFieldNotice = `\n🏷️ *Mi Player Tag / Supercell ID:* (Escribe tu Tag aquí)`;
       }
 
+      let badgeClass = '';
+      let badgeIcon = '';
+      if (isRobloxUser) {
+        badgeClass = 'badge-roblox-user';
+        badgeIcon = "<i class='bx bxs-user-pin' style='font-size:0.9rem;'></i> ";
+      } else if (isRobloxInternal) {
+        badgeClass = 'badge-roblox-internal';
+        badgeIcon = "<i class='bx bx-credit-card' style='font-size:0.9rem;'></i> ";
+      } else if (isRobloxGiftcard) {
+        badgeClass = 'badge-roblox-code';
+        badgeIcon = "<i class='bx bx-barcode' style='font-size:0.9rem;'></i> ";
+      }
+
+      const priceMsgPart = isOffer
+        ? `🔥 *PRECIO EN OFERTA:* ${priceBsFormatted} ~(Antes: ${regularPriceFormatted})~`
+        : `💵 *Precio:* ${priceBsFormatted}`;
+
       const waText = encodeURIComponent(
         `¡Hola Reload Xpress! 👋 Deseo comprar:\n` +
         `🎮 *Juego:* ${game.label}\n` +
         `📦 *Paquete:* ${pkg.name}\n` +
-        `💵 *Precio:* ${priceBsFormatted}` +
+        priceMsgPart +
         emailFieldNotice + `\n\n` +
         `¿Me indican los datos para pagar?`
       );
       const waLink = `https://wa.me/${WA_NUMBER}?text=${waText}`;
 
-      // Datos para copiar (solo precio en Bs sin USD)
-      const copyPayload = `${game.label} - ${pkg.name} | Precio: ${priceBsFormatted}${isOutOfStock ? ' (Agotado)' : ''}`;
+      // Datos para copiar (con precio tachado si es oferta)
+      const copyPayload = `${game.label} - ${pkg.name} [${methodLabel}] | ${isOffer ? `¡OFERTA!: ${priceBsFormatted} (Antes: ${regularPriceFormatted})` : `Precio: ${priceBsFormatted}`}${isOutOfStock ? ' (Agotado)' : ''}`;
 
       return `
         <div class="package-card ${isOutOfStock ? 'pkg-out-of-stock' : ''}" data-copy="${escapeHtml(copyPayload)}">
-          <div class="pkg-top">
-            <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
-              <span class="pkg-badge">${escapeHtml(methodLabel)}</span>
-              ${isOutOfStock ? `<span class="pkg-badge badge-agotado"><i class='bx bx-block'></i> Agotado</span>` : ''}
-            </div>
-            <span style="font-size:0.85rem">${escapeHtml(game.icon || '🎮')}</span>
-          </div>
-
-          <div class="pkg-name">${escapeHtml(pkg.name)}</div>
-
-          <div class="pkg-prices">
-            <div class="price-bs-row">
-              <span class="price-bs-label"><i class='bx bx-check-shield'></i> PRECIO PAGO MÓVIL</span>
-              <span class="price-bs-val">${priceBsFormatted}</span>
+          <div class="pkg-list-left">
+            <div class="pkg-list-name-wrap">
+              <span class="pkg-list-name">${escapeHtml(pkg.name)}</span>
+              <div class="pkg-list-badges">
+                <span class="pkg-badge ${badgeClass}">
+                  ${badgeIcon}${escapeHtml(methodLabel)}
+                </span>
+                ${isOffer ? `<span class="pkg-badge badge-oferta"><i class='bx bxs-hot'></i> ${escapeHtml(pkg.offer_label || '¡OFERTA!')} ${pkg.discount_percent ? '-' + pkg.discount_percent + '%' : ''}</span>` : ''}
+                ${isOutOfStock ? `<span class="pkg-badge badge-agotado"><i class='bx bx-block'></i> Agotado</span>` : ''}
+              </div>
             </div>
           </div>
 
-          <div class="pkg-actions">
-            ${isOutOfStock ? `
-              <button type="button" class="btn-buy-wa btn-agotado" disabled title="Producto temporalmente agotado en este momento">
-                <i class='bx bx-block'></i> Agotado
-              </button>
-            ` : `
-              <a href="${waLink}" target="_blank" rel="noopener noreferrer" class="btn-buy-wa" title="Pedir este paquete por WhatsApp">
-                <i class='bx bxl-whatsapp' style="font-size:1.15rem"></i> Pedir
-              </a>
-            `}
-            <button class="btn-copy-info" data-action="copy" title="Copiar detalles para compartir">
-              <i class='bx bx-copy'></i>
-            </button>
+          <div class="pkg-list-right">
+            <div class="pkg-list-price-wrap">
+              ${isOffer ? `<span class="pkg-list-old-price">${regularPriceFormatted}</span>` : ''}
+              <span class="pkg-list-price ${isOffer ? 'is-offer-price' : ''}">${priceBsFormatted}</span>
+            </div>
+            <div class="pkg-list-actions">
+              ${isOutOfStock ? `
+                <button type="button" class="btn-buy-wa btn-agotado" disabled title="Producto temporalmente agotado">
+                  <i class='bx bx-block'></i> Agotado
+                </button>
+              ` : `
+                <a href="${waLink}" target="_blank" rel="noopener noreferrer" class="btn-buy-wa" title="Pedir este paquete por WhatsApp">
+                  <i class='bx bxl-whatsapp' style="font-size:1.05rem"></i> <span>Pedir</span>
+                </a>
+              `}
+            </div>
           </div>
         </div>
       `;
@@ -3208,7 +4072,30 @@ Cédula: 30.696.020 (30696020)`;
       `;
     }
 
-    // Iniciar carga de datos al abrir
+    // 17. Lightbox para Foto de Muestra de @User de Roblox
+    window.openSampleLightbox = function(src) {
+      const lb = document.getElementById('imageLightboxModal');
+      const lbImg = document.getElementById('imageLightboxImg');
+      if (lb && lbImg) {
+        if (src) lbImg.src = src;
+        lb.classList.add('open');
+      }
+    };
+    function closeSampleLightbox() {
+      const lb = document.getElementById('imageLightboxModal');
+      if (lb) lb.classList.remove('open');
+    }
+    const lbCloseBtn = document.getElementById('imageLightboxCloseBtn');
+    if (lbCloseBtn) lbCloseBtn.addEventListener('click', closeSampleLightbox);
+    const lbModal = document.getElementById('imageLightboxModal');
+    if (lbModal) {
+      lbModal.addEventListener('click', (e) => {
+        if (e.target === lbModal) closeSampleLightbox();
+      });
+    }
+
+    // Iniciar popup del canal y carga de datos al abrir
+    initWaChannelPopup();
     fetchCatalogData();
   </script>
 </body>
