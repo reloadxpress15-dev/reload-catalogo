@@ -1088,7 +1088,207 @@
       color: #22c55e;
     }
 
-    /* Estilos para Roblox Vía User en Modal (Roblox Plus, No Reembolso, Control Parental, Foto @User) */
+    /* Estilos Compactos para Roblox Vía User en Modal (Límites, Requisitos y Alertas) */
+    .roblox-user-compact-card {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-align: left;
+      margin-bottom: 8px;
+    }
+    .ru-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2px;
+    }
+    .ru-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, rgba(2, 132, 199, 0.18), rgba(2, 132, 199, 0.08));
+      color: #0284c7;
+      border: 1px solid rgba(2, 132, 199, 0.35);
+      border-radius: 99px;
+      padding: 4px 12px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .ru-stock-tag {
+      font-size: 0.72rem;
+      color: #059669;
+      background: rgba(5, 150, 105, 0.12);
+      border: 1px solid rgba(5, 150, 105, 0.3);
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-weight: 700;
+    }
+    .ru-limits-box {
+      background: linear-gradient(135deg, rgba(2, 132, 199, 0.12), rgba(2, 132, 199, 0.04));
+      border: 1.5px solid rgba(2, 132, 199, 0.4);
+      border-radius: 12px;
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .ru-limits-title {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: #0284c7;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .ru-limits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .ru-limit-pill {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(2, 132, 199, 0.25);
+      border-radius: 8px;
+      padding: 6px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .ru-limit-pill.highlight {
+      background: rgba(2, 132, 199, 0.16);
+      border-color: #0284c7;
+    }
+    .ru-limit-label {
+      font-size: 0.68rem;
+      color: var(--text-muted, #94a3b8);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .ru-limit-val {
+      font-size: 0.95rem;
+      font-weight: 900;
+      color: #0284c7;
+      font-family: 'Outfit', sans-serif;
+    }
+    .ru-limit-pill.highlight .ru-limit-val {
+      color: #0ea5e9;
+    }
+    .ru-limit-sub {
+      font-size: 0.68rem;
+      color: var(--text-main, #e2e8f0);
+      font-weight: 600;
+    }
+    .ru-limits-how {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      font-size: 0.74rem;
+      color: var(--text-main, #cbd5e1);
+      line-height: 1.35;
+      background: rgba(0, 0, 0, 0.15);
+      padding: 6px 8px;
+      border-radius: 6px;
+    }
+    .ru-limits-how i {
+      color: #38bdf8;
+      font-size: 0.95rem;
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+    .ru-info-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      background: var(--pill-bg, rgba(255, 255, 255, 0.03));
+      border: 1px solid var(--border, rgba(255, 255, 255, 0.08));
+      border-radius: 10px;
+      padding: 8px 10px;
+    }
+    .ru-info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.78rem;
+      line-height: 1.35;
+    }
+    .ru-info-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      background: rgba(2, 132, 199, 0.15);
+      color: #0284c7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .ru-info-text {
+      color: var(--text-main, #e2e8f0);
+    }
+    .ru-info-text strong {
+      color: var(--text-main, #ffffff);
+      font-weight: 700;
+    }
+    .ru-btn-sample {
+      background: rgba(2, 132, 199, 0.2);
+      border: 1px solid rgba(2, 132, 199, 0.4);
+      color: #38bdf8;
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-left: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      transition: all 0.2s;
+    }
+    .ru-btn-sample:hover {
+      background: #0284c7;
+      color: #ffffff;
+    }
+    .ru-alert-guarantee-compact {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.16), rgba(16, 185, 129, 0.05));
+      border: 1px solid rgba(16, 185, 129, 0.45);
+      border-radius: 8px;
+      padding: 6px 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.74rem;
+      color: #34d399;
+      line-height: 1.3;
+    }
+    .ru-alert-guarantee-compact i {
+      font-size: 1.25rem;
+      flex-shrink: 0;
+      color: #10b981;
+    }
+    .ru-alert-norefund-compact {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.14), rgba(239, 68, 68, 0.04));
+      border: 1px solid rgba(239, 68, 68, 0.45);
+      border-radius: 8px;
+      padding: 6px 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.74rem;
+      color: #f87171;
+      line-height: 1.3;
+    }
+    .ru-alert-norefund-compact i {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      color: #ef4444;
+    }
+
     .roblox-user-alert-box {
       border-radius: 14px;
       padding: 14px 16px;
@@ -1382,77 +1582,36 @@
 
     /* ─── Modal Popup Canal de WhatsApp ──────────────────────────────────────── */
     .wa-popup-badge-icon {
-      width: 66px;
-      height: 66px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
       background: #25d366;
       color: #ffffff;
-      font-size: 2.3rem;
+      font-size: 2rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 14px;
-      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
-      animation: pulseGreen 2.4s infinite ease-in-out;
-    }
-    @keyframes pulseGreen {
-      0%, 100% { transform: scale(1); box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35); }
-      50% { transform: scale(1.05); box-shadow: 0 12px 28px rgba(37, 211, 102, 0.5); }
-    }
-    .wa-popup-pill {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.8px;
-      color: #25d366;
-      background: rgba(37, 211, 102, 0.12);
-      border: 1px solid rgba(37, 211, 102, 0.28);
-      padding: 4px 12px;
-      border-radius: 99px;
-      margin-bottom: 10px;
+      margin: 0 auto 12px;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
     }
     .wa-popup-title {
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       font-weight: 900;
       color: var(--text-main);
       letter-spacing: -0.3px;
       line-height: 1.25;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
     .wa-popup-desc {
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       color: var(--text-sub);
-      line-height: 1.45;
+      line-height: 1.4;
       margin-bottom: 16px;
-    }
-    .wa-popup-perks {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 12px 14px;
-      margin-bottom: 18px;
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .wa-perk-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.82rem;
-      color: var(--text-main);
-      font-weight: 600;
-    }
-    .wa-perk-item i {
-      color: #25d366;
-      font-size: 1.15rem;
-      flex-shrink: 0;
     }
     .btn-join-channel {
       width: 100%;
-      padding: 13px;
-      border-radius: 14px;
+      padding: 12px 16px;
+      border-radius: 12px;
       background: #25d366;
       color: #ffffff;
       text-decoration: none;
@@ -1464,7 +1623,7 @@
       gap: 8px;
       transition: all 0.2s ease;
       box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       border: none;
       cursor: pointer;
     }
@@ -2523,36 +2682,30 @@
 
   <!-- ─── POPUP CANAL OFICIAL DE WHATSAPP AL ENTRAR ──────────────────────────── -->
   <div class="modal-overlay" id="waChannelModal">
-    <div class="modal-dialog wa-channel-dialog" style="max-width: 460px; text-align: center; padding: 28px 22px;">
+    <div class="modal-dialog wa-channel-dialog" style="max-width: 360px; text-align: center; padding: 22px 18px;">
       <button class="modal-close-btn" id="waChannelCloseBtn" aria-label="Cerrar ventana">&times;</button>
       
       <div class="wa-popup-badge-icon">
         <i class='bx bxl-whatsapp'></i>
       </div>
 
-      <div class="wa-popup-pill">COMUNIDAD OFICIAL RELOAD XPRESS</div>
-      <h3 class="wa-popup-title">¡Únete a Nuestro Canal de WhatsApp!</h3>
+      <h3 class="wa-popup-title">¡Sigue nuestro canal!</h3>
       <p class="wa-popup-desc">
-        Recibe <strong>ofertas relámpago</strong>, bajadas de precio, <strong>actualizaciones de tasa en vivo</strong> y avisos de stock exclusivo antes que nadie.
+        Recibe ofertas relámpago, bajadas de precio y alertas de stock exclusivo al instante.
       </p>
 
-      <div class="wa-popup-perks">
-        <div class="wa-perk-item"><i class='bx bxs-check-circle'></i> Descuentos y ofertas exclusivas para miembros</div>
-        <div class="wa-perk-item"><i class='bx bxs-check-circle'></i> Alertas inmediatas de stock de Robux y Pines</div>
-        <div class="wa-perk-item"><i class='bx bxs-check-circle'></i> 100% libre de spam (Solo novedades oficiales)</div>
-      </div>
-
-      <a href="https://whatsapp.com/channel/0029Va8X2fL23n3Zg" id="btnJoinWaChannel" target="_blank" rel="noopener noreferrer" class="btn-join-channel">
+      <a href="https://whatsapp.com/channel/0029VbDBOsNG3R3apQ1lcu2t" id="btnJoinWaChannel" target="_blank" rel="noopener noreferrer" class="btn-join-channel">
         <i class='bx bxl-whatsapp' style="font-size: 1.35rem;"></i>
-        <span>Unirme al Canal de WhatsApp</span>
+        <span>Sigue nuestro canal</span>
       </a>
 
       <div>
         <button type="button" class="btn-dismiss-channel" id="btnDismissWaChannel">
-          Continuar al Catálogo de Juegos
+          Continuar al catálogo
         </button>
       </div>
     </div>
+  </div>
   <!-- ─── MODAL LIGHTBOX PARA VISUALIZAR FOTO DE MUESTRA ────────────────────── -->
   <div class="modal-overlay" id="imageLightboxModal" style="z-index: 10000;">
     <div class="modal-dialog" style="max-width: 640px; padding: 20px; text-align: center;">
@@ -2635,7 +2788,7 @@
           { title: '⭐ Tu @User de Roblox (Sin Contraseña)', desc: 'Solo necesitamos tu Nombre de Usuario real con @ (el que ves en tu avatar o perfil). Jamás te pediremos contraseñas.' },
           { title: '⚡ Entrega vía Roblox Plus y Aceptación Obligatoria', desc: 'Los Robux se envían vía Roblox Plus. Al llegar la solicitud a tu cuenta, debes ACEPTAR los Robux para que se sumen a tu saldo.' },
           { title: '👨‍👩‍👧 Permiso Parental Obligatorio (< 16 años)', desc: 'Si eres menor de 16 años, requerirás autorización de un adulto (padre o representante) ya sea por correo parental o presencial (verificación facial o PIN).' },
-          { title: '🚨 Sin Reembolso si no puedes Aceptar los Robux', desc: 'Si no puedes o no sabes aceptar los Robux, o tu cuenta tiene restricciones, NO HAY REEMBOLSO bajo ningún concepto. La recarga no tiene devolución.' }
+          { title: '🛡️ Garantía Total si Excedes el Límite', desc: 'Si tu cuenta supera su límite diario/mensual y no puedes recibir los Robux, te reembolsamos tu dinero sin problemas o reintentamos cuando actives tu cupo.' }
         ]
       },
       'roblox_giftcard': {
@@ -2837,7 +2990,7 @@
     const modalStepsList = document.getElementById('modalStepsList');
 
     // Popup Canal de WhatsApp
-    const WA_CHANNEL_URL = 'https://whatsapp.com/channel/0029Va8X2fL23n3Zg';
+    const WA_CHANNEL_URL = 'https://whatsapp.com/channel/0029VbDBOsNG3R3apQ1lcu2t';
     const waChannelModal = document.getElementById('waChannelModal');
     const waChannelCloseBtn = document.getElementById('waChannelCloseBtn');
     const btnDismissWaChannel = document.getElementById('btnDismissWaChannel');
@@ -3426,115 +3579,106 @@
 
         // Rellenar pasos
         let stepsHtml = '';
+        const requiresConsent = (gameKey === 'roblox_user' || gameKey === 'roblox_giftcard' || gameKey === 'roblox_internal');
+
         if (gameKey === 'roblox_user') {
           stepsHtml += `
-            <!-- 1. Explicación de Roblox Plus y Aceptación de Robux -->
-            <div class="roblox-user-alert-box roblox-alert-plus">
-              <i class='bx bxs-bolt-circle' style="font-size: 1.6rem; color: #0284c7; flex-shrink: 0; margin-top: 2px;"></i>
-              <div style="font-size: 0.84rem; line-height: 1.48; color: var(--text-main);">
-                <strong>⚡ ¿CÓMO FUNCIONA ROBLOX PLUS (VÍA USER)?</strong>
-                <p style="margin: 0 0 6px 0;">
-                  Recarga directa y 100% legal a tu avatar sin contraseñas ni correos confidenciales. Funciona para cuentas de <strong>cualquier país y en cualquier divisa</strong>.
-                </p>
-                <p style="margin: 0 0 4px 0;">
-                  🔔 <strong>Debes aceptar los Robux:</strong> Al despachar tu pedido mediante el sistema de Roblox Plus, te llegará la solicitud a tu cuenta de Roblox y <u>debes ACEPTAR la entrega</u> para que los Robux se sumen a tu saldo.
-                </p>
-                <p style="margin: 0; font-weight: 700; color: #0284c7;">
-                  ✨ Denominaciones disponibles en vivo desde ${game.min_robux || 10} Robux.
-                </p>
+            <div class="roblox-user-compact-card">
+              <!-- Cabecera -->
+              <div class="ru-header">
+                <div class="ru-badge">
+                  <i class='bx bxs-bolt-circle'></i> Roblox Plus · Vía @Usuario
+                </div>
+                <span class="ru-stock-tag">⚡ Entrega Directa</span>
               </div>
-            </div>
 
-            <!-- 2. Advertencia CRÍTICA de No Reembolso -->
-            <div class="roblox-user-alert-box roblox-alert-norefund">
-              <i class='bx bxs-error-circle' style="font-size: 1.7rem; color: #ef4444; flex-shrink: 0; margin-top: 2px;"></i>
-              <div style="font-size: 0.84rem; line-height: 1.48; color: var(--text-main);">
-                <strong>🚨 MUY IMPORTANTE: SI NO PUEDES ACEPTAR LOS ROBUX NO HAY REEMBOLSO</strong>
-                <p style="margin: 0 0 4px 0;">
-                  Una vez que enviamos los Robux a tu usuario, el pedido queda despachado de forma irreversible.
-                </p>
-                <p style="margin: 0; font-weight: 700; color: #ef4444;">
-                  Si por restricciones de tu cuenta, falta de permiso de tus padres o cualquier inconveniente en tu perfil NO puedes aceptar los Robux, <u>NO SE REALIZARÁN REEMBOLSOS NI DEVOLUCIONES DE DINERO</u> bajo ningún motivo. Asegúrate de estar listo para aceptarlos antes de comprar.
-                </p>
-              </div>
-            </div>
-
-            <!-- 3. Cómo encontrar tu @User + Foto de Muestra -->
-            <div class="roblox-sample-card">
-              <div class="roblox-sample-header">
-                <i class='bx bxs-user-detail' style="font-size: 1.25rem;"></i>
-                <span>👤 CÓMO ENCONTRAR TU NOMBRE DE USUARIO EXACTO</span>
-              </div>
-              <p style="font-size: 0.83rem; margin: 0 0 10px 0; line-height: 1.45; color: var(--text-main);">
-                Para hacer la recarga necesitamos tu <strong>Nombre de Usuario</strong> real de Roblox (el que puedes encontrar cuando ves tu avatar o desde tu perfil).
-                Normalmente tiene un <strong>@</strong> y seguido el usuario (por ejemplo: <strong>@MiUsuario</strong>). <u>No nos envíes tu apodo o Display Name</u>.
-              </p>
-
-              <div class="roblox-sample-img-container" onclick="openSampleLightbox('img/MuestraUser.jpg')">
-                <img src="img/MuestraUser.jpg" alt="Ejemplo de dónde ver tu @User en Roblox" onerror="this.src='catalogo/img/MuestraUser.jpg';" />
-                <div class="roblox-sample-overlay">
-                  <i class='bx bx-zoom-in'></i> Ver foto de ejemplo en grande
+              <!-- BLOQUE CLAVE: LÍMITES DE RECEPCIÓN (Diario y Mensual) -->
+              <div class="ru-limits-box">
+                <div class="ru-limits-title">
+                  <i class='bx bx-tachometer'></i>
+                  <span>Límites de Recepción en Roblox (Revisa tu cupo)</span>
+                </div>
+                <div class="ru-limits-grid">
+                  <div class="ru-limit-pill">
+                    <span class="ru-limit-label">Cuenta Estándar</span>
+                    <strong class="ru-limit-val">500 RBX/día</strong>
+                    <small class="ru-limit-sub">Máx. 1,000 Robux al mes</small>
+                  </div>
+                  <div class="ru-limit-pill highlight">
+                    <span class="ru-limit-label">Con Verificación 2 Pasos (2SV)</span>
+                    <strong class="ru-limit-val">5,000 RBX/día</strong>
+                    <small class="ru-limit-sub">Máx. 10,000 Robux al mes</small>
+                  </div>
+                </div>
+                <div class="ru-limits-how">
+                  <i class='bx bx-search-alt-2'></i>
+                  <span><strong>¿Dónde verificarlo y activarlo?</strong> En tu app o web de Roblox ve a: <u>Configuración ⚙️ &gt; Robux</u> (ahí puedes ver tus límites disponibles y activarlo).</span>
                 </div>
               </div>
 
-              <div class="roblox-sample-footer">
-                👆 <strong>Foto de ejemplo:</strong> Abre tu perfil o avatar de Roblox y ubica el texto con <strong>@</strong> tal como se muestra en la foto. Ese es el que debes escribirnos.
-              </div>
-            </div>
-
-            <!-- 4. Control Parental para Menores de 16 Años -->
-            <div class="roblox-user-alert-box roblox-alert-parental">
-              <i class='bx bxs-group' style="font-size: 1.6rem; color: #f59e0b; flex-shrink: 0; margin-top: 2px;"></i>
-              <div style="font-size: 0.84rem; line-height: 1.48; color: var(--text-main);">
-                <strong>👨‍👩‍👧 MENORES DE 16 AÑOS: PERMISO DE UN ADULTO OBLIGATORIO</strong>
-                <p style="margin: 0 0 6px 0;">
-                  Al llegar los Robux a tu cuenta, <strong>si eres menor de 16 años deberás pedir permiso a un adulto / representante legal</strong> para poder autorizar la entrega:
-                </p>
-                <div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 4px;">
-                  <div style="display: flex; align-items: flex-start; gap: 6px;">
-                    <span>📧</span>
-                    <span><strong>Vía Correo Parental:</strong> Aprobación enviada al correo electrónico del padre o tutor vinculado a la cuenta.</span>
+              <!-- Puntos Esenciales Compactos -->
+              <div class="ru-info-grid">
+                <div class="ru-info-item">
+                  <div class="ru-info-icon"><i class='bx bxs-user-check'></i></div>
+                  <div class="ru-info-text">
+                    <strong>Tu @Usuario exacto:</strong>
+                    <span>El @nombre real de tu avatar (no Display Name). <button type="button" class="ru-btn-sample" onclick="openSampleLightbox('img/MuestraUser.jpg')">👁️ Ver foto</button></span>
                   </div>
-                  <div style="display: flex; align-items: flex-start; gap: 6px;">
-                    <span>🤳</span>
-                    <span><strong>En Persona (Verificación Facial o PIN):</strong> Donde el padre o representante debe poner su cara (verificación facial oficial de Roblox) o crear un PIN parental para darle permiso a su hijo de recibir los Robux.</span>
+                </div>
+
+                <div class="ru-info-item">
+                  <div class="ru-info-icon"><i class='bx bxs-bell-ring'></i></div>
+                  <div class="ru-info-text">
+                    <strong>Debes aceptar los Robux:</strong>
+                    <span>Te llegará la entrega por Roblox Plus y debes presionar <u>Aceptar</u> en tu cuenta para que se sumen.</span>
+                  </div>
+                </div>
+
+                <div class="ru-info-item">
+                  <div class="ru-info-icon"><i class='bx bxs-group'></i></div>
+                  <div class="ru-info-text">
+                    <strong>Menores de 16 años:</strong>
+                    <span>Requieren autorización parental para aceptar (vía correo del padre o verificación PIN/facial en Roblox).</span>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- 5. Casilla de Confirmación Obligatoria -->
-            <div class="roblox-consent-box" id="robloxConsentBox">
-              <input type="checkbox" id="robloxConsentCheck" />
-              <label for="robloxConsentCheck" class="roblox-consent-label">
-                <strong>He leído y acepto las condiciones de Roblox Vía User:</strong>
-                <span>Confirmo que aceptaré los Robux vía Roblox Plus, que si soy menor de 16 años tengo permiso de un adulto (vía correo o verificación facial/PIN) y que <u>SI NO PUEDO ACEPTAR LOS ROBUX NO HAY REEMBOLSO</u>. Entregaré mi @User exacto.</span>
-              </label>
+              <!-- Garantía Total con Reembolso -->
+              <div class="ru-alert-guarantee-compact">
+                <i class='bx bxs-check-shield'></i>
+                <span><strong>Garantía Total con Reembolso:</strong> Si tu cuenta supera su límite diario/mensual y no puedes recibir los Robux, <u>te reembolsamos tu dinero sin problema</u> o esperamos a que actives tu cupo.</span>
+              </div>
+
+              <!-- Casilla de Consentimiento Compacta -->
+              <div class="roblox-consent-box" id="robloxConsentBox" style="margin-top: 4px; padding: 10px 12px;">
+                <input type="checkbox" id="robloxConsentCheck" />
+                <label for="robloxConsentCheck" class="roblox-consent-label" style="font-size: 0.78rem;">
+                  <strong>Entiendo y acepto las condiciones de entrega:</strong>
+                  <span>Entregaré mi @Usuario exacto y aceptaré la entrega en Roblox. Si mi cuenta supera el límite diario/mensual podré activar mi cupo o solicitar mi reembolso sin problema.</span>
+                </label>
+              </div>
             </div>
           `;
         } else if (gameKey === 'roblox_giftcard') {
           stepsHtml += `
-            <div style="background: rgba(234, 88, 12, 0.12); border: 1.5px solid rgba(234, 88, 12, 0.45); border-radius: 12px; padding: 14px 16px; margin-bottom: 12px; display: flex; gap: 12px; align-items: flex-start; text-align: left;">
-              <i class='bx bxs-barcode' style="font-size: 1.6rem; color: #ea580c; flex-shrink: 0; margin-top: 2px;"></i>
-              <div style="font-size: 0.83rem; line-height: 1.45; color: var(--text-main);">
-                <strong style="color: #ea580c; font-size: 0.9rem; display: block; margin-bottom: 3px; font-weight: 800;">
-                  ⚡ AVISO: PINES DIGITALES OFICIALES (USD)
+            <div style="background: rgba(234, 88, 12, 0.12); border: 1.5px solid rgba(234, 88, 12, 0.45); border-radius: 12px; padding: 12px 14px; margin-bottom: 10px; display: flex; gap: 10px; align-items: flex-start; text-align: left;">
+              <i class='bx bxs-barcode' style="font-size: 1.5rem; color: #ea580c; flex-shrink: 0; margin-top: 2px;"></i>
+              <div style="font-size: 0.82rem; line-height: 1.4; color: var(--text-main);">
+                <strong style="color: #ea580c; font-size: 0.88rem; display: block; margin-bottom: 2px; font-weight: 800;">
+                  ⚡ PINES DIGITALES OFICIALES (USD)
                 </strong>
                 <p style="margin: 0 0 4px 0;">
-                  💵 <strong>Cuenta en USD ($):</strong> Para canjear pines en <a href="https://www.roblox.com/redeem" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 700; text-decoration: underline;">roblox.com/redeem</a> tu cuenta DEBE estar en dólares ($ USD). Si tu cuenta tiene otra moneda, por favor recarga con <strong>Roblox Vía User</strong>.
+                  💵 <strong>Cuenta en USD ($):</strong> Para canjear pines en <a href="https://www.roblox.com/redeem" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 700; text-decoration: underline;">roblox.com/redeem</a> tu cuenta DEBE estar en dólares ($ USD). Si tu cuenta tiene otra moneda, recarga con <strong>Roblox Vía User</strong>.
                 </p>
-                <p style="margin: 0 0 4px 0;">
-                  📹 <strong>Garantía Estricta:</strong> Grabación continua de pantalla sin cortes desde el momento en que te enviamos el PIN hasta el canje oficial.
-                </p>
-                <p style="margin: 0; font-weight: 700; color: #ea580c;">
-                  🎫 Denominaciones disponibles en stock desde ${game.min_robux || 275} Robux.
+                <p style="margin: 0; font-size: 0.78rem; color: #ea580c; font-weight: 700;">
+                  📹 Garantía: Grabación continua de pantalla desde la entrega hasta el canje oficial.
                 </p>
               </div>
             </div>
 
-            <div class="roblox-consent-box" id="robloxConsentBox">
+            <div class="roblox-consent-box" id="robloxConsentBox" style="margin-top: 4px; padding: 10px 12px;">
               <input type="checkbox" id="robloxConsentCheck" />
-              <label for="robloxConsentCheck" class="roblox-consent-label">
+              <label for="robloxConsentCheck" class="roblox-consent-label" style="font-size: 0.78rem;">
                 <strong>He leído y acepto las condiciones de Giftcard:</strong>
                 <span>Confirmo que mi cuenta de Roblox está en dólares ($ USD) y grabaré pantalla para hacer válida mi garantía.</span>
               </label>
@@ -3542,48 +3686,46 @@
           `;
         } else if (gameKey === 'roblox_internal') {
           stepsHtml += `
-            <div style="background: rgba(16, 185, 129, 0.12); border: 1.5px solid rgba(16, 185, 129, 0.45); border-radius: 12px; padding: 14px 16px; margin-bottom: 12px; display: flex; gap: 12px; align-items: flex-start; text-align: left;">
-              <i class='bx bxs-key' style="font-size: 1.7rem; color: #10b981; flex-shrink: 0; margin-top: 2px;"></i>
-              <div style="font-size: 0.83rem; line-height: 1.45; color: var(--text-main);">
-                <strong style="color: #10b981; font-size: 0.95rem; display: block; margin-bottom: 4px; font-weight: 800;">
-                  🔑 REQUISITO OBLIGATORIO: USUARIO Y CONTRASEÑA
+            <div style="background: rgba(16, 185, 129, 0.12); border: 1.5px solid rgba(16, 185, 129, 0.45); border-radius: 12px; padding: 12px 14px; margin-bottom: 10px; display: flex; gap: 10px; align-items: flex-start; text-align: left;">
+              <i class='bx bxs-key' style="font-size: 1.5rem; color: #10b981; flex-shrink: 0; margin-top: 2px;"></i>
+              <div style="font-size: 0.82rem; line-height: 1.4; color: var(--text-main);">
+                <strong style="color: #10b981; font-size: 0.88rem; display: block; margin-bottom: 2px; font-weight: 800;">
+                  🔑 REQUISITO: USUARIO Y CONTRASEÑA
                 </strong>
-                <p style="margin: 0 0 5px 0;">
-                  Para realizar la compra oficial en la tienda de Roblox con tarjeta bancaria internacional prepagada, <strong>se necesita el Usuario y la Contraseña de tu cuenta</strong> para entrar a procesar el pedido (y código 2FA si lo tienes activado).
+                <p style="margin: 0 0 4px 0;">
+                  Para comprar en la tienda de Roblox con tarjeta internacional prepagada, <strong>se necesita el Usuario y la Contraseña</strong> de tu cuenta (y código 2FA si lo tienes activado).
                 </p>
-                <p style="margin: 0 0 5px 0;">
-                  🛡️ <strong>100% Seguro y Privado:</strong> Compra directa y legal con Roblox Corporation. No guardamos tus datos y cerramos sesión inmediatamente al finalizar la recarga.
-                </p>
-                <p style="margin: 0; font-weight: 700; color: #10b981;">
-                  💎 Paquetes oficiales y Premium desde ${game.min_robux || 40} Robux.
+                <p style="margin: 0; font-size: 0.78rem; color: #10b981; font-weight: 700;">
+                  🛡️ 100% Seguro: Compra oficial con Roblox Corporation. Cierre de sesión inmediato al terminar.
                 </p>
               </div>
             </div>
 
-            <div class="roblox-consent-box" id="robloxConsentBox">
+            <div class="roblox-consent-box" id="robloxConsentBox" style="margin-top: 4px; padding: 10px 12px;">
               <input type="checkbox" id="robloxConsentCheck" />
-              <label for="robloxConsentCheck" class="roblox-consent-label">
-                <strong>He leído y acepto: Se necesita Usuario y Contraseña para entrar a mi cuenta:</strong>
-                <span>Entiendo que suministraré mi usuario y contraseña (y código 2FA si aplica) para que ingresen a mi cuenta de Roblox a realizar la compra oficial.</span>
+              <label for="robloxConsentCheck" class="roblox-consent-label" style="font-size: 0.78rem;">
+                <strong>Acepto suministrar Usuario y Contraseña para entrar a mi cuenta:</strong>
+                <span>Entiendo que suministraré mis accesos para que ingresen a mi cuenta a realizar la recarga oficial.</span>
               </label>
             </div>
           `;
         }
 
-        info.steps.forEach((step, idx) => {
-          stepsHtml += `
-            <div class="m-step-item">
-              <div class="m-step-num">${idx + 1}</div>
-              <div class="m-step-text">
-                <strong>${escapeHtml(step.title)}</strong>
-                <p>${escapeHtml(step.desc)}</p>
+        if (!requiresConsent) {
+          info.steps.forEach((step, idx) => {
+            stepsHtml += `
+              <div class="m-step-item">
+                <div class="m-step-num">${idx + 1}</div>
+                <div class="m-step-text">
+                  <strong>${escapeHtml(step.title)}</strong>
+                  <p>${escapeHtml(step.desc)}</p>
+                </div>
               </div>
-            </div>
-          `;
-        });
+            `;
+          });
+        }
         modalStepsList.innerHTML = stepsHtml;
 
-        const requiresConsent = (gameKey === 'roblox_user' || gameKey === 'roblox_giftcard' || gameKey === 'roblox_internal');
         if (requiresConsent) {
           modalProceedBtn.disabled = true;
           modalProceedBtn.classList.add('btn-disabled');
@@ -3840,7 +3982,7 @@
       // Mensaje estructurado para WhatsApp (solo en Bs)
       let emailFieldNotice = '';
       if (isRobloxUser) {
-        emailFieldNotice = `\n👤 *Mi @User de Roblox exacto:* @(Escribe tu usuario aquí)\n⚠️ *Aviso de Aceptación:* He leído y acepto que debo autorizar los Robux y que no hay reembolso si no puedo aceptarlos.\n✨ *Modalidad:* Recarga Vía User (Roblox Plus)`;
+        emailFieldNotice = `\n👤 *Mi @User de Roblox exacto:* @(Escribe tu usuario aquí)\n🛡️ *Garantía:* Entiendo que si mi cuenta supera el límite diario/mensual podré activar mi cupo o solicitar reembolso sin problema.\n✨ *Modalidad:* Recarga Vía User (Roblox Plus)`;
       } else if (isRobloxInternal) {
         emailFieldNotice = `\n👤 *Usuario / Correo de Roblox:* (Escribe tu usuario aquí)\n🔑 *Contraseña de Roblox:* (Escribe tu contraseña aquí)\n🛡️ *Código 2FA (si tienes activo):* (Estaré atento para dártelo al momento)\n💳 *Modalidad:* Recarga Interna Oficial`;
       } else if (isRobloxGiftcard) {
