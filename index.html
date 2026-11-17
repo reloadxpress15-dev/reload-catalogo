@@ -2941,6 +2941,46 @@
           { title: 'Recarga Directa', desc: 'Los diamantes llegan directo a tu cuenta de juego.' }
         ]
       },
+      'arenabreakout': {
+        methodName: 'Recarga Oficial Vía ID de Jugador',
+        badge: 'Vía ID Directo',
+        steps: [
+          { title: 'Copia tu ID de Arena Breakout', desc: 'En tu perfil dentro del juego, copia tu ID numérico de jugador.' },
+          { title: 'Elige tu Paquete', desc: 'Bonds, Pases de Batalla o Lotes Oficiales de ALU.' },
+          { title: 'Envíanos tu ID por WhatsApp', desc: 'Confirma tu pedido y envíanos tu comprobante de pago.' },
+          { title: 'Recarga Directa', desc: 'Acreditación oficial inmediata en tu cuenta de juego.' }
+        ]
+      },
+      'deltaforce': {
+        methodName: 'Recarga Oficial Delta Force Global',
+        badge: 'Vía ID de Jugador',
+        steps: [
+          { title: 'Copia tu ID de Delta Force', desc: 'Entra a tu perfil en el juego y copia tu número de ID de jugador.' },
+          { title: 'Selecciona tus Monedas o Pase', desc: 'Coins de Delta Force, Tarjetas de Suministros o Pases de Batalla.' },
+          { title: 'Envíanos tu orden por WhatsApp', desc: 'Te atendemos y verificamos tu pago móvil o USDT al instante.' },
+          { title: 'Acreditación Directa', desc: 'Tus monedas caen directamente en tu cuenta global.' }
+        ]
+      },
+      'deltaforce_latam': {
+        methodName: 'Recarga Oficial Delta Force Servidor LATAM',
+        badge: 'Vía ID LATAM',
+        steps: [
+          { title: 'Copia tu ID de Servidor LATAM', desc: 'Verifica que juegues en la región/servidor LATAM y copia tu ID numérico.' },
+          { title: 'Elige tu Paquete de Monedas', desc: 'Precios optimizados para la región de Latinoamérica.' },
+          { title: 'Envíanos tu comprobante', desc: 'Procesamos tu pago de forma inmediata.' },
+          { title: 'Entrega Rápida y Segura', desc: 'Carga oficial garantizada en tu cuenta.' }
+        ]
+      },
+      'zepeto': {
+        methodName: 'Recarga Oficial Vía User ID de Zepeto',
+        badge: 'Vía User ID',
+        steps: [
+          { title: 'Copia tu User ID de Zepeto', desc: 'En tu perfil de Zepeto, copia tu código o ID de usuario único.' },
+          { title: 'Elige tu Paquete de Zems o Monedas', desc: 'Selecciona la cantidad que deseas recargar.' },
+          { title: 'Pide por WhatsApp', desc: 'Envíanos tu comprobante de pago móvil o Binance.' },
+          { title: 'Recarga Inmediata', desc: 'Saldo acreditado directamente a tu cuenta.' }
+        ]
+      },
       'brawlstars': {
         methodName: 'Recarga Oficial Supercell',
         badge: 'Vía Supercell ID',
@@ -4112,6 +4152,14 @@
           gameSubtitle = '💳 Recargas Oficiales con Tarjeta Virtual en tu Cuenta — Desde ' + (game.min_robux || 40) + ' Robux';
         } else if (game.game_key === 'roblox') {
           gameSubtitle = '⭐ Recargas Vía User, Pines Digitales y Recarga Interna';
+        } else if (game.game_key === 'arenabreakout') {
+          gameSubtitle = '🎯 Recargas Vía ID de Jugador — Bonds y Pases de Batalla';
+        } else if (game.game_key === 'deltaforce') {
+          gameSubtitle = '🎖️ Recargas Oficiales Globales Vía ID de Jugador';
+        } else if (game.game_key === 'deltaforce_latam') {
+          gameSubtitle = '🌎 Recargas Servidor Latinoamérica Vía ID';
+        } else if (game.game_key === 'zepeto') {
+          gameSubtitle = '🧍 Recargas Oficiales Vía User ID — Zems y Monedas';
         }
 
         html += `
@@ -4185,6 +4233,18 @@
         emailFieldNotice = `\n📧 *Mi correo para entrega del PIN:* (Escribe tu correo aquí)\n📌 *Modalidad:* Código Digital PIN (Cuenta USD)`;
       } else if (game.game_key === 'avatarworld') {
         emailFieldNotice = `\n📧 *Correo de mi Avatar ID para ingresar:* (Escribe tu correo aquí)`;
+      } else if (game.game_key === 'zepeto') {
+        emailFieldNotice = `\n🆔 *Mi User ID de Zepeto:* (Escribe tu ID aquí)`;
+      } else if (game.game_key === 'arenabreakout') {
+        emailFieldNotice = `\n🎯 *Mi ID de Jugador de Arena Breakout:* (Escribe tu ID numérico aquí)`;
+      } else if (game.game_key === 'deltaforce' || game.game_key === 'deltaforce_latam') {
+        emailFieldNotice = `\n🎖️ *Mi ID de Jugador de Delta Force:* (Escribe tu ID numérico aquí)`;
+      } else if (game.game_key === 'freefire') {
+        emailFieldNotice = `\n🔥 *Mi ID de Jugador de Free Fire:* (Escribe tu ID numérico aquí)`;
+      } else if (game.game_key === 'bloodstrike') {
+        emailFieldNotice = `\n🩸 *Mi ID de Usuario de Blood Strike:* (Escribe tu ID numérico aquí)`;
+      } else if (game.game_key === 'mobilelegends') {
+        emailFieldNotice = `\n⚔️ *Mi User ID y Zona (Server):* (Ej: 12345678 (1234))`;
       } else if (['brawlstars', 'clashroyale', 'coc'].includes(game.game_key)) {
         emailFieldNotice = `\n🏷️ *Mi Player Tag / Supercell ID:* (Escribe tu Tag aquí)`;
       }
